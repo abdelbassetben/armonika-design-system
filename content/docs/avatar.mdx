@@ -1,0 +1,268 @@
+---
+title: Avatar
+description: Displays a profile picture, initials, or fallback icon. Supports multiple sizes and grouping.
+---
+
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+  AvatarBadge,
+  AvatarGroup,
+  AvatarGroupCount,
+} from "@/components/ui/avatar";
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+import { Icon } from "@/components/ui/icon";
+
+An image element with a fallback for representing the user.
+
+## Default
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Avatar>
+        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+        <AvatarFallback>CN</AvatarFallback>
+      </Avatar>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
+<Avatar>
+  <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+  <AvatarFallback>CN</AvatarFallback>
+</Avatar>;
+```
+
+      </div>
+      <DocsPreview>
+        <Avatar>
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Sizes
+
+Avatars can be configured in different sizes (`sm`, `default`, `lg`).
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex items-center gap-4">
+        <Avatar size="sm">
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <Avatar size="default">
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <Avatar size="lg">
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
+<Avatar size="sm">
+  <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+  <AvatarFallback>CN</AvatarFallback>
+</Avatar>
+
+<Avatar size="default">
+  <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+  <AvatarFallback>CN</AvatarFallback>
+</Avatar>
+
+<Avatar size="lg">
+  <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+  <AvatarFallback>CN</AvatarFallback>
+</Avatar>
+```
+
+      </div>
+      <DocsPreview>
+        <div className="flex items-center gap-4">
+          <Avatar size="sm">
+            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+          <Avatar size="default">
+            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+          <Avatar size="lg">
+            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+        </div>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## With Badge
+
+You can use the `AvatarBadge` component to display a status badge.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex items-center gap-4">
+        <Avatar size="sm">
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
+          <AvatarBadge className="bg-green-500" />
+        </Avatar>
+        <Avatar size="default">
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
+          <AvatarBadge className="bg-green-500" />
+        </Avatar>
+        <Avatar size="lg">
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
+          <AvatarBadge className="bg-green-500" />
+        </Avatar>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+  AvatarBadge,
+} from "@/components/ui/avatar";
+
+<Avatar>
+  <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+  <AvatarFallback>CN</AvatarFallback>
+  <AvatarBadge className="bg-green-500" />
+</Avatar>;
+```
+
+      </div>
+      <DocsPreview>
+        <div className="flex items-center gap-4">
+          <Avatar size="sm">
+            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarFallback>CN</AvatarFallback>
+            <AvatarBadge className="bg-green-500" />
+          </Avatar>
+          <Avatar size="default">
+            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarFallback>CN</AvatarFallback>
+            <AvatarBadge className="bg-green-500" />
+          </Avatar>
+          <Avatar size="lg">
+            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarFallback>CN</AvatarFallback>
+            <AvatarBadge className="bg-green-500" />
+          </Avatar>
+        </div>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Avatar Group
+
+Use the `AvatarGroup` and `AvatarGroupCount` components to display multiple avatars in a stack.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <AvatarGroup>
+        <Avatar size="default">
+          <AvatarImage src="https://github.com/shadcn.png" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <Avatar size="default">
+          <AvatarImage src="https://github.com/shadcn.png" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <Avatar size="default">
+          <AvatarImage src="https://github.com/shadcn.png" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <AvatarGroupCount>+3</AvatarGroupCount>
+      </AvatarGroup>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+  AvatarGroup,
+  AvatarGroupCount,
+} from "@/components/ui/avatar";
+
+<AvatarGroup>
+  <Avatar size="default">
+    <AvatarImage src="https://github.com/shadcn.png" />
+    <AvatarFallback>CN</AvatarFallback>
+  </Avatar>
+  <Avatar size="default">
+    <AvatarImage src="https://github.com/shadcn.png" />
+    <AvatarFallback>CN</AvatarFallback>
+  </Avatar>
+  <Avatar size="default">
+    <AvatarImage src="https://github.com/shadcn.png" />
+    <AvatarFallback>CN</AvatarFallback>
+  </Avatar>
+  <AvatarGroupCount>+3</AvatarGroupCount>
+</AvatarGroup>;
+```
+
+      </div>
+      <DocsPreview>
+        <AvatarGroup>
+          <Avatar size="default">
+            <AvatarImage src="https://github.com/shadcn.png" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+          <Avatar size="default">
+            <AvatarImage src="https://github.com/shadcn.png" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+          <Avatar size="default">
+            <AvatarImage src="https://github.com/shadcn.png" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+          <AvatarGroupCount>+3</AvatarGroupCount>
+        </AvatarGroup>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>

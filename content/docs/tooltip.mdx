@@ -1,0 +1,317 @@
+---
+title: Tooltip
+description: A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
+---
+
+import {
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+} from "@/components/ui/tooltip";
+import { Button } from "@/components/ui/button";
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+
+> **Inspecting:** Live previews on this page use `TooltipForceOpen` (controlled `open` with a no-op `onOpenChange`) so the popup stays mounted in the DOM for DevTools. The **Code** tabs show the normal hover-only `Tooltip` for copy-paste.
+
+### Standard Tooltip
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <TooltipProvider>
+        <TooltipForceOpen>
+          <TooltipTrigger render={<Button variant="outline">Hover</Button>} />
+          <TooltipContent >
+            <p>Add to library</p>
+          </TooltipContent>
+        </TooltipForceOpen>
+      </TooltipProvider>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+} from "@/components/ui/tooltip";
+import { Button } from "@/components/ui/button";
+
+export default function TooltipDemo() {
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger render={<Button variant="outline">Hover</Button>} />
+        <TooltipContent>
+          <p>Add to library</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+}
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+### Variants
+
+Tooltips support `default` and `destructive` variants. The default arrow is a small rotated square; the destructive arrow is a triangular caret (same surface fill as the bubble, no border on the tip) so it does not read as a heavy diamond.
+
+The destructive bubble uses `border: 1px solid var(--Outline-danger_base_em_alpha, rgba(237, 64, 48, 0.20))` and `background: var(--Surface-danger_base_em_alpha, rgba(237, 64, 48, 0.12))`, with `text-destructive` for the label.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <TooltipProvider>
+        <div className="flex gap-10">
+          <TooltipForceOpen>
+            <TooltipTrigger render={<Button variant="outline">Default</Button>} />
+            <TooltipContent variant="default">
+              <p>Default tooltip</p>
+            </TooltipContent>
+          </TooltipForceOpen>
+
+          <TooltipForceOpen>
+            <TooltipTrigger
+              render={<Button variant="outline" >Destructive</Button>}
+            />
+            <TooltipContent variant="destructive" >
+              <p>Destructive tooltip</p>
+            </TooltipContent>
+          </TooltipForceOpen>
+        </div>
+      </TooltipProvider>
+    </DocsPreview>
+
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+} from "@/components/ui/tooltip";
+import { Button } from "@/components/ui/button";
+
+export default function TooltipVariants() {
+  return (
+    <TooltipProvider>
+      <div className="flex gap-4">
+        <Tooltip>
+          <TooltipTrigger render={<Button variant="outline">Default</Button>} />
+          <TooltipContent variant="default">
+            <p>Default tooltip</p>
+          </TooltipContent>
+        </Tooltip>
+
+        <Tooltip>
+          <TooltipTrigger
+            render={<Button variant="outline">Destructive</Button>}
+          />
+          <TooltipContent variant="destructive">
+            <p>Destructive tooltip</p>
+          </TooltipContent>
+        </Tooltip>
+      </div>
+    </TooltipProvider>
+  );
+}
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+### Positions
+
+Tooltips can be positioned `top`, `bottom`, `left`, or `right`.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <TooltipProvider>
+        <div className="flex gap-20">
+          <TooltipForceOpen>
+            <TooltipTrigger render={<Button variant="outline">Top</Button>} />
+            <TooltipContent side="top">
+              <p>Top tooltip</p>
+            </TooltipContent>
+          </TooltipForceOpen>
+
+          <TooltipForceOpen>
+            <TooltipTrigger render={<Button variant="outline">Bottom</Button>} />
+            <TooltipContent side="bottom">
+              <p>Bottom tooltip</p>
+            </TooltipContent>
+          </TooltipForceOpen>
+
+          <TooltipForceOpen>
+            <TooltipTrigger render={<Button variant="outline">Left</Button>} />
+            <TooltipContent side="left">
+              <p>Left tooltip</p>
+            </TooltipContent>
+          </TooltipForceOpen>
+
+          <TooltipForceOpen>
+            <TooltipTrigger render={<Button variant="outline">Right</Button>} />
+            <TooltipContent side="right">
+              <p>Right tooltip</p>
+            </TooltipContent>
+          </TooltipForceOpen>
+        </div>
+      </TooltipProvider>
+    </DocsPreview>
+
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+} from "@/components/ui/tooltip";
+import { Button } from "@/components/ui/button";
+
+export default function TooltipPositions() {
+  return (
+    <TooltipProvider>
+      <div className="flex gap-4">
+        <Tooltip>
+          <TooltipTrigger render={<Button variant="outline">Top</Button>} />
+          <TooltipContent side="top">
+            <p>Top tooltip</p>
+          </TooltipContent>
+        </Tooltip>
+
+        <Tooltip>
+          <TooltipTrigger render={<Button variant="outline">Bottom</Button>} />
+          <TooltipContent side="bottom">
+            <p>Bottom tooltip</p>
+          </TooltipContent>
+        </Tooltip>
+
+        <Tooltip>
+          <TooltipTrigger render={<Button variant="outline">Left</Button>} />
+          <TooltipContent side="left">
+            <p>Left tooltip</p>
+          </TooltipContent>
+        </Tooltip>
+
+        <Tooltip>
+          <TooltipTrigger render={<Button variant="outline">Right</Button>} />
+          <TooltipContent side="right">
+            <p>Right tooltip</p>
+          </TooltipContent>
+        </Tooltip>
+      </div>
+    </TooltipProvider>
+  );
+}
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+### Alignment
+
+You can use the `align` property to align the tooltip (and its arrow) to the `start` (left), `center`, or `end` (right) relative to the trigger.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <TooltipProvider>
+        <div className="flex gap-40">
+          <TooltipForceOpen>
+            <TooltipTrigger render={<Button variant="outline">Start</Button>} />
+            <TooltipContent side="bottom" align="start">
+              <p>Aligned start</p>
+            </TooltipContent>
+          </TooltipForceOpen>
+
+          <TooltipForceOpen>
+            <TooltipTrigger render={<Button variant="outline">Center</Button>} />
+            <TooltipContent side="bottom" align="center">
+              <p>Aligned center</p>
+            </TooltipContent>
+          </TooltipForceOpen>
+
+          <TooltipForceOpen>
+            <TooltipTrigger render={<Button variant="outline">End</Button>} />
+            <TooltipContent side="bottom" align="end">
+              <p>Aligned end</p>
+            </TooltipContent>
+          </TooltipForceOpen>
+        </div>
+      </TooltipProvider>
+    </DocsPreview>
+
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+} from "@/components/ui/tooltip";
+import { Button } from "@/components/ui/button";
+
+export default function TooltipAlignment() {
+  return (
+    <TooltipProvider>
+      <div className="flex gap-4">
+        <Tooltip>
+          <TooltipTrigger render={<Button variant="outline">Start</Button>} />
+          <TooltipContent side="bottom" align="start">
+            <p>Aligned start</p>
+          </TooltipContent>
+        </Tooltip>
+
+        <Tooltip>
+          <TooltipTrigger render={<Button variant="outline">Center</Button>} />
+          <TooltipContent side="bottom" align="center">
+            <p>Aligned center</p>
+          </TooltipContent>
+        </Tooltip>
+
+        <Tooltip>
+          <TooltipTrigger render={<Button variant="outline">End</Button>} />
+          <TooltipContent side="bottom" align="end">
+            <p>Aligned end</p>
+          </TooltipContent>
+        </Tooltip>
+      </div>
+    </TooltipProvider>
+  );
+}
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>

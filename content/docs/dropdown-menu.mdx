@@ -1,0 +1,83 @@
+---
+title: Dropdown Menu
+description: Displays a menu to the user—such as a set of actions or functions—triggered by a button.
+---
+
+import {
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuGroup,
+  DropdownMenuShortcut,
+} from "@/components/ui/dropdown-menu";
+import { DropdownMenuForceOpen } from "@/components/dropdown-menu-force-open";
+import { Button } from "@/components/ui/button";
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+import { DocsPreview } from "@/components/docs-preview";
+
+> **Inspecting:** Live previews on this page use `DropdownMenuForceOpen` (controlled `open` with a no-op `onOpenChange`) so the popup stays mounted in the DOM for DevTools. The **Code** tabs show the normal interactive `DropdownMenu` for copy-paste.
+
+### Standard Dropdown
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <DropdownMenuForceOpen>
+        <DropdownMenuTrigger render={<Button variant="outline">Open Menu</Button>} />
+        <DropdownMenuContent>
+          <DropdownMenuGroup>
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Profile</DropdownMenuItem>
+            <DropdownMenuItem>Billing</DropdownMenuItem>
+            <DropdownMenuItem>Settings</DropdownMenuItem>
+            <DropdownMenuItem>Keyboard shortcuts</DropdownMenuItem>
+          </DropdownMenuGroup>
+        </DropdownMenuContent>
+      </DropdownMenuForceOpen>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuGroup,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
+
+export default function DropdownMenuDemo() {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger
+        render={<Button variant="outline">Open Menu</Button>}
+      />
+      <DropdownMenuContent>
+        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuItem>Profile</DropdownMenuItem>
+          <DropdownMenuItem>Billing</DropdownMenuItem>
+          <DropdownMenuItem>Settings</DropdownMenuItem>
+          <DropdownMenuItem>Keyboard shortcuts</DropdownMenuItem>
+        </DropdownMenuGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
