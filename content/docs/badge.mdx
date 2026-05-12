@@ -1,0 +1,374 @@
+---
+title: Badge
+description: Displays a small, visually distinctive element used to draw attention to specific information. Supports multiple visual variants and sizes.
+---
+
+import { Badge, BadgeDot } from "@/components/ui/badge";
+import { Icon } from "@/components/ui/icon";
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+
+A small, visually distinctive element used to draw attention to specific information. Built with `class-variance-authority` for variants.
+
+## Default
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Badge radius={false}>
+        <BadgeDot />
+        Default
+      </Badge>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Badge, BadgeDot } from "@/components/ui/badge";
+
+<Badge>
+  <BadgeDot />
+  Default
+</Badge>;
+```
+
+      </div>
+      <DocsPreview>
+        <Badge>
+          <BadgeDot />
+          Default
+        </Badge>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Secondary
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Badge variant="secondary">
+        <BadgeDot />
+        Secondary
+      </Badge>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Badge, BadgeDot } from "@/components/ui/badge";
+
+<Badge variant="secondary">
+  <BadgeDot />
+  Secondary
+</Badge>;
+```
+
+      </div>
+      <DocsPreview>
+        <Badge variant="secondary">
+          <BadgeDot />
+          Secondary
+        </Badge>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Destructive
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Badge variant="destructive">
+        <BadgeDot />
+        Destructive
+      </Badge>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Badge, BadgeDot } from "@/components/ui/badge";
+
+<Badge variant="destructive">
+  <BadgeDot />
+  Destructive
+</Badge>;
+```
+
+      </div>
+      <DocsPreview>
+        <Badge variant="destructive">
+          <BadgeDot />
+          Destructive
+        </Badge>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Success
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Badge variant="success">
+        <BadgeDot />
+        Success
+      </Badge>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Badge, BadgeDot } from "@/components/ui/badge";
+
+<Badge variant="success">
+  <BadgeDot />
+  Success
+</Badge>;
+```
+
+      </div>
+      <DocsPreview>
+        <Badge variant="success">
+          <BadgeDot />
+          Success
+        </Badge>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Outline
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Badge variant="outline">
+        <BadgeDot />
+        Outline
+      </Badge>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Badge, BadgeDot } from "@/components/ui/badge";
+
+<Badge variant="outline">
+  <BadgeDot />
+  Outline
+</Badge>;
+```
+
+      </div>
+      <DocsPreview>
+        <Badge variant="outline">
+          <BadgeDot />
+          Outline
+        </Badge>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Colors
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex flex-wrap items-center gap-4">
+        <Badge variant="green"><BadgeDot />Green</Badge>
+        <Badge variant="red"><BadgeDot />Red</Badge>
+        <Badge variant="orange"><BadgeDot />Orange</Badge>
+        <Badge variant="emerald"><BadgeDot />Emerald</Badge>
+        <Badge variant="teal"><BadgeDot />Teal</Badge>
+        <Badge variant="cyan"><BadgeDot />Cyan</Badge>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Badge, BadgeDot } from "@/components/ui/badge";
+
+<div className="flex flex-wrap items-center gap-4">
+  <Badge variant="green">
+    <BadgeDot />
+    Green
+  </Badge>
+  <Badge variant="red">
+    <BadgeDot />
+    Red
+  </Badge>
+  <Badge variant="orange">
+    <BadgeDot />
+    Orange
+  </Badge>
+  <Badge variant="emerald">
+    <BadgeDot />
+    Emerald
+  </Badge>
+  <Badge variant="teal">
+    <BadgeDot />
+    Teal
+  </Badge>
+  <Badge variant="cyan">
+    <BadgeDot />
+    Cyan
+  </Badge>
+</div>;
+```
+
+      </div>
+      <DocsPreview>
+        <div className="flex flex-wrap items-center gap-4">
+          <Badge variant="green"><BadgeDot />Green</Badge>
+          <Badge variant="red"><BadgeDot />Red</Badge>
+          <Badge variant="orange"><BadgeDot />Orange</Badge>
+          <Badge variant="emerald"><BadgeDot />Emerald</Badge>
+          <Badge variant="teal"><BadgeDot />Teal</Badge>
+          <Badge variant="cyan"><BadgeDot />Cyan</Badge>
+        </div>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Sizes & Radius
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex flex-col gap-4 items-center">
+        <div className="flex flex-wrap items-center gap-4">
+          <Badge size="default"><BadgeDot />Default</Badge>
+          <Badge size="sm"><BadgeDot />Small</Badge>
+          <Badge size="md"><BadgeDot />Medium</Badge>
+        </div>
+        <div className="flex flex-wrap items-center gap-4">
+          <Badge radius={true}><BadgeDot />Rounded Full</Badge>
+          <Badge radius={false}><BadgeDot />Rounded MD (Default)</Badge>
+        </div>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Badge, BadgeDot } from "@/components/ui/badge";
+
+<div className="flex flex-wrap items-center gap-4">
+  <Badge size="default"><BadgeDot />Default</Badge>
+  <Badge size="sm"><BadgeDot />Small</Badge>
+  <Badge size="md"><BadgeDot />Medium</Badge>
+</div>
+
+<div className="flex flex-wrap items-center gap-4">
+  <Badge radius={true}><BadgeDot />Rounded Full</Badge>
+  <Badge radius={false}><BadgeDot />Rounded MD</Badge>
+</div>
+```
+
+      </div>
+      <DocsPreview>
+        <div className="flex flex-col gap-4 items-center">
+          <div className="flex flex-wrap items-center gap-4">
+            <Badge size="default"><BadgeDot />Default</Badge>
+            <Badge size="sm"><BadgeDot />Small</Badge>
+            <Badge size="md"><BadgeDot />Medium</Badge>
+          </div>
+          <div className="flex flex-wrap items-center gap-4">
+            <Badge radius={true}><BadgeDot />Rounded Full</Badge>
+            <Badge radius={false}><BadgeDot />Rounded MD (Default)</Badge>
+          </div>
+        </div>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## With Badge Dot
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex flex-wrap items-center gap-4">
+        <Badge variant="success">
+          <BadgeDot />
+          Active
+        </Badge>
+        <Badge variant="destructive">
+          <BadgeDot />
+          Offline
+        </Badge>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Badge, BadgeDot } from '@/components/ui/badge';
+
+<Badge variant="success">
+  <BadgeDot />
+  Active
+</Badge>
+
+<Badge variant="destructive">
+  <BadgeDot />
+  Offline
+</Badge>
+```
+
+      </div>
+      <DocsPreview>
+        <div className="flex flex-wrap items-center gap-4">
+          <Badge variant="success">
+            <BadgeDot />
+            Active
+          </Badge>
+          <Badge variant="destructive">
+            <BadgeDot />
+            Offline
+          </Badge>
+        </div>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Properties
+
+| Property | Type                                                                                                                                                                                | Default     | Description                               |
+| -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ----------------------------------------- |
+| variant  | `"default"` \| `"outline"` \| `"secondary"` \| `"ghost"` \| `"destructive"` \| `"success"` \| `"green"` \| `"red"` \| `"orange"` \| `"emerald"` \| `"teal"` \| `"cyan"` \| `"link"` | `"default"` | The variant style of the badge            |
+| size     | `"default"` \| `"sm"` \| `"md"` \| `"icon-only"`                                                                                                                                    | `"default"` | The size of the badge                     |
+| radius   | `boolean`                                                                                                                                                                           | `true`      | Whether the badge is fully rounded or not |
+| children | `ReactNode`                                                                                                                                                                         | -           | The content of the badge                  |

@@ -1,0 +1,497 @@
+---
+title: Button
+description: Displays a button or a component that looks like a button. Supports multiple visual variants and sizes.
+---
+
+import { Button } from "@/components/ui/button";
+import { Icon } from "@/components/ui/icon";
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+
+A clickable control used for actions. Built with `class-variance-authority` for variants.
+
+## Default
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Button size="md"><span className="px-1">Button</span></Button>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Button } from "@/components/ui/button";
+
+<Button>
+  <span className="px-1">Button</span>
+</Button>;
+```
+
+      </div>
+      <DocsPreview>
+        <Button><span className="px-1">Button</span></Button>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Secondary
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Button size="md" variant="secondary"><span className="px-1">Secondary</span></Button>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Button } from "@/components/ui/button";
+
+<Button variant="secondary">
+  <span className="px-1">Secondary</span>
+</Button>;
+```
+
+      </div>
+      <DocsPreview>
+        <Button variant="secondary"><span className="px-1">Secondary</span></Button>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Destructive
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Button size="md" variant="destructive"><span className="px-1">Destructive</span></Button>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Button } from "@/components/ui/button";
+
+<Button variant="destructive">
+  <span className="px-1">Destructive</span>
+</Button>;
+```
+
+      </div>
+      <DocsPreview>
+        <Button variant="destructive"><span className="px-1">Destructive</span></Button>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Success
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Button size="md" variant="success"><span className="px-1">Success</span></Button>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Button } from "@/components/ui/button";
+
+<Button variant="success">
+  <span className="px-1">Success</span>
+</Button>;
+```
+
+      </div>
+      <DocsPreview>
+        <Button variant="success"><span className="px-1">Success</span></Button>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Outline
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Button size="md" variant="outline"><span className="px-1">Outline</span></Button>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Button } from "@/components/ui/button";
+
+<Button variant="outline">
+  <span className="px-1">Outline</span>
+</Button>;
+```
+
+      </div>
+      <DocsPreview>
+        <Button variant="outline"><span className="px-1">Outline</span></Button>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Ghost
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Button size="md" variant="ghost"><span className="px-1">Ghost</span></Button>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Button } from "@/components/ui/button";
+
+<Button variant="ghost">
+  <span className="px-1">Ghost</span>
+</Button>;
+```
+
+      </div>
+      <DocsPreview>
+        <Button variant="ghost"><span className="px-1">Ghost</span></Button>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Link
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Button size="md" variant="link"><span className="px-1">Link</span></Button>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Button } from "@/components/ui/button";
+
+<Button variant="link">
+  <span className="px-1">Link</span>
+</Button>;
+```
+
+      </div>
+      <DocsPreview>
+        <Button variant="link"><span className="px-1">Link</span></Button>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Sizes
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex flex-wrap items-center gap-4">
+        <Button size="xs"><span className="px-1">XS</span></Button>
+        <Button size="sm"><span className="px-1">Small</span></Button>
+        <Button size="default"><span className="px-1">Default</span></Button>
+        <Button size="md"><span className="px-1">Medium</span></Button>
+        <Button size="lg"><span className="px-1">Large</span></Button>
+        <Button size="xl"><span className="px-1">XL</span></Button>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Button } from "@/components/ui/button";
+
+<div className="flex flex-wrap items-center gap-4">
+  <Button size="xs">
+    <span className="px-1">XS</span>
+  </Button>
+  <Button size="sm">
+    <span className="px-1">Small</span>
+  </Button>
+  <Button size="default">
+    <span className="px-1">Default</span>
+  </Button>
+  <Button size="md">
+    <span className="px-1">Medium</span>
+  </Button>
+  <Button size="lg">
+    <span className="px-1">Large</span>
+  </Button>
+  <Button size="xl">
+    <span className="px-1">XL</span>
+  </Button>
+</div>;
+```
+
+      </div>
+      <DocsPreview>
+        <div className="flex flex-wrap items-center gap-4">
+          <Button size="xs"><span className="px-1">XS</span></Button>
+          <Button size="sm"><span className="px-1">Small</span></Button>
+          <Button size="default"><span className="px-1">Default</span></Button>
+          <Button size="md"><span className="px-1">Medium</span></Button>
+          <Button size="lg"><span className="px-1">Large</span></Button>
+          <Button size="xl"><span className="px-1">XL</span></Button>
+        </div>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Icon Buttons
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex flex-wrap items-center gap-4">
+        <Button size="icon-xs" aria-label="Extra Small Icon">
+          <Icon name="category" className="size-3" />
+        </Button>
+        <Button size="icon-sm" aria-label="Small Icon">
+          <Icon name="category" className="size-3.5" />
+        </Button>
+        <Button size="icon" aria-label="Default Icon">
+          <Icon name="category" className="size-4" />
+        </Button>
+        <Button size="icon-md" aria-label="Medium Icon">
+          <Icon name="category" className="size-4" />
+        </Button>
+        <Button size="icon-lg" aria-label="Large Icon">
+          <Icon name="category" className="size-5" />
+        </Button>
+        <Button size="icon-xl" aria-label="Extra Large Icon">
+          <Icon name="category" className="size-6" />
+        </Button>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Button } from "@/components/ui/button";
+import { Icon } from "@/components/ui/icon";
+
+<div className="flex flex-wrap items-center gap-4">
+  <Button size="icon-xs" aria-label="Extra Small Icon">
+    <Icon name="category" className="size-3" />
+  </Button>
+  <Button size="icon-sm" aria-label="Small Icon">
+    <Icon name="category" className="size-3.5" />
+  </Button>
+  <Button size="icon" aria-label="Default Icon">
+    <Icon name="category" className="size-4" />
+  </Button>
+  <Button size="icon-md" aria-label="Medium Icon">
+    <Icon name="category" className="size-4" />
+  </Button>
+  <Button size="icon-lg" aria-label="Large Icon">
+    <Icon name="category" className="size-5" />
+  </Button>
+  <Button size="icon-xl" aria-label="Extra Large Icon">
+    <Icon name="category" className="size-6" />
+  </Button>
+</div>;
+```
+
+      </div>
+      <DocsPreview>
+        <div className="flex flex-wrap items-center gap-4">
+          <Button size="icon-xs" aria-label="Extra Small Icon">
+            <Icon name="category" className="size-3" />
+          </Button>
+          <Button size="icon-sm" aria-label="Small Icon">
+            <Icon name="category" className="size-3.5" />
+          </Button>
+          <Button size="icon" aria-label="Default Icon">
+            <Icon name="category" className="size-4" />
+          </Button>
+          <Button size="icon-md" aria-label="Medium Icon">
+            <Icon name="category" className="size-4" />
+          </Button>
+          <Button size="icon-lg" aria-label="Large Icon">
+            <Icon name="category" className="size-5" />
+          </Button>
+          <Button size="icon-xl" aria-label="Extra Large Icon">
+            <Icon name="category" className="size-6" />
+          </Button>
+        </div>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## With Icon
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex flex-wrap items-center gap-4">
+        <Button>
+          <Icon name="category" className="size-4" />
+          <span className="px-1">Icon Left</span>
+        </Button>
+        <Button variant="secondary">
+          <span className="px-1">Icon Right</span>
+          <Icon name="category" className="size-4" />
+        </Button>
+        <Button variant="outline">
+          <Icon name="category" className="size-4" />
+          <span className="px-1">Both</span>
+          <Icon name="category" className="size-4" />
+        </Button>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Button } from '@/components/ui/button';
+import { Icon } from '@/components/ui/icon';
+
+<Button>
+  <Icon name="category" className="size-4" />
+  <span className="px-1">Icon Left</span>
+</Button>
+
+<Button variant="secondary">
+  <span className="px-1">Icon Right</span>
+  <Icon name="category" className="size-4" />
+</Button>
+
+<Button variant="outline">
+  <Icon name="category" className="size-4" />
+  <span className="px-1">Both</span>
+  <Icon name="category" className="size-4" />
+</Button>
+```
+
+      </div>
+      <DocsPreview>
+        <div className="flex flex-wrap items-center gap-4">
+          <Button>
+            <Icon name="category" className="size-4" />
+            <span className="px-1">Icon Left</span>
+          </Button>
+          <Button variant="secondary">
+            <span className="px-1">Icon Right</span>
+            <Icon name="category" className="size-4" />
+          </Button>
+          <Button variant="outline">
+            <Icon name="category" className="size-4" />
+            <span className="px-1">Both</span>
+            <Icon name="category" className="size-4" />
+          </Button>
+        </div>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Disabled
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex flex-wrap items-center gap-4">
+        <Button disabled><span className="px-1">Default</span></Button>
+        <Button variant="secondary" disabled><span className="px-1">Secondary</span></Button>
+        <Button variant="outline" disabled><span className="px-1">Outline</span></Button>
+        <Button variant="destructive" disabled><span className="px-1">Destructive</span></Button>
+        <Button variant="ghost" disabled><span className="px-1">Ghost</span></Button>
+        <Button variant="link" disabled><span className="px-1">Link</span></Button>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Button } from "@/components/ui/button";
+
+<div className="flex flex-wrap items-center gap-4">
+  <Button disabled>
+    <span className="px-1">Default</span>
+  </Button>
+  <Button variant="secondary" disabled>
+    <span className="px-1">Secondary</span>
+  </Button>
+  <Button variant="outline" disabled>
+    <span className="px-1">Outline</span>
+  </Button>
+  <Button variant="destructive" disabled>
+    <span className="px-1">Destructive</span>
+  </Button>
+  <Button variant="ghost" disabled>
+    <span className="px-1">Ghost</span>
+  </Button>
+  <Button variant="link" disabled>
+    <span className="px-1">Link</span>
+  </Button>
+</div>;
+```
+
+      </div>
+      <DocsPreview>
+        <div className="flex flex-wrap items-center gap-4">
+          <Button disabled><span className="px-1">Default</span></Button>
+          <Button variant="secondary" disabled><span className="px-1">Secondary</span></Button>
+          <Button variant="outline" disabled><span className="px-1">Outline</span></Button>
+          <Button variant="destructive" disabled><span className="px-1">Destructive</span></Button>
+          <Button variant="ghost" disabled><span className="px-1">Ghost</span></Button>
+          <Button variant="link" disabled><span className="px-1">Link</span></Button>
+        </div>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Properties
+
+| Property | Type                                                                                                                                                 | Default     | Description                     |
+| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ------------------------------- |
+| variant  | `"default"` \| `"outline"` \| `"secondary"` \| `"ghost"` \| `"destructive"` \| `"success"` \| `"link"`                                               | `"default"` | The variant style of the button |
+| size     | `"default"` \| `"xs"` \| `"sm"` \| `"md"` \| `"lg"` \| `"xl"` \| `"icon"` \| `"icon-xs"` \| `"icon-sm"` \| `"icon-md"` \| `"icon-lg"` \| `"icon-xl"` | `"default"` | The size of the button          |
+| disabled | boolean                                                                                                                                              | `false`     | Whether the button is disabled  |
+| children | ReactNode                                                                                                                                            | -           | The content of the button       |

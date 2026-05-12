@@ -1,0 +1,449 @@
+---
+title: Input Group
+description: A composable input component that supports prefixes, suffixes, and integrated buttons.
+---
+
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+  InputGroupText,
+  InputGroupTextarea,
+} from "@/components/ui/input-group";
+import { Field, FieldLabel, FieldError } from "@/components/ui/field";
+import { Icon } from "@/components/ui/icon";
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+
+A composable input component that supports adding prefixes, suffixes, icons, and integrated buttons.
+
+## Default
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="w-full max-w-sm">
+        <Field>
+          <FieldLabel>Placeholder</FieldLabel>
+          <InputGroup size="md">
+            <InputGroupInput placeholder="Enter something..." />
+          </InputGroup>
+        </Field>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { InputGroup, InputGroupInput } from "@/components/ui/input-group";
+import { Field, FieldLabel } from "@/components/ui/field";
+
+<Field>
+  <FieldLabel>Placeholder</FieldLabel>
+  <InputGroup>
+    <InputGroupInput placeholder="Enter something..." />
+  </InputGroup>
+</Field>;
+```
+
+      </div>
+      <DocsPreview>
+        <div className="w-full max-w-sm">
+          <Field>
+            <FieldLabel>Placeholder</FieldLabel>
+            <InputGroup size="md">
+              <InputGroupInput placeholder="Enter something..." />
+            </InputGroup>
+          </Field>
+        </div>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## With Start Icon
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="w-full max-w-sm">
+        <Field>
+          <FieldLabel>Search</FieldLabel>
+          <InputGroup size="md">
+            <InputGroupAddon align="inline-start">
+              <InputGroupText>
+                <Icon name="category" className="size-4" />
+              </InputGroupText>
+            </InputGroupAddon>
+            <InputGroupInput placeholder="Search..." />
+          </InputGroup>
+        </Field>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+  InputGroupText,
+} from "@/components/ui/input-group";
+import { Field, FieldLabel } from "@/components/ui/field";
+import { Icon } from "@/components/ui/icon";
+
+<Field>
+  <FieldLabel>Search</FieldLabel>
+  <InputGroup>
+    <InputGroupAddon align="inline-start">
+      <InputGroupText>
+        <Icon name="category" className="size-4" />
+      </InputGroupText>
+    </InputGroupAddon>
+    <InputGroupInput placeholder="Search..." />
+  </InputGroup>
+</Field>;
+```
+
+      </div>
+      <DocsPreview>
+        <div className="w-full max-w-sm">
+          <Field>
+            <FieldLabel>Search</FieldLabel>
+            <InputGroup size="md">
+              <InputGroupAddon align="inline-start">
+                <InputGroupText>
+                  <Icon name="category" className="size-4" />
+                </InputGroupText>
+              </InputGroupAddon>
+              <InputGroupInput placeholder="Search..." />
+            </InputGroup>
+          </Field>
+        </div>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## With End Button
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="w-full max-w-sm">
+        <Field>
+          <FieldLabel>Email Address</FieldLabel>
+          <InputGroup size="md">
+            <InputGroupInput placeholder="Enter email..." />
+            <InputGroupAddon align="inline-end">
+              <InputGroupButton variant="ghost" size="xs">
+                Subscribe
+              </InputGroupButton>
+            </InputGroupAddon>
+          </InputGroup>
+        </Field>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+  InputGroupButton,
+} from "@/components/ui/input-group";
+import { Field, FieldLabel } from "@/components/ui/field";
+
+<Field>
+  <FieldLabel>Email Address</FieldLabel>
+  <InputGroup>
+    <InputGroupInput placeholder="Enter email..." />
+    <InputGroupAddon align="inline-end">
+      <InputGroupButton variant="ghost" size="xs">
+        Subscribe
+      </InputGroupButton>
+    </InputGroupAddon>
+  </InputGroup>
+</Field>;
+```
+
+      </div>
+      <DocsPreview>
+        <div className="w-full max-w-sm">
+          <Field>
+            <FieldLabel>Email Address</FieldLabel>
+            <InputGroup size="md">
+              <InputGroupInput placeholder="Enter email..." />
+              <InputGroupAddon align="inline-end">
+                <InputGroupButton variant="ghost" size="xs">
+                  Subscribe
+                </InputGroupButton>
+              </InputGroupAddon>
+            </InputGroup>
+          </Field>
+        </div>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## With Addon Text
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="w-full max-w-sm">
+        <Field>
+          <FieldLabel>Website URL</FieldLabel>
+          <InputGroup size="md">
+            <InputGroupAddon align="inline-start">
+              <InputGroupText>https://</InputGroupText>
+            </InputGroupAddon>
+            <InputGroupInput placeholder="armonika.com" />
+          </InputGroup>
+        </Field>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+  InputGroupText,
+} from "@/components/ui/input-group";
+import { Field, FieldLabel } from "@/components/ui/field";
+
+<Field>
+  <FieldLabel>Website URL</FieldLabel>
+  <InputGroup>
+    <InputGroupAddon align="inline-start">
+      <InputGroupText>https://</InputGroupText>
+    </InputGroupAddon>
+    <InputGroupInput placeholder="armonika.com" />
+  </InputGroup>
+</Field>;
+```
+
+      </div>
+      <DocsPreview>
+        <div className="w-full max-w-sm">
+          <Field>
+            <FieldLabel>Website URL</FieldLabel>
+            <InputGroup size="md">
+              <InputGroupAddon align="inline-start">
+                <InputGroupText>https://</InputGroupText>
+              </InputGroupAddon>
+              <InputGroupInput placeholder="armonika.com" />
+            </InputGroup>
+          </Field>
+        </div>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Invalid State
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="w-full max-w-sm">
+        <Field data-invalid>
+          <FieldLabel>Email Address</FieldLabel>
+          <InputGroup size="md">
+            <InputGroupInput aria-invalid="true" defaultValue="invalid-email" placeholder="Enter email..." />
+          </InputGroup>
+          <FieldError>Please enter a valid email address.</FieldError>
+        </Field>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { InputGroup, InputGroupInput } from "@/components/ui/input-group";
+import { Field, FieldLabel, FieldError } from "@/components/ui/field";
+
+<Field data-invalid>
+  <FieldLabel>Email Address</FieldLabel>
+  <InputGroup>
+    <InputGroupInput
+      aria-invalid="true"
+      defaultValue="invalid-email"
+      placeholder="Enter email..."
+    />
+  </InputGroup>
+  <FieldError>Please enter a valid email address.</FieldError>
+</Field>;
+```
+
+      </div>
+      <DocsPreview>
+        <div className="w-full max-w-sm">
+          <Field data-invalid>
+            <FieldLabel>Email Address</FieldLabel>
+            <InputGroup size="md">
+              <InputGroupInput aria-invalid="true" defaultValue="invalid-email" placeholder="Enter email..." />
+            </InputGroup>
+            <FieldError>Please enter a valid email address.</FieldError>
+          </Field>
+        </div>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Disabled State
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="w-full max-w-sm">
+        <Field disabled>
+          <FieldLabel>Username</FieldLabel>
+          <InputGroup size="md">
+            <InputGroupInput disabled placeholder="Cannot edit this..." />
+          </InputGroup>
+        </Field>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { InputGroup, InputGroupInput } from "@/components/ui/input-group";
+import { Field, FieldLabel } from "@/components/ui/field";
+
+<Field disabled>
+  <FieldLabel>Username</FieldLabel>
+  <InputGroup>
+    <InputGroupInput disabled placeholder="Cannot edit this..." />
+  </InputGroup>
+</Field>;
+```
+
+      </div>
+      <DocsPreview>
+        <div className="w-full max-w-sm">
+          <Field disabled>
+            <FieldLabel>Username</FieldLabel>
+            <InputGroup size="md">
+              <InputGroupInput disabled placeholder="Cannot edit this..." />
+            </InputGroup>
+          </Field>
+        </div>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Sizes
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex flex-col w-full max-w-sm gap-4">
+        <InputGroup size="xs">
+          <InputGroupInput placeholder="Extra Small (xs)" />
+        </InputGroup>
+        <InputGroup size="sm">
+          <InputGroupInput placeholder="Small (sm)" />
+        </InputGroup>
+        <InputGroup size="default">
+          <InputGroupInput placeholder="Default" />
+        </InputGroup>
+        <InputGroup size="md">
+          <InputGroupInput placeholder="Medium (md)" />
+        </InputGroup>
+        <InputGroup size="lg">
+          <InputGroupInput placeholder="Large (lg)" />
+        </InputGroup>
+        <InputGroup size="xl">
+          <InputGroupInput placeholder="Extra Large (xl)" />
+        </InputGroup>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { InputGroup, InputGroupInput } from "@/components/ui/input-group";
+
+<InputGroup size="xs">
+  <InputGroupInput placeholder="Extra Small (xs)" />
+</InputGroup>
+
+<InputGroup size="sm">
+  <InputGroupInput placeholder="Small (sm)" />
+</InputGroup>
+
+<InputGroup size="default">
+  <InputGroupInput placeholder="Default" />
+</InputGroup>
+
+<InputGroup size="md">
+  <InputGroupInput placeholder="Medium (md)" />
+</InputGroup>
+
+<InputGroup size="lg">
+  <InputGroupInput placeholder="Large (lg)" />
+</InputGroup>
+
+<InputGroup size="xl">
+  <InputGroupInput placeholder="Extra Large (xl)" />
+</InputGroup>
+```
+
+      </div>
+      <DocsPreview>
+        <div className="flex flex-col w-full max-w-sm gap-4">
+          <InputGroup size="xs">
+            <InputGroupInput placeholder="Extra Small (xs)" />
+          </InputGroup>
+          <InputGroup size="sm">
+            <InputGroupInput placeholder="Small (sm)" />
+          </InputGroup>
+          <InputGroup size="default">
+            <InputGroupInput placeholder="Default" />
+          </InputGroup>
+          <InputGroup size="md">
+            <InputGroupInput placeholder="Medium (md)" />
+          </InputGroup>
+          <InputGroup size="lg">
+            <InputGroupInput placeholder="Large (lg)" />
+          </InputGroup>
+          <InputGroup size="xl">
+            <InputGroupInput placeholder="Extra Large (xl)" />
+          </InputGroup>
+        </div>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>

@@ -1,0 +1,324 @@
+---
+title: Button Group
+description: Group multiple buttons or controls seamlessly together.
+---
+
+import {
+  ButtonGroup,
+  ButtonGroupText,
+  ButtonGroupSeparator,
+} from "@/components/ui/button-group";
+import { Button } from "@/components/ui/button";
+import { Icon } from "@/components/ui/icon";
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+
+Groups multiple buttons or controls seamlessly together in a single row or column. Adjusts borders and radiuses automatically.
+
+## Default
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <ButtonGroup>
+        <Button variant="outline">First</Button>
+        <Button variant="outline">Second</Button>
+        <Button variant="outline">Third</Button>
+      </ButtonGroup>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { ButtonGroup } from "@/components/ui/button-group";
+import { Button } from "@/components/ui/button";
+
+<ButtonGroup>
+  <Button variant="outline">First</Button>
+  <Button variant="outline">Second</Button>
+  <Button variant="outline">Third</Button>
+</ButtonGroup>;
+```
+
+      </div>
+      <DocsPreview>
+        <ButtonGroup>
+          <Button variant="outline">First</Button>
+          <Button variant="outline">Second</Button>
+          <Button variant="outline">Third</Button>
+        </ButtonGroup>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Vertical
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <ButtonGroup orientation="vertical">
+        <Button variant="outline">Top</Button>
+        <Button variant="outline">Middle</Button>
+        <Button variant="outline">Bottom</Button>
+      </ButtonGroup>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { ButtonGroup } from "@/components/ui/button-group";
+import { Button } from "@/components/ui/button";
+
+<ButtonGroup orientation="vertical">
+  <Button variant="outline">Top</Button>
+  <Button variant="outline">Middle</Button>
+  <Button variant="outline">Bottom</Button>
+</ButtonGroup>;
+```
+
+      </div>
+      <DocsPreview>
+        <ButtonGroup orientation="vertical">
+          <Button variant="outline">Top</Button>
+          <Button variant="outline">Middle</Button>
+          <Button variant="outline">Bottom</Button>
+        </ButtonGroup>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## With Icon Only Button
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <ButtonGroup>
+        <Button variant="outline">Submit</Button>
+        <Button variant="outline" size="icon-md" aria-label="More options">
+          <Icon name="category" className="size-4" />
+        </Button>
+      </ButtonGroup>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { ButtonGroup } from "@/components/ui/button-group";
+import { Button } from "@/components/ui/button";
+import { Icon } from "@/components/ui/icon";
+
+<ButtonGroup>
+  <Button variant="outline">Submit</Button>
+  <Button variant="outline" size="icon-md" aria-label="More options">
+    <Icon name="category" className="size-4" />
+  </Button>
+</ButtonGroup>;
+```
+
+      </div>
+      <DocsPreview>
+        <ButtonGroup>
+          <Button variant="outline">Submit</Button>
+          <Button variant="outline" size="icon-md" aria-label="More options">
+            <Icon name="category" className="size-4" />
+          </Button>
+        </ButtonGroup>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## With Button Group Text
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <ButtonGroup>
+        <ButtonGroupText>https://</ButtonGroupText>
+        <Button variant="outline">armonika.com</Button>
+        <Button variant="outline">Copy</Button>
+      </ButtonGroup>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { ButtonGroup, ButtonGroupText } from "@/components/ui/button-group";
+import { Button } from "@/components/ui/button";
+
+<ButtonGroup>
+  <ButtonGroupText>https://</ButtonGroupText>
+  <Button variant="outline">armonika.com</Button>
+  <Button variant="outline">Copy</Button>
+</ButtonGroup>;
+```
+
+      </div>
+      <DocsPreview>
+        <ButtonGroup>
+          <ButtonGroupText>https://</ButtonGroupText>
+          <Button variant="outline">armonika.com</Button>
+          <Button variant="outline">Copy</Button>
+        </ButtonGroup>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## With Different Target Variants
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <ButtonGroup>
+        <Button variant="secondary">Cancel</Button>
+        <Button>Save Changes</Button>
+      </ButtonGroup>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { ButtonGroup } from "@/components/ui/button-group";
+import { Button } from "@/components/ui/button";
+
+<ButtonGroup>
+  <Button variant="secondary">Cancel</Button>
+  <Button>Save Changes</Button>
+</ButtonGroup>;
+```
+
+      </div>
+      <DocsPreview>
+        <ButtonGroup>
+          <Button variant="secondary">Cancel</Button>
+          <Button>Save Changes</Button>
+        </ButtonGroup>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Spaced Buttons
+
+Use `spaced` to add a gap between buttons instead of seamlessly combining them.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <ButtonGroup spaced>
+        <Button variant="outline">Undo</Button>
+        <Button variant="outline">Redo</Button>
+      </ButtonGroup>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { ButtonGroup } from "@/components/ui/button-group";
+import { Button } from "@/components/ui/button";
+
+<ButtonGroup spaced>
+  <Button variant="outline">Undo</Button>
+  <Button variant="outline">Redo</Button>
+</ButtonGroup>;
+```
+
+      </div>
+      <DocsPreview>
+        <ButtonGroup spaced>
+          <Button variant="outline">Undo</Button>
+          <Button variant="outline">Redo</Button>
+        </ButtonGroup>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## With Group Gaps
+
+If you need a gap between multiple groups of buttons, you can wrap them inside another `<ButtonGroup>`.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <ButtonGroup>
+        <ButtonGroup>
+          <Button variant="outline">Undo</Button>
+          <Button variant="outline">Redo</Button>
+        </ButtonGroup>
+        <ButtonGroup>
+          <Button variant="outline">Cut</Button>
+          <Button variant="outline">Copy</Button>
+          <Button variant="outline">Paste</Button>
+        </ButtonGroup>
+      </ButtonGroup>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { ButtonGroup } from "@/components/ui/button-group";
+import { Button } from "@/components/ui/button";
+
+<ButtonGroup>
+  <ButtonGroup>
+    <Button variant="outline">Undo</Button>
+    <Button variant="outline">Redo</Button>
+  </ButtonGroup>
+  <ButtonGroup>
+    <Button variant="outline">Cut</Button>
+    <Button variant="outline">Copy</Button>
+    <Button variant="outline">Paste</Button>
+  </ButtonGroup>
+</ButtonGroup>;
+```
+
+      </div>
+      <DocsPreview>
+        <ButtonGroup>
+          <ButtonGroup>
+            <Button variant="outline">Undo</Button>
+            <Button variant="outline">Redo</Button>
+          </ButtonGroup>
+          <ButtonGroup>
+            <Button variant="outline">Cut</Button>
+            <Button variant="outline">Copy</Button>
+            <Button variant="outline">Paste</Button>
+          </ButtonGroup>
+        </ButtonGroup>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Properties
+
+### ButtonGroup
+
+| Property    | Type                           | Default        | Description                                                       |
+| ----------- | ------------------------------ | -------------- | ----------------------------------------------------------------- |
+| orientation | `"horizontal"` \| `"vertical"` | `"horizontal"` | The layout orientation of the grouped controls                    |
+| spaced      | `boolean`                      | `false`        | Adds gap between the buttons instead of seamlessly combining them |
