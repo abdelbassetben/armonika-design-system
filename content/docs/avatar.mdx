@@ -10,6 +10,7 @@ import {
   AvatarBadge,
   AvatarGroup,
   AvatarGroupCount,
+  AvatarVerificationTick,
 } from "@/components/ui/avatar";
 import { Tabs, Tab } from "fumadocs-ui/components/tabs";
 import { Icon } from "@/components/ui/icon";
@@ -54,12 +55,24 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 ## Sizes
 
-Avatars can be configured in different sizes (`sm`, `default`, `lg`).
+Avatars can be configured in different sizes (`3xs`, `xss`, `xs`, `sm`, `default`, `md`, `lg`, `xl`).
 
 <Tabs items={['Preview', 'Code']} defaultIndex={0}>
   <Tab>
     <DocsPreview>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center justify-center gap-4 flex-wrap w-full">
+        <Avatar size="3xs">
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <Avatar size="xss">
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <Avatar size="xs">
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
         <Avatar size="sm">
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
           <AvatarFallback>CN</AvatarFallback>
@@ -68,7 +81,15 @@ Avatars can be configured in different sizes (`sm`, `default`, `lg`).
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
+        <Avatar size="md">
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
         <Avatar size="lg">
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <Avatar size="xl">
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
@@ -77,10 +98,25 @@ Avatars can be configured in different sizes (`sm`, `default`, `lg`).
   </Tab>
   <Tab>
     <div className="flex flex-col gap-4">
-      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono max-h-96 overflow-y-auto w-full">
 
 ```tsx
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
+<Avatar size="3xs">
+  <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+  <AvatarFallback>CN</AvatarFallback>
+</Avatar>
+
+<Avatar size="xss">
+  <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+  <AvatarFallback>CN</AvatarFallback>
+</Avatar>
+
+<Avatar size="xs">
+  <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+  <AvatarFallback>CN</AvatarFallback>
+</Avatar>
 
 <Avatar size="sm">
   <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
@@ -92,7 +128,17 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
   <AvatarFallback>CN</AvatarFallback>
 </Avatar>
 
+<Avatar size="md">
+  <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+  <AvatarFallback>CN</AvatarFallback>
+</Avatar>
+
 <Avatar size="lg">
+  <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+  <AvatarFallback>CN</AvatarFallback>
+</Avatar>
+
+<Avatar size="xl">
   <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
   <AvatarFallback>CN</AvatarFallback>
 </Avatar>
@@ -100,7 +146,19 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
       </div>
       <DocsPreview>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 flex-wrap w-full">
+          <Avatar size="3xs">
+            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+          <Avatar size="xss">
+            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+          <Avatar size="xs">
+            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
           <Avatar size="sm">
             <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
             <AvatarFallback>CN</AvatarFallback>
@@ -109,7 +167,15 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
             <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
+          <Avatar size="md">
+            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
           <Avatar size="lg">
+            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+          <Avatar size="xl">
             <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
@@ -182,6 +248,76 @@ import {
             <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
             <AvatarFallback>CN</AvatarFallback>
             <AvatarBadge className="bg-green-500" />
+          </Avatar>
+        </div>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## With Verification Tick
+
+You can use the `AvatarVerificationTick` component to display a verification status on top of the avatar.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex items-center gap-4">
+        <Avatar size="sm">
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
+          <AvatarVerificationTick />
+        </Avatar>
+        <Avatar size="default">
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
+          <AvatarVerificationTick />
+        </Avatar>
+        <Avatar size="lg">
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
+          <AvatarVerificationTick />
+        </Avatar>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+  AvatarVerificationTick,
+} from "@/components/ui/avatar";
+
+<Avatar>
+  <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+  <AvatarFallback>CN</AvatarFallback>
+  <AvatarVerificationTick />
+</Avatar>;
+```
+
+      </div>
+      <DocsPreview>
+        <div className="flex items-center gap-4">
+          <Avatar size="sm">
+            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarFallback>CN</AvatarFallback>
+            <AvatarVerificationTick />
+          </Avatar>
+          <Avatar size="default">
+            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarFallback>CN</AvatarFallback>
+            <AvatarVerificationTick />
+          </Avatar>
+          <Avatar size="lg">
+            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarFallback>CN</AvatarFallback>
+            <AvatarVerificationTick />
           </Avatar>
         </div>
       </DocsPreview>

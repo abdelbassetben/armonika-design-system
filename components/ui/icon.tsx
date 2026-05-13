@@ -2,10 +2,12 @@
 import { cn } from "@/lib/utils";
 import Category from "../../public/assets/icons/category-linear.svg";
 import ShieldTick from "../../public/assets/icons/shield-tick-linear.svg";
+import VerificationTick from "../../public/assets/icons/verification_tick.svg";
 
 const icons = {
   category: Category,
   shieldTick: ShieldTick,
+  verificationTick: VerificationTick,
 };
 
 type IconName = keyof typeof icons;
