@@ -14,7 +14,7 @@ const shadowRestInsetMd =
   "shadow-[0_3px_3px_0_rgba(255,255,255,0.12)_inset,0_1px_1px_-0.5px_rgba(0,0,0,0.03)]";
 
 const hoverBgLightVeil =
-  "hover:bg-[image:linear-gradient(0deg,rgba(255,255,255,0.05)_0%,rgba(255,255,255,0.05)_100%)]";
+  "hover:bg-[image:linear-gradient(0deg,rgba(0,0,0,0.05)_0%,rgba(0,0,0,0.05)_100%)]";
 const hoverBgDarkVeil =
   "hover:bg-[image:linear-gradient(0deg,rgba(255,255,255,0.03)_0%,rgba(255,255,255,0.03)_100%)]";
 
@@ -81,6 +81,7 @@ const buttonVariants = cva(
         ghost: cn(
           "bg-transparent text-muted-foreground shadow-none ",
           hoverBgDarkVeil,
+          "hover:dark:bg-[image:linear-gradient(0deg,rgba(255,255,255,0.05)_0%,rgba(255,255,255,0.05)_100%)]",
           "aria-expanded:bg-muted aria-expanded:text-foreground",
           focusShadowNeutral,
         ),

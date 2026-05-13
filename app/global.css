@@ -1,6 +1,6 @@
-@import 'tailwindcss';
-@import 'fumadocs-ui/css/neutral.css';
-@import 'fumadocs-ui/css/preset.css';
+@import "tailwindcss";
+@import "fumadocs-ui/css/neutral.css";
+@import "fumadocs-ui/css/preset.css";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @plugin "@toolwind/corner-shape";
@@ -67,10 +67,12 @@ html > body[data-scroll-locked] {
   --radius-4xl: calc(var(--radius) * 2.6);
 
   --shadow-soft-glass:
-    inset 0 3px 3px 0 rgba(255,255,255,0.18),
-    0 1px 1px -0.5px rgba(0,0,0,0.03),
-    0 3px 3px -1.5px rgba(0,0,0,0.03),
-    0 20px 20px -12px rgba(0,0,0,0.03);
+    inset 0 3px 3px 0 rgba(255, 255, 255, 0.18),
+    0 1px 1px -0.5px rgba(0, 0, 0, 0.03), 0 3px 3px -1.5px rgba(0, 0, 0, 0.03),
+    0 20px 20px -12px rgba(0, 0, 0, 0.03);
+
+
+  
 }
 
 :root {
@@ -113,6 +115,16 @@ html > body[data-scroll-locked] {
   --background: oklch(0.9824 0.0013 286.38); /*#f9f9fa*/
   --foreground: oklch(0.1546 0.0112 267.97); /*#0A0C11*/
   --disable: oklch(0.826 0.009 264.51) /*#C3C6CC*/;
+
+  /* Surfaces */
+  --s-0: oklch(1 0 0); /* #fff */
+  --s-1: oklch(0.9824 0.0013 286.38); /* #F9F9FA */
+  --s-2: oklch(0.9617 0.0027 286.35); /* #F2F2F4 */
+  --s-3: oklch(0.9442 0.0053 286.3); /*#ECECF0*/
+  --s-4: oklch(0.9036 0.0071 268.54); /*#DDDFE4*/
+  --s-5: oklch(0.826 0.009 264.51); /*#C3C6CC*/
+
+  --s-0-to-1: var(--s-0);
 }
 
 .dark {
@@ -152,6 +164,17 @@ html > body[data-scroll-locked] {
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(0.269 0 0);
   --sidebar-ring: oklch(0.439 0 0);
+
+  /* Surfaces */
+  --s-0: oklch(0 0 0); /* #000 */
+  --s-1: oklch(0.1448 0 0); /* #0A0A0A */
+  --s-2: oklch(0.1957 0 0); /* #151515 */
+  --s-3: oklch(0.2178 0 0); /*#1A1A1A*/
+  --s-4: oklch(0.2603 0 0); /*#242424*/
+  --s-5: oklch(0.3012 0 0); /*#2E2E2E*/
+
+
+  --s-0-to-1: var(--s-0);
 }
 
 @layer base {
@@ -167,7 +190,11 @@ html > body[data-scroll-locked] {
 }
 
 .auth_gradient {
-  background: linear-gradient(180deg, rgba(41, 45, 50, 0) 43.5%, #0d253f 76.91%);
+  background: linear-gradient(
+    180deg,
+    rgba(41, 45, 50, 0) 43.5%,
+    #0d253f 76.91%
+  );
 }
 
 .page_padding_x {
