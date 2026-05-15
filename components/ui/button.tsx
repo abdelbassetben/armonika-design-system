@@ -58,13 +58,12 @@ const buttonVariants = cva(
         ),
 
         outline: cn(
-          "border bg-card text-muted-foreground",
+          "border bg-s-l0-d3 text-muted-foreground",
           borderMuted,
           shadowRestInsetSm,
-          "dark:border-input dark:bg-input/30",
+          "dark:border-input",
           hoverBgDarkVeil,
           hoverShadowLiftSoft,
-          "dark:hover:bg-input/50",
           "aria-expanded:bg-muted aria-expanded:text-foreground",
         ),
 
