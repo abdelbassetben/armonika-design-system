@@ -16,6 +16,34 @@ html > body[data-scroll-locked] {
   --removed-body-scroll-bar-size: 0px !important;
 }
 @theme inline {
+  /* Shadow overrides */
+  --shadow-xs: 0 1px 1px -0.5px var(--elevation-shadow);
+  --shadow-sm:
+    0 1px 1px -0.5px var(--elevation-shadow),
+    0 3px 3px -1.5px var(--elevation-shadow);
+  --shadow-md:
+    0 1px 1px -0.5px var(--elevation-shadow),
+    0 3px 3px -1.5px var(--elevation-shadow),
+    0 20px 20px -12px var(--elevation-shadow);
+  --shadow-lg:
+    0 1px 1px -0.5px var(--elevation-shadow),
+    0 3px 3px -1.5px var(--elevation-shadow),
+    0 20px 20px -12px var(--elevation-shadow),
+    0 32px 32px -16px var(--elevation-shadow);
+  --shadow-xl:
+    0 1px 1px -0.5px var(--elevation-shadow),
+    0 3px 3px -1.5px var(--elevation-shadow),
+    0 20px 20px -12px var(--elevation-shadow),
+    0 32px 32px -16px var(--elevation-shadow),
+    0 56px 56px -28px var(--elevation-shadow);
+  --shadow-2xl:
+    0 72px 72px -36px var(--elevation-shadow),
+    0 1px 1px -0.5px var(--elevation-shadow),
+    0 3px 3px -1.5px var(--elevation-shadow),
+    0 20px 20px -12px var(--elevation-shadow),
+    0 32px 32px -16px var(--elevation-shadow),
+    0 56px 56px -28px var(--elevation-shadow);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
@@ -54,9 +82,44 @@ html > body[data-scroll-locked] {
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
   --color-card-background: var(--card-background);
-  --color-foreground: var(--foreground);
   --color-box-background: var(--box-background);
-  --table-header: var(--table-header);
+  --color-table-header: var(--table-header);
+  --color-primary-high-em: var(--primary-high-em);
+  --color-primary-med-em: var(--primary-med-em);
+  --color-primary-low-em: var(--primary-low-em);
+  --color-primary-base-em: var(--primary-base-em);
+  --color-primary-low-em-alpha: var(--primary-low-em-alpha);
+  --color-primary-base-em-alpha: var(--primary-base-em-alpha);
+  --color-info-high-em: var(--info-high-em);
+  --color-info-med-em: var(--info-med-em);
+  --color-info-low-em: var(--info-low-em);
+  --color-info-base-em: var(--info-base-em);
+  --color-info-low-em-alpha: var(--info-low-em-alpha);
+  --color-info-base-em-alpha: var(--info-base-em-alpha);
+  --color-success-high-em: var(--success-high-em);
+  --color-success-med-em: var(--success-med-em);
+  --color-success-low-em: var(--success-low-em);
+  --color-success-base-em: var(--success-base-em);
+  --color-success-low-em-alpha: var(--success-low-em-alpha);
+  --color-success-base-em-alpha: var(--success-base-em-alpha);
+  --color-warning-high-em: var(--warning-high-em);
+  --color-warning-med-em: var(--warning-med-em);
+  --color-warning-low-em: var(--warning-low-em);
+  --color-warning-base-em: var(--warning-base-em);
+  --color-warning-low-em-alpha: var(--warning-low-em-alpha);
+  --color-warning-base-em-alpha: var(--warning-base-em-alpha);
+  --color-danger-high-em: var(--danger-high-em);
+  --color-danger-med-em: var(--danger-med-em);
+  --color-danger-low-em: var(--danger-low-em);
+  --color-danger-base-em: var(--danger-base-em);
+  --color-danger-low-em-alpha: var(--danger-low-em-alpha);
+  --color-danger-base-em-alpha: var(--danger-base-em-alpha);
+  --color-disabled-high-em: var(--disabled-high-em);
+  --color-disabled-med-em: var(--disabled-med-em);
+  --color-disabled-low-em: var(--disabled-low-em);
+  --color-disabled-base-em: var(--disabled-base-em);
+  --color-hover-overlay: var(--hover-overlay);
+  --color-hover-overlay-inverse: var(--hover-overlay-inverse);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -116,6 +179,7 @@ html > body[data-scroll-locked] {
 }
 
 :root {
+  --elevation-shadow: rgba(0, 0, 0, 0.03);
   --radius: 0.625rem;
 
   /* Surface ramps: fixed refs (inherit in .dark); define before semantic tokens */
@@ -178,6 +242,44 @@ html > body[data-scroll-locked] {
   --background: var(--s-1);
   --foreground: oklch(0.1546 0.0112 267.97); /*#0A0C11*/
   --disable: var(--s-5);
+
+  /* Colors */
+  --primary-high-em: oklch(0.495224 0.238839 262.5247);
+  --primary-med-em: oklch(0.5332 0.2596 262.64);
+  --primary-low-em: oklch(0.8443 0.0767 264.39);
+  --primary-base-em: oklch(0.8957 0.0503 264.28);
+  --primary-low-em-alpha: oklch(0.5332 0.2596 262.64 / 0.2);
+  --primary-base-em-alpha: oklch(0.5332 0.2596 262.64 / 0.12);
+  --info-high-em: oklch(0.6152 0.1384 238.94);
+  --info-med-em: oklch(0.7163 0.1484 233.68);
+  --info-low-em: oklch(0.953 0.0266 233.96);
+  --info-base-em: oklch(0.9783 0.0134 226.56);
+  --info-low-em-alpha: oklch(0.7163 0.1484 233.68 / 0.2);
+  --info-base-em-alpha: oklch(0.7163 0.1484 233.68 / 0.12);
+  --success-high-em: oklch(0.553 0.146 143.1);
+  --success-med-em: oklch(0.6136 0.1559 143.21);
+  --success-low-em: oklch(0.9537 0.0332 143.92);
+  --success-base-em: oklch(0.9787 0.0112 141.26);
+  --success-low-em-alpha: oklch(0.6136 0.1559 143.21 / 0.2);
+  --success-base-em-alpha: oklch(0.6136 0.1559 143.21 / 0.12);
+  --warning-high-em: oklch(0.7523 0.1567 78.16);
+  --warning-med-em: oklch(0.848 0.1724 85.87);
+  --warning-low-em: oklch(0.9779 0.0705 104.16);
+  --warning-base-em: oklch(0.9925 0.0261 104.54);
+  --warning-low-em-alpha: oklch(0.848 0.1724 85.87 / 0.2);
+  --warning-base-em-alpha: oklch(0.848 0.1724 85.87 / 0.12);
+  --danger-high-em: oklch(0.5834 0.2175 30.24);
+  --danger-med-em: oklch(0.6275 0.2118 29.58);
+  --danger-low-em: oklch(0.94 0.0301 25.28);
+  --danger-base-em: oklch(0.9732 0.013 23.19);
+  --danger-low-em-alpha: oklch(0.6275 0.2118 29.58 / 0.2);
+  --danger-base-em-alpha: oklch(0.6275 0.2118 29.58 / 0.12);
+  --disabled-high-em: oklch(0.766 0.0122 264.49);
+  --disabled-med-em: oklch(0.9036 0.0071 268.54);
+  --disabled-low-em: oklch(0.9442 0.0053 286.3);
+  --disabled-base-em: oklch(0.9617 0.0027 286.35);
+  --hover-overlay: oklch(1 0 0 / 0.05);
+  --hover-overlay-inverse: oklch(0 0 0 / 0.03);
 
   /* Cross-theme pairs: light step i in light UI, dark step j in dark UI (Figma l{i}/d{j}) */
   --s-l0-d0: var(--s-light-0);
@@ -332,6 +434,44 @@ html > body[data-scroll-locked] {
   --s-l5-d3: var(--s-dark-3);
   --s-l5-d4: var(--s-dark-4);
   --s-l5-d5: var(--s-dark-5);
+
+  /* Colors */
+  --primary-high-em: oklch(0.495224 0.238839 262.5247);
+  --primary-med-em: oklch(0.5332 0.2596 262.64);
+  --primary-low-em: oklch(0.8443 0.0767 264.39);
+  --primary-base-em: oklch(0.8957 0.0503 264.28);
+  --primary-low-em-alpha: oklch(0.5332 0.2596 262.64 / 0.2);
+  --primary-base-em-alpha: oklch(0.5332 0.2596 262.64 / 0.12);
+  --info-high-em: oklch(0.7614 0.1502 231.17);
+  --info-med-em: oklch(0.7163 0.1484 233.68);
+  --info-low-em: oklch(0.4611 0.1016 238.09);
+  --info-base-em: oklch(0.4062 0.086 237.8);
+  --info-low-em-alpha: oklch(0.7163 0.1484 233.68 / 0.2);
+  --info-base-em-alpha: oklch(0.7163 0.1484 233.68 / 0.12);
+  --success-high-em: oklch(0.732 0.1493 143.64);
+  --success-med-em: oklch(0.6136 0.1559 143.21);
+  --success-low-em: oklch(0.6136 0.1559 143.21 / 0.12);
+  --success-base-em: oklch(0.6136 0.1559 143.21 / 0.4);
+  --success-low-em-alpha: oklch(0.6136 0.1559 143.21 / 0.2);
+  --success-base-em-alpha: oklch(0.6136 0.1559 143.21 / 0.12);
+  --warning-high-em: oklch(0.9052 0.1824 98.69);
+  --warning-med-em: oklch(0.848 0.1724 85.87);
+  --warning-low-em: oklch(0.4915 0.1066 67.5);
+  --warning-base-em: oklch(0.415 0.0889 65.36);
+  --warning-low-em-alpha: oklch(0.848 0.1724 85.87 / 0.2);
+  --warning-base-em-alpha: oklch(0.848 0.1724 85.87 / 0.12);
+  --danger-high-em: oklch(0.7092 0.1833 28.02);
+  --danger-med-em: oklch(0.6275 0.2118 29.58);
+  --danger-low-em: oklch(0.4525 0.1755 29.28);
+  --danger-base-em: oklch(0.3841 0.1473 29.3);
+  --danger-low-em-alpha: oklch(0.6275 0.2118 29.58 / 0.2);
+  --danger-base-em-alpha: oklch(0.6275 0.2118 29.58 / 0.12);
+  --disabled-high-em: oklch(0.3485 0 0 / 0.64);
+  --disabled-med-em: oklch(0.3485 0 0 / 0.24);
+  --disabled-low-em: oklch(0.3485 0 0 / 0.1);
+  --disabled-base-em: oklch(0.1957 0 0);
+  --hover-overlay-inverse: oklch(1 0 0 / 0.05);
+  --hover-overlay: oklch(0 0 0 / 0.03);
 
   /* Outlines */
   --outline-primary: linear-gradient(
