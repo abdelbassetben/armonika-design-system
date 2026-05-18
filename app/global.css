@@ -124,6 +124,7 @@ html > body[data-scroll-locked] {
   --inverse-black-alpha-9: var(--inverse-black-alpha-9);
   --inverse-black-alpha-18: var(--inverse-black-alpha-18);
   --inverse-black-alpha-12: var(--inverse-black-alpha-12);
+  --color-t-med-em: var(--t-med-em);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -301,6 +302,7 @@ html > body[data-scroll-locked] {
   --inverse-black-alpha-9: oklch(1 0 0 / 0.08);
   --inverse-black-alpha-18: oklch(1 0 0 / 0.18);
   --inverse-black-alpha-12: oklch(1 0 0 / 0.12);
+  --t-med-em: oklch(0.4917 0.0206 264.37);
 
   /* Cross-theme pairs: light step i in light UI, dark step j in dark UI (Figma l{i}/d{j}) */
   --s-l0-d0: var(--s-light-0);
@@ -497,6 +499,7 @@ html > body[data-scroll-locked] {
   --inverse-black-alpha-9: oklch(0 0 0 / 0.08);
   --inverse-black-alpha-18: oklch(0 0 0 / 0.18);
   --inverse-black-alpha-12: oklch(0 0 0 / 0.12);
+  --t-med-em: oklch(0.766 0.0122 264.49);
 
   /* Outlines */
   --outline-primary: linear-gradient(

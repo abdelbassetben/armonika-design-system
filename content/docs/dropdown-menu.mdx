@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { DropdownMenuForceOpen } from "@/components/dropdown-menu-force-open";
 import { Button } from "@/components/ui/button";
+import { Icon } from "@/components/ui/icon";
 import { Tabs, Tab } from "fumadocs-ui/components/tabs";
 import { DocsPreview } from "@/components/docs-preview";
 
@@ -30,10 +31,9 @@ import { DocsPreview } from "@/components/docs-preview";
           <DropdownMenuGroup>
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Profile</DropdownMenuItem>
-            <DropdownMenuItem>Billing</DropdownMenuItem>
-            <DropdownMenuItem>Settings</DropdownMenuItem>
-            <DropdownMenuItem>Keyboard shortcuts</DropdownMenuItem>
+            <DropdownMenuItem><Icon name="category" className="w-4.5 h-4.5 text-t-med-em hover:text-forground"/> Profile</DropdownMenuItem>
+            <DropdownMenuItem><Icon name="shieldTick" className="w-4.5 h-4.5 text-t-med-em hover:text-forground"/> Billing</DropdownMenuItem>
+            <DropdownMenuItem><Icon name="verificationTick" className="w-4.5 h-4.5" /> Settings</DropdownMenuItem>
           </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenuForceOpen>
@@ -54,6 +54,7 @@ import {
   DropdownMenuGroup,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
+import { Icon } from "@/components/ui/icon";
 
 export default function DropdownMenuDemo() {
   return (
@@ -65,10 +66,15 @@ export default function DropdownMenuDemo() {
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>Profile</DropdownMenuItem>
-          <DropdownMenuItem>Billing</DropdownMenuItem>
-          <DropdownMenuItem>Settings</DropdownMenuItem>
-          <DropdownMenuItem>Keyboard shortcuts</DropdownMenuItem>
+          <DropdownMenuItem>
+            <Icon name="category" /> Profile
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <Icon name="shieldTick" /> Billing
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <Icon name="verificationTick" /> Settings
+          </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
