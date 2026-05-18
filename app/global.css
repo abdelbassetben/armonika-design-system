@@ -350,7 +350,7 @@ html > body[data-scroll-locked] {
     var(--outline-primary-button-bottom, rgba(0, 0, 0, 0.18)) 100%
   );
   --outline-secondary: linear-gradient(
-    180deg,
+    90deg,
     var(--outline-secondary-button-top, rgba(0, 0, 0, 0.05)) 50%,
     var(--outline-secondary-button-bottom, rgba(0, 0, 0, 0.12)) 100%
   );

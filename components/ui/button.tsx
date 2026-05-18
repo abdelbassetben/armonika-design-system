@@ -17,6 +17,34 @@ const hoverBgLightVeil =
 const hoverBgDarkVeil =
   "hover:bg-[image:linear-gradient(0deg,var(--hover-overlay-inverse)_0%,var(--hover-overlay-inverse)_100%)]";
 
+const gradientBorderPrimary =
+  "border-transparent " +
+  "[background:linear-gradient(var(--primary),var(--primary))_padding-box,var(--outline-primary)_border-box]";
+
+const gradientBorderDestructive =
+  "border-transparent " +
+  "[background:linear-gradient(var(--danger-med-em),var(--danger-med-em))_padding-box,var(--outline-primary)_border-box]";
+
+const gradientBorderSuccess =
+  "border-transparent " +
+  "[background:linear-gradient(var(--success-med-em),var(--success-med-em))_padding-box,var(--outline-primary)_border-box]";
+
+const gradientBorderOutline =
+  "border-transparent " +
+  "[background:linear-gradient(var(--s-l0-d3),var(--s-l0-d3))_padding-box,var(--outline-secondary)_border-box]";
+
+const hoverGradientPrimary =
+  "hover:[background:linear-gradient(var(--hover-overlay),var(--hover-overlay))_padding-box,linear-gradient(var(--primary),var(--primary))_padding-box,var(--outline-primary)_border-box]";
+
+const hoverGradientDestructive =
+  "hover:[background:linear-gradient(var(--hover-overlay),var(--hover-overlay))_padding-box,linear-gradient(var(--danger-med-em),var(--danger-med-em))_padding-box,var(--outline-primary)_border-box]";
+
+const hoverGradientSuccess =
+  "hover:[background:linear-gradient(var(--hover-overlay),var(--hover-overlay))_padding-box,linear-gradient(var(--success-med-em),var(--success-med-em))_padding-box,var(--outline-primary)_border-box]";
+
+const hoverGradientOutline =
+  "hover:[background:linear-gradient(var(--hover-overlay-inverse),var(--hover-overlay-inverse))_padding-box,linear-gradient(var(--s-l0-d3),var(--s-l0-d3))_padding-box,var(--outline-secondary)_border-box]";
+
 const hoverShadowLiftStrong =
   "hover:shadow-[0_3px_3px_0_var(--inverse-black-alpha-18))_inset,0_1px_1px_-0.5px_var(--elevation-shadow),0_3px_3px_-1.5px_var(--elevation-shadow),0_20px_20px_-12px_var(--elevation-shadow)]";
 const hoverShadowLiftSoft =
@@ -36,10 +64,10 @@ const focusShadowSuccess =
 const buttonVariants = cva(
   cn(
     "group/button inline-flex shrink-0 items-center justify-center corner-round/72",
-    "border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap",
+    "border border-transparent text-sm font-medium whitespace-nowrap",
     "shadow-(--shadow-soft-glass) outline-none select-none transition-all",
     "active:not-aria-[haspopup]:translate-y-px",
-    "disabled:pointer-events-none disabled:border-0 disabled:bg-disabled-base-em disabled:text-disable",
+    "disabled:pointer-events-none disabled:border-0 disabled:bg-none disabled:bg-disabled-base-em disabled:bg-clip-padding disabled:text-disable",
     "aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20",
     "dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
     "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
@@ -48,26 +76,25 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: cn(
-          "border bg-primary text-primary-foreground shadow-[0_3px_3px_0_var(--inverse-black-alpha-12)_inset,0_1px_1px_-0.5px_var(--elevation-shadow)]",
-          hoverBgLightVeil,
+          "border text-primary-foreground shadow-[0_3px_3px_0_var(--inverse-black-alpha-12)_inset,0_1px_1px_-0.5px_var(--elevation-shadow)]",
+          gradientBorderPrimary,
+          hoverGradientPrimary,
           hoverShadowLiftStrong,
-          focusBorderDefault,
           focusRingOff,
           focusShadowPrimary,
         ),
 
         outline: cn(
-          "border bg-s-l0-d3 text-muted-foreground",
-          borderMuted,
+          "border text-muted-foreground",
+          gradientBorderOutline,
           shadowRestInsetSm,
-          "dark:border-input",
-          hoverBgDarkVeil,
+          hoverGradientOutline,
           hoverShadowLiftSoft,
           "aria-expanded:bg-muted aria-expanded:text-foreground",
         ),
 
         secondary: cn(
-          "border bg-secondary text-foreground",
+          "border bg-secondary bg-clip-padding text-foreground",
           borderMuted,
           shadowRestInsetSm,
           hoverBgDarkVeil,
@@ -84,19 +111,20 @@ const buttonVariants = cva(
         ),
 
         destructive: cn(
-          "border bg-destructive text-destructive-foreground",
-          borderMuted,
-          hoverBgLightVeil,
+          "border text-destructive-foreground shadow-[0_3px_3px_0_var(--inverse-black-alpha-12)_inset,0_1px_1px_-0.5px_var(--elevation-shadow)]",
+          gradientBorderDestructive,
+          hoverGradientDestructive,
           hoverShadowLiftStrong,
+          focusRingOff,
           focusShadowDestructive,
         ),
 
         success: cn(
-          "border bg-success text-success-foreground",
-          borderMuted,
-          shadowRestInsetMd,
-          hoverBgLightVeil,
+          "border text-success-foreground shadow-[0_3px_3px_0_var(--inverse-black-alpha-12)_inset,0_1px_1px_-0.5px_var(--elevation-shadow)]",
+          gradientBorderSuccess,
+          hoverGradientSuccess,
           hoverShadowLiftStrong,
+          focusRingOff,
           focusShadowSuccess,
         ),
 
