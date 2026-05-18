@@ -199,6 +199,76 @@ import { Field, FieldLabel } from "@/components/ui/field";
   </Tab>
 </Tabs>
 
+## With Radius
+
+You can use the `radius` prop to make the input group fully rounded.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="w-full max-w-sm">
+        <Field>
+          <FieldLabel>Search</FieldLabel>
+          <InputGroup size="md" radius={true}>
+            <InputGroupAddon align="inline-start">
+              <InputGroupText>
+                <Icon name="category" className="size-4" />
+              </InputGroupText>
+            </InputGroupAddon>
+            <InputGroupInput placeholder="Search everywhere..." />
+          </InputGroup>
+        </Field>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+  InputGroupText,
+} from "@/components/ui/input-group";
+import { Field, FieldLabel } from "@/components/ui/field";
+import { Icon } from "@/components/ui/icon";
+
+<Field>
+  <FieldLabel>Search</FieldLabel>
+  <InputGroup radius={true}>
+    <InputGroupAddon align="inline-start">
+      <InputGroupText>
+        <Icon name="category" className="size-4" />
+      </InputGroupText>
+    </InputGroupAddon>
+    <InputGroupInput placeholder="Search everywhere..." />
+  </InputGroup>
+</Field>;
+```
+
+      </div>
+      <DocsPreview>
+        <div className="w-full max-w-sm">
+          <Field>
+            <FieldLabel>Search</FieldLabel>
+            <InputGroup size="md" radius={true}>
+              <InputGroupAddon align="inline-start">
+                <InputGroupText>
+                  <Icon name="category" className="size-4" />
+                </InputGroupText>
+              </InputGroupAddon>
+              <InputGroupInput placeholder="Search everywhere..." />
+            </InputGroup>
+          </Field>
+        </div>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
 ## With Addon Text
 
 <Tabs items={['Preview', 'Code']} defaultIndex={0}>
