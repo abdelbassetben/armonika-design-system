@@ -12,26 +12,25 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground border-[#00000014]",
+        default:
+          "text-primary-foreground border-transparent [background:linear-gradient(var(--primary),var(--primary))_padding-box,var(--outline-primary)_border-box]",
         outline:
-          "bg-card text-muted-foreground border-[#0000000d] shadow-[0_1px_2px_0_rgba(255,255,255,0.03)_inset,0_2px_1.5px_-0.5px_rgba(0,0,0,0.03)]",
-        secondary:
-          "bg-secondary text-foreground border-[#0000000d] shadow-[0_1px_2px_0_rgba(255,255,255,0.03)_inset,0_2px_1.5px_-0.5px_rgba(0,0,0,0.03)]",
-        ghost: "bg-card text-muted-foreground border-transparent shadow-none",
-        destructive:
-          "bg-destructive text-destructive-foreground border-[#0000000d]",
-        success:
-          "bg-success text-success-foreground border-[#0000000d] shadow-[0_1px_2px_0_rgba(255,255,255,0.12)_inset,0_1px_1px_-0.5px_rgba(0,0,0,0.03)]",
+          "text-muted-foreground border-transparent [background:linear-gradient(var(--s-l0-d3),var(--s-l0-d3))_padding-box,var(--outline-secondary)_border-box] shadow-[0_1px_2px_0_rgba(255,255,255,0.03)_inset,0_2px_1.5px_-0.5px_rgba(0,0,0,0.03)]",
+        "primary-flat":
+          "text-primary-med-em border-transparent bg-primary-base-em-alpha",
+        gray: "text-foreground bg-secondary border border-outline-low-em",
         green:
-          "text-[#338732] dark:text-[#69C068] border-[rgba(64,155,63,0.20)] bg-[linear-gradient(0deg,rgba(255,255,255,0.56)_0%,rgba(255,255,255,0.56)_100%),linear-gradient(0deg,rgba(64,155,63,0.12)_0%,rgba(64,155,63,0.12)_100%)] dark:bg-[linear-gradient(0deg,rgba(0,0,0,0.56)_0%,rgba(0,0,0,0.56)_100%),linear-gradient(0deg,rgba(64,155,63,0.12)_0%,rgba(64,155,63,0.12)_100%)]",
-        red: "text-[#DF2917] border-[rgba(237,64,48,0.20)] bg-[linear-gradient(0deg,rgba(255,255,255,0.56)_0%,rgba(255,255,255,0.56)_100%),linear-gradient(0deg,rgba(237,64,48,0.12)_0%,rgba(237,64,48,0.12)_100%)] dark:bg-[linear-gradient(0deg,rgba(0,0,0,0.56)_0%,rgba(0,0,0,0.56)_100%),linear-gradient(0deg,rgba(237,64,48,0.12)_0%,rgba(237,64,48,0.12)_100%)]",
+          "text-success-high-em border-success-base-em-alpha [background:linear-gradient(0deg,var(--inverse-black-alpha-18)_0%,var(--inverse-black-alpha-18)_100%),var(--success-base-em-alpha)]",
+        red: "text-danger-high-em border-danger-base-em-alpha [background:linear-gradient(0deg,var(--inverse-black-alpha-18)_0%,var(--inverse-black-alpha-18)_100%),var(--danger-base-em-alpha)]",
         orange:
-          "text-[#E4A000] border-[rgba(255,195,10,0.20)] bg-[linear-gradient(0deg,rgba(255,255,255,0.56)_0%,rgba(255,255,255,0.56)_100%),linear-gradient(0deg,rgba(255,195,10,0.12)_0%,rgba(255,195,10,0.12)_100%)] dark:bg-[linear-gradient(0deg,rgba(0,0,0,0.56)_0%,rgba(0,0,0,0.56)_100%),linear-gradient(0deg,rgba(255,195,10,0.12)_0%,rgba(255,195,10,0.12)_100%)]",
+          "text-warning-high-em border-warning-base-em-alpha [background:linear-gradient(0deg,var(--inverse-black-alpha-18)_0%,var(--inverse-black-alpha-18)_100%),var(--warning-base-em-alpha)]",
+        lime:
+          "text-lime-600 border-lime-500/24 [background:linear-gradient(0deg,var(--inverse-black-alpha-18)_0%,var(--inverse-black-alpha-18)_100%),oklch(76.8% 0.233 130.85 / 0.2)]",
         emerald:
-          "text-[#059669] border-[rgba(16,185,129,0.24)] bg-[linear-gradient(0deg,rgba(255,255,255,0.56)_0%,rgba(255,255,255,0.56)_100%),linear-gradient(0deg,rgba(16,185,129,0.20)_0%,rgba(16,185,129,0.20)_100%)] dark:bg-[linear-gradient(0deg,rgba(0,0,0,0.56)_0%,rgba(0,0,0,0.56)_100%),linear-gradient(0deg,rgba(16,185,129,0.20)_0%,rgba(16,185,129,0.20)_100%)]",
-        teal: "text-[#0D9488] border-[rgba(20,184,166,0.24)] bg-[linear-gradient(0deg,rgba(255,255,255,0.56)_0%,rgba(255,255,255,0.56)_100%),linear-gradient(0deg,rgba(20,184,166,0.20)_0%,rgba(20,184,166,0.20)_100%)] dark:bg-[linear-gradient(0deg,rgba(0,0,0,0.56)_0%,rgba(0,0,0,0.56)_100%),linear-gradient(0deg,rgba(20,184,166,0.20)_0%,rgba(20,184,166,0.20)_100%)]",
-        cyan: "text-[#0891B2] border-[rgba(6,182,212,0.24)] bg-[linear-gradient(0deg,rgba(255,255,255,0.56)_0%,rgba(255,255,255,0.56)_100%),linear-gradient(0deg,rgba(6,182,212,0.20)_0%,rgba(6,182,212,0.20)_100%)] dark:bg-[linear-gradient(0deg,rgba(0,0,0,0.56)_0%,rgba(0,0,0,0.56)_100%),linear-gradient(0deg,rgba(6,182,212,0.20)_0%,rgba(6,182,212,0.20)_100%)]",
-        link: "bg-transparent border-transparent text-primary underline-offset-4",
+          "text-emerald-600 border-emerald-500/24 [background:linear-gradient(0deg,var(--inverse-black-alpha-18)_0%,var(--inverse-black-alpha-18)_100%),oklch(69.6% 0.17 162.48 / 0.2)]",
+        teal: "text-teal-600 border-teal-500/24 [background:linear-gradient(0deg,var(--inverse-black-alpha-18)_0%,var(--inverse-black-alpha-18)_100%),oklch(70.4% 0.14 182.503 / 0.2)]",
+        cyan: "text-cyan-600 border-cyan-500/24 [background:linear-gradient(0deg,var(--inverse-black-alpha-18)_0%,var(--inverse-black-alpha-18)_100%),oklch(71.5% 0.143 215.221 / 0.2)]",
+        info: "text-info-high-em border-info-base-em-alpha [background:linear-gradient(0deg,var(--inverse-black-alpha-18)_0%,var(--inverse-black-alpha-18)_100%),var(--info-base-em-alpha)]",
       },
       radius: {
         true: "rounded-full",
@@ -90,7 +89,10 @@ export interface BadgeDotProps extends React.ComponentPropsWithoutRef<"span"> {}
 function BadgeDot({ className, ...props }: Readonly<BadgeDotProps>) {
   return (
     <span
-      className={cn("size-1.5 shrink-0 me-0.5 rounded-full bg-current", className)}
+      className={cn(
+        "size-1.5 shrink-0 me-0.5 rounded-full bg-current",
+        className,
+      )}
       {...props}
     />
   );
