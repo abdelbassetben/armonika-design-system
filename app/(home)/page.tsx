@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import type { CSSProperties } from "react";
 
 const S_STEPS = [0, 1, 2, 3, 4, 5] as const;

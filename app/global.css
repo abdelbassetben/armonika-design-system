@@ -120,6 +120,11 @@ html > body[data-scroll-locked] {
   --color-disabled-base-em: var(--disabled-base-em);
   --color-hover-overlay: var(--hover-overlay);
   --color-hover-overlay-inverse: var(--hover-overlay-inverse);
+  --inverse-black-alpha-3: var(--inverse-black-alpha-3);
+  --inverse-black-alpha-9: var(--inverse-black-alpha-9);
+  --inverse-black-alpha-18: var(--inverse-black-alpha-18);
+  --inverse-black-alpha-12: var(--inverse-black-alpha-12);
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -171,6 +176,18 @@ html > body[data-scroll-locked] {
   --color-s-l5-d3: var(--s-l5-d3);
   --color-s-l5-d4: var(--s-l5-d4);
   --color-s-l5-d5: var(--s-l5-d5);
+
+  /* Outlines */
+  --color-outline-high-em: var(--outline-high-em);
+  --color-outline-med-em: var(--outline-med-em);
+  --color-outline-low-em: var(--outline-low-em);
+  --color-outline-base-em: var(--outline-base-em);
+  --color-outline-input-field: var(--outline-input-field);
+  --color-outline-input-field-low-em: var(--outline-input-field-low-em);
+
+  --background-image-outline-primary: var(--outline-primary);
+  --background-image-outline-secondary: var(--outline-secondary);
+  --background-image-outline-sheet-special: var(--outline-sheet-special);
 
   --shadow-soft-glass:
     inset 0 3px 3px 0 rgba(255, 255, 255, 0.18),
@@ -280,6 +297,10 @@ html > body[data-scroll-locked] {
   --disabled-base-em: oklch(0.9617 0.0027 286.35);
   --hover-overlay: oklch(1 0 0 / 0.05);
   --hover-overlay-inverse: oklch(0 0 0 / 0.03);
+  --inverse-black-alpha-3: oklch(1 0 0 / 0.03);
+  --inverse-black-alpha-9: oklch(1 0 0 / 0.08);
+  --inverse-black-alpha-18: oklch(1 0 0 / 0.18);
+  --inverse-black-alpha-12: oklch(1 0 0 / 0.12);
 
   /* Cross-theme pairs: light step i in light UI, dark step j in dark UI (Figma l{i}/d{j}) */
   --s-l0-d0: var(--s-light-0);
@@ -470,8 +491,12 @@ html > body[data-scroll-locked] {
   --disabled-med-em: oklch(0.3485 0 0 / 0.24);
   --disabled-low-em: oklch(0.3485 0 0 / 0.1);
   --disabled-base-em: oklch(0.1957 0 0);
-  --hover-overlay-inverse: oklch(1 0 0 / 0.05);
-  --hover-overlay: oklch(0 0 0 / 0.03);
+  --hover-overlay: oklch(0 0 0 / 0.05);
+  --hover-overlay-inverse: oklch(1 0 0 / 0.03);
+  --inverse-black-alpha-3: oklch(0 0 0 / 0.03);
+  --inverse-black-alpha-9: oklch(0 0 0 / 0.08);
+  --inverse-black-alpha-18: oklch(0 0 0 / 0.18);
+  --inverse-black-alpha-12: oklch(0 0 0 / 0.12);
 
   /* Outlines */
   --outline-primary: linear-gradient(
