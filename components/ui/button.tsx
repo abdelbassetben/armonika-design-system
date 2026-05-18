@@ -106,7 +106,6 @@ const buttonVariants = cva(
         ghost: cn(
           "bg-transparent text-muted-foreground shadow-none disabled:bg-s-0",
           "hover:bg-[image:linear-gradient(0deg,var(--hover-overlay-inverse)_0%,var(--hover-overlay-inverse)_100%)]",
-          "aria-expanded:bg-muted aria-expanded:text-foreground",
           focusShadowNeutral,
         ),
 
