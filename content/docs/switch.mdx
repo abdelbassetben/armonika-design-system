@@ -1,0 +1,102 @@
+---
+title: Switch
+description: A control that allows the user to toggle between checked and not checked.
+---
+
+import { Switch } from "@/components/ui/switch";
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+
+A control that allows the user to toggle between checked and not checked. Built with Base UI.
+
+## Default
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Switch />
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Switch } from "@/components/ui/switch";
+
+<Switch />;
+```
+
+      </div>
+    </div>
+  </Tab>
+</Tabs>
+
+## Sizes
+
+Switches come in three sizes: `sm`, `default`, and `lg`.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex gap-4 items-center">
+        <Switch size="sm" />
+        <Switch size="default" />
+        <Switch size="lg" />
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Switch } from "@/components/ui/switch";
+
+<Switch size="sm" />
+<Switch size="default" />
+<Switch size="lg" />
+```
+
+      </div>
+    </div>
+  </Tab>
+</Tabs>
+
+## States
+
+### Disabled
+
+When a switch is disabled, it is faded and cannot be interacted with.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex gap-4 items-center">
+        <Switch disabled />
+        <Switch disabled defaultChecked />
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Switch } from "@/components/ui/switch";
+
+<Switch disabled />
+<Switch disabled defaultChecked />
+```
+
+      </div>
+    </div>
+  </Tab>
+</Tabs>
+
+## Properties
+
+| Property   | Type                          | Default     | Description                     |
+| :--------- | :---------------------------- | :---------- | :------------------------------ |
+| `size`     | `"sm" \| "default" \| "lg"`   | `"default"` | The size of the switch.         |
+| `disabled` | `boolean`                     | `false`     | Whether the switch is disabled. |
+
