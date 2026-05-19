@@ -1,0 +1,146 @@
+---
+title: Progress
+description: Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
+---
+
+import {
+  Progress,
+  ProgressLabel,
+  ProgressValue,
+} from "@/components/ui/progress";
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+
+Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
+
+## Label follows value
+
+`ProgressLabel` aligns horizontally with the current value: left at 0%, centered at 50%, right at 100%. Use `align="static"` to keep a normal inline label.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex w-[300px] flex-col gap-6">
+        <Progress value={25} className="w-full flex-col gap-0">
+          <ProgressLabel>25%</ProgressLabel>
+        </Progress>
+        <Progress value={50} className="w-full flex-col gap-0">
+          <ProgressLabel>50%</ProgressLabel>
+        </Progress>
+        <Progress value={75} className="w-full flex-col gap-0">
+          <ProgressLabel>75%</ProgressLabel>
+        </Progress>
+        <Progress value={100} className="w-full flex-col gap-0">
+          <ProgressLabel>100%</ProgressLabel>
+        </Progress>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-2">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Progress, ProgressLabel } from "@/components/ui/progress"
+
+<Progress value={50} className="w-[300px] flex-col gap-0">
+  <ProgressLabel>50%</ProgressLabel>
+</Progress>
+```
+
+      </div>
+    </div>
+  </Tab>
+</Tabs>
+
+## Label with value
+
+Place the numeric value on the right with a static label on the left using `align="static"`.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Progress value={60} className="w-[300px]">
+        <div className=" flex w-full items-center justify-between">
+          <ProgressLabel align="static">Loading...</ProgressLabel>
+          <ProgressValue />
+        </div>
+      </Progress>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-2">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  Progress,
+  ProgressLabel,
+  ProgressValue,
+} from "@/components/ui/progress"
+
+<Progress value={60} className="w-[300px]">
+  <div className=" flex w-full items-center justify-between">
+    <ProgressLabel align="static">Loading...</ProgressLabel>
+    <ProgressValue />
+  </div>
+</Progress>
+```
+
+      </div>
+    </div>
+  </Tab>
+</Tabs>
+
+## Value on the right
+
+You can place the value on the right side of the progress bar by using the `order-last` class.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Progress value={55} className="w-[300px] flex-row items-center flex-nowrap gap-2">
+        <ProgressValue className="order-last" />
+      </Progress>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-2">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+<Progress value={55} className="w-[300px] flex-row items-center flex-nowrap gap-2">
+  <ProgressValue className="order-last" />
+</Progress>
+```
+
+      </div>
+    </div>
+  </Tab>
+</Tabs>
+
+## Value on the left
+
+The value renders on the left side of the track naturally if you just include it.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Progress value={75} className="w-[300px] flex-row items-center flex-nowrap gap-2">
+        <ProgressValue />
+      </Progress>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-2">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+<Progress value={75} className="w-[300px] flex-row items-center flex-nowrap gap-2">
+  <ProgressValue />
+</Progress>
+```
+
+      </div>
+    </div>
+  </Tab>
+</Tabs>
