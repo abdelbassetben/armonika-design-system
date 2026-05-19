@@ -1,0 +1,198 @@
+---
+title: Slider
+description: An input where the user selects a value from within a given range.
+---
+
+import { Slider } from "@/components/ui/slider";
+import { Label } from "@/components/ui/label";
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+
+An input where the user selects a value from within a given range. Built with [Base UI Slider](https://base-ui.com/react/components/slider), following the [shadcn/ui slider](https://ui.shadcn.com/docs/components/base/slider) patterns.
+
+The **default** variant shows a label and min–max bounds above the track, with the current value under each thumb. The **special** variant is the plain slider for custom layouts.
+
+## Default
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex flex-col gap-2 w-[300px]">
+        <div className="flex items-center justify-between gap-2">
+          <Label htmlFor="slider-volume">Volume</Label>
+          <span className="text-sm text-muted-foreground">33</span>
+        </div>
+        <Slider
+          defaultValue={[33]}
+          max={100}
+          step={1}
+        />
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-2">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Slider } from "@/components/ui/slider";
+import { Label } from "@/components/ui/label";
+
+<div className="flex flex-col gap-2 w-[300px]">
+  <div className="flex items-center justify-between gap-2">
+    <Label htmlFor="slider-volume">Volume</Label>
+    <span className="text-sm text-muted-foreground">{value[0]}</span>
+  </div>
+  <Slider defaultValue={[33]} max={100} step={1} />
+</div>;
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Range
+
+Use an array with two values for a range slider.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex flex-col gap-2 w-[300px]">
+        <div className="flex items-center justify-between gap-2">
+          <Label htmlFor="slider-price-range">Price range</Label>
+          <span className="text-sm text-muted-foreground">25, 75</span>
+        </div>
+        <Slider
+          defaultValue={[25, 75]}
+          max={100}
+          step={1}
+        />
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-2">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Slider } from "@/components/ui/slider";
+import { Label } from "@/components/ui/label";
+
+<div className="flex flex-col gap-2 w-[300px]">
+  <div className="flex items-center justify-between gap-2">
+    <Label htmlFor="slider-price-range">Price range</Label>
+    <span className="text-sm text-muted-foreground">{value.join(", ")}</span>
+  </div>
+  <Slider defaultValue={[25, 75]} max={100} step={1} />
+</div>;
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Disabled
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex flex-col gap-2 w-[300px]">
+        <div className="flex items-center justify-between gap-2">
+          <Label htmlFor="slider-volume-disabled" className="text-muted text-sm font-semibold">Volume</Label>
+          <span className="text-sm text-muted-foreground">40</span>
+        </div>
+        <Slider
+          defaultValue={[40]}
+          max={100}
+          step={1}
+          disabled
+        />
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-2">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Slider } from "@/components/ui/slider";
+import { Label } from "@/components/ui/label";
+
+<div className="flex flex-col gap-2 w-[300px]">
+  <div className="flex items-center justify-between gap-2">
+    <Label
+      htmlFor="slider-volume-disabled"
+      className="text-muted text-sm font-semibold"
+    >
+      Volume
+    </Label>
+    <span className="text-sm text-muted-foreground">{value[0]}</span>
+  </div>
+  <Slider defaultValue={[40]} max={100} step={1} disabled />
+</div>;
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Special variant
+
+Plain slider without the header or thumb values — matches the original shadcn implementation for custom layouts.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex flex-col gap-2 w-[300px]">
+        <div className="flex items-center justify-between gap-2">
+          <Label htmlFor="slider-special">Special</Label>
+          <span className="text-sm text-muted-foreground">33</span>
+        </div>
+        <Slider
+          variant="special"
+          defaultValue={[33]}
+          max={100}
+          step={1}
+        />
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-2">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Slider } from "@/components/ui/slider";
+import { Label } from "@/components/ui/label";
+
+<div className="flex flex-col gap-2 w-[300px]">
+  <div className="flex items-center justify-between gap-2">
+    <Label htmlFor="slider-special">Special</Label>
+    <span className="text-sm text-muted-foreground">{value[0]}</span>
+  </div>
+  <Slider variant="special" defaultValue={[33]} max={100} step={1} />
+</div>;
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Properties
+
+| Property  | Type                     | Default     | Description                                                                                    |
+| :-------- | :----------------------- | :---------- | :--------------------------------------------------------------------------------------------- |
+| `variant` | `"default" \| "special"` | `"default"` | Layout variant. `default` adds label, bounds, and thumb values. `special` is the plain slider. |
+| `label`   | `React.ReactNode`        | —           | Label shown above the track (default variant only).                                            |
+| `min`     | `number`                 | `0`         | Minimum value. Shown in the header span (default variant).                                     |
+| `max`     | `number`                 | `100`       | Maximum value. Shown in the header span (default variant).                                     |
+
+See the [Base UI Slider API](https://base-ui.com/react/components/slider) for all root props (`step`, `orientation`, `disabled`, `onValueChange`, etc.).
