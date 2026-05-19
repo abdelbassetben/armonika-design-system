@@ -1,0 +1,135 @@
+---
+title: Checkbox
+description: A control that allows the user to toggle between checked and not checked.
+---
+
+import { Checkbox } from "@/components/ui/checkbox";
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+
+A control that allows the user to toggle between checked and not checked. Built with Base UI.
+
+## Default
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Checkbox size="md" />
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Checkbox } from "@/components/ui/checkbox";
+
+<Checkbox />;
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Sizes
+
+Checkboxes come in three sizes: `xs`, `md`, and `lg`.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex gap-4 items-center">
+        <Checkbox size="xs" />
+        <Checkbox size="md" />
+        <Checkbox size="lg" />
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Checkbox } from "@/components/ui/checkbox";
+
+<Checkbox size="xs" />
+<Checkbox size="md" />
+<Checkbox size="lg" />
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Icon
+
+You can change the icon displayed when the checkbox is checked, which is useful for indeterminate states.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex gap-4 items-center">
+        <Checkbox defaultChecked icon="check" />
+        <Checkbox defaultChecked icon="minus" />
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Checkbox } from "@/components/ui/checkbox";
+
+<Checkbox defaultChecked icon="check" />
+<Checkbox defaultChecked icon="minus" />
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## States
+
+### Disabled
+
+When a checkbox is disabled, it is faded and cannot be interacted with.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex gap-4 items-center">
+        <Checkbox disabled />
+        <Checkbox disabled defaultChecked />
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Checkbox } from "@/components/ui/checkbox";
+
+<Checkbox disabled />
+<Checkbox disabled defaultChecked />
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Properties
+
+| Property   | Type                   | Default   | Description                       |
+| :--------- | :--------------------- | :-------- | :-------------------------------- |
+| `size`     | `"xs" \| "md" \| "lg"` | `"md"`    | The size of the checkbox.         |
+| `icon`     | `"check" \| "minus"`   | `"check"` | The icon displayed when checked.  |
+| `disabled` | `boolean`              | `false`   | Whether the checkbox is disabled. |
