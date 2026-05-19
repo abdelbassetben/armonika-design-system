@@ -1,0 +1,109 @@
+---
+title: Radio Group
+description: A set of checkable buttons, known as radio buttons, where no more than one of the buttons can be checked at a time.
+---
+
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+
+A set of checkable buttons, known as radio buttons, where no more than one of the buttons can be checked at a time. Built with Base UI.
+
+## Default
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <RadioGroup defaultValue="1" className="flex flex-col gap-2">
+        <RadioGroupItem value="1" />
+        <RadioGroupItem value="2" />
+        <RadioGroupItem value="3" />
+      </RadioGroup>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+
+<RadioGroup defaultValue="1">
+  <RadioGroupItem value="1" />
+  <RadioGroupItem value="2" />
+  <RadioGroupItem value="3" />
+</RadioGroup>;
+```
+
+      </div>
+    </div>
+  </Tab>
+</Tabs>
+
+## Sizes
+
+Radio buttons come in two sizes: `xs` and `sm`.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <RadioGroup defaultValue="xs" className="flex gap-4 items-center">
+        <RadioGroupItem size="xs" value="xs" />
+        <RadioGroupItem size="sm" value="sm" />
+      </RadioGroup>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { RadioGroupItem } from "@/components/ui/radio-group";
+
+<RadioGroupItem size="xs" value="xs" />
+<RadioGroupItem size="sm" value="sm" />
+```
+
+      </div>
+    </div>
+  </Tab>
+</Tabs>
+
+## States
+
+### Disabled
+
+When a radio button is disabled, it is faded and cannot be interacted with.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <RadioGroup defaultValue="checked" className="flex gap-4 items-center">
+        <RadioGroupItem disabled value="unchecked" />
+        <RadioGroupItem disabled value="checked" />
+      </RadioGroup>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+
+<RadioGroup defaultValue="checked">
+  <RadioGroupItem disabled value="unchecked" />
+  <RadioGroupItem disabled value="checked" />
+</RadioGroup>
+```
+
+      </div>
+    </div>
+  </Tab>
+</Tabs>
+
+## Properties
+
+| Property   | Type           | Default | Description                               |
+| :--------- | :------------- | :------ | :---------------------------------------- |
+| `size`     | `"xs" \| "sm"` | `"sm"`  | The size of the radio group item.         |
+| `disabled` | `boolean`      | `false` | Whether the radio group item is disabled. |
