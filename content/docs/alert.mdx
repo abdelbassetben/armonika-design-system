@@ -1,0 +1,370 @@
+---
+title: Alert
+description: Displays a callout for user attention with different variants and sizes.
+---
+
+import {
+  Alert,
+  AlertTitle,
+  AlertDescription,
+  AlertAction,
+} from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+
+Displays a callout for user attention.
+
+## Default
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex flex-col gap-4 w-full">
+        <Alert>
+          <AlertTitle>Default Alert Only Title</AlertTitle>
+        </Alert>
+        <Alert>
+          <AlertTitle>Default Alert With Description</AlertTitle>
+          <AlertDescription>
+            <div className="p-1">
+              <span>You can place <strong>any DOM element</strong> in the description container.</span>
+            </div>
+          </AlertDescription>
+        </Alert>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4 w-full">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
+
+<Alert>
+  <AlertTitle>Default Alert Only Title</AlertTitle>
+</Alert>
+
+<Alert>
+  <AlertTitle>Default Alert With Description</AlertTitle>
+  <AlertDescription>
+    <div className="p-1">
+      <span>You can place <strong>any DOM element</strong> in the description container.</span>
+    </div>
+  </AlertDescription>
+</Alert>
+```
+
+      </div>
+      <DocsPreview>
+        <div className="flex flex-col gap-4 w-full">
+          <Alert>
+            <AlertTitle>Default Alert Only Title</AlertTitle>
+          </Alert>
+          <Alert>
+            <AlertTitle>Default Alert With Description</AlertTitle>
+            <AlertDescription>
+              <div className="p-1">
+                <span>You can place <strong>any DOM element</strong> in the description container.</span>
+              </div>
+            </AlertDescription>
+          </Alert>
+        </div>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Danger
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Alert variant="danger" >
+        <AlertTitle>Danger Alert</AlertTitle>
+      </Alert>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
+
+<Alert variant="danger">
+  <AlertTitle>Danger Alert</AlertTitle>
+</Alert>;
+```
+
+      </div>
+      <DocsPreview>
+        <Alert variant="danger" >
+          <AlertTitle>Danger Alert</AlertTitle>
+        </Alert>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Brand
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex flex-col gap-4 w-full">
+        <Alert variant="brand">
+          <AlertTitle>Brand Alert Only Title</AlertTitle>
+        </Alert>
+        <Alert variant="brand">
+          <AlertTitle>Brand Alert With Description</AlertTitle>
+          <AlertDescription>
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-medium">New features available</span>
+              <Button size="sm" variant="brand">Review</Button>
+            </div>
+          </AlertDescription>
+        </Alert>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
+
+<Alert variant="brand">
+  <AlertTitle>Brand Alert Only Title</AlertTitle>
+</Alert>
+
+<Alert variant="brand">
+  <AlertTitle>Brand Alert With Description</AlertTitle>
+  <AlertDescription>
+    <div className="flex items-center gap-2">
+      <span className="text-sm font-medium">New features available</span>
+      <Button size="sm" variant="brand">Review</Button>
+    </div>
+  </AlertDescription>
+</Alert>
+```
+
+      </div>
+      <DocsPreview>
+         <div className="flex flex-col gap-4 w-full">
+          <Alert variant="brand">
+            <AlertTitle>Brand Alert Only Title</AlertTitle>
+          </Alert>
+          <Alert variant="brand">
+            <AlertTitle>Brand Alert With Description</AlertTitle>
+            <AlertDescription>
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-medium">New features available</span>
+                <Button size="sm" variant="brand">Review</Button>
+              </div>
+            </AlertDescription>
+          </Alert>
+        </div>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Info
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Alert variant="info" >
+        <AlertTitle>Info Alert</AlertTitle>
+      </Alert>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
+
+<Alert variant="info">
+  <AlertTitle>Info Alert</AlertTitle>
+</Alert>;
+```
+
+      </div>
+      <DocsPreview>
+        <Alert variant="info" >
+          <AlertTitle>Info Alert</AlertTitle>
+        </Alert>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Warning
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Alert variant="warning" >
+        <AlertTitle>Warning Alert</AlertTitle>
+      </Alert>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
+
+<Alert variant="warning">
+  <AlertTitle>Warning Alert</AlertTitle>
+</Alert>;
+```
+
+      </div>
+      <DocsPreview>
+        <Alert variant="warning" >
+          <AlertTitle>Warning Alert</AlertTitle>
+        </Alert>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Success
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Alert variant="success" >
+        <AlertTitle>Success Alert</AlertTitle>
+      </Alert>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
+
+<Alert variant="success">
+  <AlertTitle>Success Alert</AlertTitle>
+</Alert>;
+```
+
+      </div>
+      <DocsPreview>
+        <Alert variant="success" >
+          <AlertTitle>Success Alert</AlertTitle>
+        </Alert>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Sizes
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex flex-col gap-4">
+        <Alert size="sm">
+          <AlertTitle>Small Alert</AlertTitle>
+        </Alert>
+        <Alert >
+          <AlertTitle>Medium Alert</AlertTitle>
+        </Alert>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
+
+<Alert size="sm">
+  <AlertTitle>Small Alert</AlertTitle>
+</Alert>
+
+<Alert size="md">
+  <AlertTitle>Medium Alert</AlertTitle>
+</Alert>
+```
+
+      </div>
+      <DocsPreview>
+        <div className="flex flex-col gap-4">
+          <Alert size="sm">
+            <AlertTitle>Small Alert</AlertTitle>
+          </Alert>
+          <Alert >
+            <AlertTitle>Medium Alert</AlertTitle>
+          </Alert>
+        </div>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## With Action
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Alert variant="warning" >
+        <AlertTitle>Update Available</AlertTitle>
+      </Alert>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  Alert,
+  AlertTitle,
+  AlertDescription,
+  AlertAction,
+} from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
+
+<Alert variant="warning">
+  <AlertTitle>Update Available</AlertTitle>
+</Alert>;
+```
+
+      </div>
+      <DocsPreview>
+        <Alert variant="warning" >
+          <AlertTitle>Update Available</AlertTitle>
+        </Alert>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Properties
+
+| Property  | Type                                                                             | Default     | Description                    |
+| --------- | -------------------------------------------------------------------------------- | ----------- | ------------------------------ |
+| variant   | `"default"` \| `"danger"` \| `"brand"` \| `"info"` \| `"warning"` \| `"success"` | `"default"` | The variant style of the alert |
+| size      | `"sm"` \| `"md"`                                                                 | `"md"`      | The size of the alert          |
+| children  | ReactNode                                                                        | -           | The content of the alert       |
+| className | string                                                                           | -           | Additional CSS classes         |
