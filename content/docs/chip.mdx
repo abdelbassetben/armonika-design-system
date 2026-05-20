@@ -1,0 +1,113 @@
+---
+title: Chip
+description: Displays a small, visually distinctive element used to draw attention to specific information. Supports multiple visual variants and sizes.
+---
+
+import { Chip } from "@/components/ui/chip";
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+
+A small, visually distinctive element used to draw attention to specific information. Built with `class-variance-authority` for variants.
+
+## Secondary
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Chip>Secondary</Chip>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Chip } from "@/components/ui/chip";
+
+<Chip>Secondary</Chip>;
+```
+
+      </div>
+      <DocsPreview>
+        <Chip>Secondary</Chip>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Primary Flat
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Chip variant="primary-flat">Primary Flat</Chip>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Chip } from "@/components/ui/chip";
+
+<Chip variant="primary-flat">Primary Flat</Chip>;
+```
+
+      </div>
+      <DocsPreview>
+        <Chip variant="primary-flat">Primary Flat</Chip>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Sizes
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex flex-wrap items-center gap-4">
+        <Chip size="default">Default</Chip>
+        <Chip size="sm">Small</Chip>
+        <Chip size="md">Medium</Chip>
+        <Chip size="lg">Large</Chip>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Chip } from "@/components/ui/chip";
+
+<div className="flex flex-wrap items-center gap-4">
+  <Chip size="default">Default</Chip>
+  <Chip size="sm">Small</Chip>
+  <Chip size="md">Medium</Chip>
+  <Chip size="lg">Large</Chip>
+</div>
+```
+
+      </div>
+      <DocsPreview>
+        <div className="flex flex-wrap items-center gap-4">
+          <Chip size="default">Default</Chip>
+          <Chip size="sm">Small</Chip>
+          <Chip size="md">Medium</Chip>
+          <Chip size="lg">Large</Chip>
+        </div>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Properties
+
+| Property | Type                                 | Default      | Description                          |
+| -------- | ------------------------------------ | ------------ | ------------------------------------ |
+| variant  | `"secondary"` \| `"primary-flat"`  | `"secondary"`| The variant style of the chip        |
+| size     | `"default"` \| `"sm"` \| `"md"` \| `"lg"` | `"default"` | The size of the chip       |
+| children | `ReactNode`                          | -            | The content of the chip              |
