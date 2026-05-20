@@ -125,6 +125,64 @@ import { Button } from "@/components/ui/button";
   </Tab>
 </Tabs>
 
+## Primary Light
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Button size="md" variant="primary-light"><span className="px-1">Primary light</span></Button>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Button } from "@/components/ui/button";
+
+<Button variant="primary-light">
+  <span className="px-1">Primary light</span>
+</Button>;
+```
+
+      </div>
+      <DocsPreview>
+        <Button variant="primary-light"><span className="px-1">Primary light</span></Button>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Neutral
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Button size="md" variant="neutral"><span className="px-1">Neutral</span></Button>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Button } from "@/components/ui/button";
+
+<Button variant="neutral">
+  <span className="px-1">Neutral</span>
+</Button>;
+```
+
+      </div>
+      <DocsPreview>
+        <Button variant="neutral"><span className="px-1">Neutral</span></Button>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
 ## Outline
 
 <Tabs items={['Preview', 'Code']} defaultIndex={0}>

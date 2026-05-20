@@ -9,17 +9,17 @@ const borderMuted = "border-[#0000000d]";
 
 const shadowRestInsetSm =
   "shadow-[0_1px_2px_0_var(--inverse-black-alpha-3)_inset,0_2px_1.5px_-0.5px_var(--elevation-shadow)]";
-const shadowRestInsetMd =
-  "shadow-[0_3px_3px_0_var(--inverse-black-alpha-12)_inset,0_1px_1px_-0.5px_var(--elevation-shadow)]";
 
-const hoverBgLightVeil =
-  "hover:bg-[image:linear-gradient(0deg,var(--hover-overlay)_0%,var(--hover-overlay)_100%)]";
 const hoverBgDarkVeil =
   "hover:bg-[image:linear-gradient(0deg,var(--hover-overlay-inverse)_0%,var(--hover-overlay-inverse)_100%)]";
 
 const gradientBorderPrimary =
   "border-transparent " +
   "[background:linear-gradient(var(--primary),var(--primary))_padding-box,var(--outline-primary)_border-box]";
+
+const gradientBorderNeutral =
+  "border-transparent " +
+  "[background:linear-gradient(var(--inverse-white),var(--inverse-white))_padding-box,var(--outline-secondary)_border-box]";
 
 const gradientBorderDestructive =
   "border-transparent " +
@@ -36,6 +36,9 @@ const gradientBorderOutline =
 const hoverGradientPrimary =
   "hover:[background:linear-gradient(var(--hover-overlay),var(--hover-overlay))_padding-box,linear-gradient(var(--primary),var(--primary))_padding-box,var(--outline-primary)_border-box]";
 
+const hoverGradientNeutral =
+  "hover:[background:linear-gradient(var(--hover-overlay),var(--hover-overlay))_padding-box,linear-gradient(var(--inverse-white),var(--inverse-white))_padding-box,var(--outline-secondary)_border-box]";
+
 const hoverGradientDestructive =
   "hover:[background:linear-gradient(var(--hover-overlay),var(--hover-overlay))_padding-box,linear-gradient(var(--danger-med-em),var(--danger-med-em))_padding-box,var(--outline-primary)_border-box]";
 
@@ -50,7 +53,6 @@ const hoverShadowLiftStrong =
 const hoverShadowLiftSoft =
   "hover:shadow-[0_2px_3px_0_var(--inverse-black-alpha-9)_inset,0_1px_1px_-0.5px_var(--elevation-shadow),0_3px_3px_-1.5px_var(--elevation-shadow),0_20px_20px_-12px_var(--elevation-shadow)]";
 
-const focusBorderDefault = "focus-visible:border-var(--outline-med-em)";
 const focusRingOff = "focus-visible:ring-0";
 const focusShadowPrimary =
   "focus-visible:shadow-[0_0_0_2px_var(--primary-base-em-alpha)]";
@@ -82,6 +84,21 @@ const buttonVariants = cva(
           hoverShadowLiftStrong,
           focusRingOff,
           focusShadowPrimary,
+        ),
+
+        "primary-light": cn(
+          "bg-primary-base-em-alpha text-primary-med-em shadow-none ",
+          hoverBgDarkVeil,
+          hoverShadowLiftSoft,
+          focusShadowPrimary,
+        ),
+
+        neutral: cn(
+          "border text-s-0 shadow-[0_3px_3px_0_var(--inverse-black-alpha-12)_inset,0_1px_1px_-0.5px_var(--elevation-shadow)]",
+          gradientBorderNeutral,
+          hoverGradientNeutral,
+          hoverShadowLiftSoft,
+          focusShadowNeutral,
         ),
 
         outline: cn(
