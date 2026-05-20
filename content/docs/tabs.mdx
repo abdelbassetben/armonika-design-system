@@ -1,0 +1,370 @@
+---
+title: Tabs
+description: A set of layered sections of content—known as tab panels—that are displayed one at a time.
+---
+
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Tabs as FmTabs, Tab as FmTab } from "fumadocs-ui/components/tabs";
+
+A set of layered sections of content—known as tab panels—that are displayed one at a time. Built with `@base-ui/react`.
+
+## Default
+
+<FmTabs items={['Preview', 'Code']}>
+  <FmTab value="Preview">
+    <DocsPreview>
+      <Tabs defaultValue="account" className="w-[400px]">
+        <TabsList>
+          <TabsTrigger value="account">Account</TabsTrigger>
+          <TabsTrigger value="password">Password</TabsTrigger>
+        </TabsList>
+        <TabsContent value="account" className="p-4 bg-background mt-2 rounded-xl border">
+          Make changes to your account here.
+        </TabsContent>
+        <TabsContent value="password" className="p-4 bg-background mt-2 rounded-xl border">
+          Change your password here.
+        </TabsContent>
+      </Tabs>
+    </DocsPreview>
+  </FmTab>
+  <FmTab value="Code">
+    <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+```tsx
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+
+<Tabs defaultValue="account" className="w-[400px]">
+  <TabsList>
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="password">Password</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Make changes to your account here.</TabsContent>
+  <TabsContent value="password">Change your password here.</TabsContent>
+</Tabs>
+```
+    </div>
+  </FmTab>
+</FmTabs>
+
+## Primary Variant
+
+<FmTabs items={['Preview', 'Code']}>
+  <FmTab value="Preview">
+    <DocsPreview>
+      <Tabs defaultValue="account" className="w-[400px]">
+        <TabsList variant="primary">
+          <TabsTrigger value="account">Account</TabsTrigger>
+          <TabsTrigger value="password">Password</TabsTrigger>
+        </TabsList>
+        <TabsContent value="account" className="p-4 bg-background mt-2 rounded-xl border">
+          Make changes to your account here.
+        </TabsContent>
+        <TabsContent value="password" className="p-4 bg-background mt-2 rounded-xl border">
+          Change your password here.
+        </TabsContent>
+      </Tabs>
+    </DocsPreview>
+  </FmTab>
+  <FmTab value="Code">
+    <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+```tsx
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+
+<Tabs defaultValue="account" className="w-[400px]">
+  <TabsList variant="primary">
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="password">Password</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Make changes to your account here.</TabsContent>
+  <TabsContent value="password">Change your password here.</TabsContent>
+</Tabs>
+```
+    </div>
+  </FmTab>
+</FmTabs>
+
+## Secondary Variant
+
+<FmTabs items={['Preview', 'Code']}>
+  <FmTab value="Preview">
+    <DocsPreview>
+      <Tabs defaultValue="account" className="w-[400px]">
+        <TabsList variant="secondary">
+          <TabsTrigger value="account">Account</TabsTrigger>
+          <TabsTrigger value="password">Password</TabsTrigger>
+        </TabsList>
+        <TabsContent value="account" className="p-4 bg-background mt-2 rounded-xl border">
+          Make changes to your account here.
+        </TabsContent>
+        <TabsContent value="password" className="p-4 bg-background mt-2 rounded-xl border">
+          Change your password here.
+        </TabsContent>
+      </Tabs>
+    </DocsPreview>
+  </FmTab>
+  <FmTab value="Code">
+    <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+```tsx
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+
+<Tabs defaultValue="account" className="w-[400px]">
+  <TabsList variant="secondary">
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="password">Password</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Make changes to your account here.</TabsContent>
+  <TabsContent value="password">Change your password here.</TabsContent>
+</Tabs>
+```
+    </div>
+  </FmTab>
+</FmTabs>
+
+## Primary Light Variant
+
+<FmTabs items={['Preview', 'Code']}>
+  <FmTab value="Preview">
+    <DocsPreview>
+      <Tabs defaultValue="account" className="w-[400px]">
+        <TabsList variant="primary-light">
+          <TabsTrigger value="account">Account</TabsTrigger>
+          <TabsTrigger value="password">Password</TabsTrigger>
+        </TabsList>
+        <TabsContent value="account" className="p-4 bg-background mt-2 rounded-xl border">
+          Make changes to your account here.
+        </TabsContent>
+        <TabsContent value="password" className="p-4 bg-background mt-2 rounded-xl border">
+          Change your password here.
+        </TabsContent>
+      </Tabs>
+    </DocsPreview>
+  </FmTab>
+  <FmTab value="Code">
+    <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+```tsx
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+
+<Tabs defaultValue="account" className="w-[400px]">
+  <TabsList variant="primary-light">
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="password">Password</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Make changes to your account here.</TabsContent>
+  <TabsContent value="password">Change your password here.</TabsContent>
+</Tabs>
+```
+    </div>
+  </FmTab>
+</FmTabs>
+
+## Neutral Variant
+
+<FmTabs items={['Preview', 'Code']}>
+  <FmTab value="Preview">
+    <DocsPreview>
+      <Tabs defaultValue="account" className="w-[400px]">
+        <TabsList variant="neutral">
+          <TabsTrigger value="account">Account</TabsTrigger>
+          <TabsTrigger value="password">Password</TabsTrigger>
+        </TabsList>
+        <TabsContent value="account" className="p-4 bg-background mt-2 rounded-xl border">
+          Make changes to your account here.
+        </TabsContent>
+        <TabsContent value="password" className="p-4 bg-background mt-2 rounded-xl border">
+          Change your password here.
+        </TabsContent>
+      </Tabs>
+    </DocsPreview>
+  </FmTab>
+  <FmTab value="Code">
+    <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+```tsx
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+
+<Tabs defaultValue="account" className="w-[400px]">
+  <TabsList variant="neutral">
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="password">Password</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Make changes to your account here.</TabsContent>
+  <TabsContent value="password">Change your password here.</TabsContent>
+</Tabs>
+```
+    </div>
+  </FmTab>
+</FmTabs>
+
+## Line Variant
+
+<FmTabs items={['Preview', 'Code']}>
+  <FmTab value="Preview">
+    <DocsPreview>
+      <Tabs defaultValue="account" className="w-[400px]">
+        <TabsList variant="line">
+          <TabsTrigger value="account">Account</TabsTrigger>
+          <TabsTrigger value="password">Password</TabsTrigger>
+        </TabsList>
+        <TabsContent value="account" className="p-4 bg-background mt-2 rounded-xl border">
+          Make changes to your account here.
+        </TabsContent>
+        <TabsContent value="password" className="p-4 bg-background mt-2 rounded-xl border">
+          Change your password here.
+        </TabsContent>
+      </Tabs>
+    </DocsPreview>
+  </FmTab>
+  <FmTab value="Code">
+    <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+```tsx
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+
+<Tabs defaultValue="account" className="w-[400px]">
+  <TabsList variant="line">
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="password">Password</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Make changes to your account here.</TabsContent>
+  <TabsContent value="password">Change your password here.</TabsContent>
+</Tabs>
+```
+    </div>
+  </FmTab>
+</FmTabs>
+
+## Sizes
+
+<FmTabs items={['Preview', 'Code']}>
+  <FmTab value="Preview">
+    <DocsPreview className="flex flex-col gap-8 items-start">
+      <div className="flex flex-col gap-2">
+        <span className="text-sm text-muted-foreground font-medium">Extra Small (xs)</span>
+        <Tabs defaultValue="1">
+          <TabsList size="xs">
+            <TabsTrigger value="1">Tab 1</TabsTrigger>
+            <TabsTrigger value="2">Tab 2</TabsTrigger>
+            <TabsTrigger value="3">Tab 3</TabsTrigger>
+          </TabsList>
+        </Tabs>
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <span className="text-sm text-muted-foreground font-medium">Small (sm)</span>
+        <Tabs defaultValue="1">
+          <TabsList size="sm">
+            <TabsTrigger value="1">Tab 1</TabsTrigger>
+            <TabsTrigger value="2">Tab 2</TabsTrigger>
+            <TabsTrigger value="3">Tab 3</TabsTrigger>
+          </TabsList>
+        </Tabs>
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <span className="text-sm text-muted-foreground font-medium">Medium (md)</span>
+        <Tabs defaultValue="1">
+          <TabsList size="md">
+            <TabsTrigger value="1">Tab 1</TabsTrigger>
+            <TabsTrigger value="2">Tab 2</TabsTrigger>
+            <TabsTrigger value="3">Tab 3</TabsTrigger>
+          </TabsList>
+        </Tabs>
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <span className="text-sm text-muted-foreground font-medium">Large (lg)</span>
+        <Tabs defaultValue="1">
+          <TabsList size="lg">
+            <TabsTrigger value="1">Tab 1</TabsTrigger>
+            <TabsTrigger value="2">Tab 2</TabsTrigger>
+            <TabsTrigger value="3">Tab 3</TabsTrigger>
+          </TabsList>
+        </Tabs>
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <span className="text-sm text-muted-foreground font-medium">Extra Large (xl)</span>
+        <Tabs defaultValue="1">
+          <TabsList size="xl">
+            <TabsTrigger value="1">Tab 1</TabsTrigger>
+            <TabsTrigger value="2">Tab 2</TabsTrigger>
+            <TabsTrigger value="3">Tab 3</TabsTrigger>
+          </TabsList>
+        </Tabs>
+      </div>
+    </DocsPreview>
+
+  </FmTab>
+  <FmTab value="Code">
+    <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+```tsx
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+<Tabs defaultValue="1">
+  <TabsList size="xs">
+    <TabsTrigger value="1">Tab 1</TabsTrigger>
+    <TabsTrigger value="2">Tab 2</TabsTrigger>
+  </TabsList>
+</Tabs>
+
+<Tabs defaultValue="1">
+  <TabsList size="sm">
+    <TabsTrigger value="1">Tab 1</TabsTrigger>
+    <TabsTrigger value="2">Tab 2</TabsTrigger>
+  </TabsList>
+</Tabs>
+
+<Tabs defaultValue="1">
+  <TabsList size="md">
+    <TabsTrigger value="1">Tab 1</TabsTrigger>
+    <TabsTrigger value="2">Tab 2</TabsTrigger>
+  </TabsList>
+</Tabs>
+
+<Tabs defaultValue="1">
+  <TabsList size="lg">
+    <TabsTrigger value="1">Tab 1</TabsTrigger>
+    <TabsTrigger value="2">Tab 2</TabsTrigger>
+  </TabsList>
+</Tabs>
+
+<Tabs defaultValue="1">
+  <TabsList size="xl">
+     <TabsTrigger value="1">Tab 1</TabsTrigger>
+     <TabsTrigger value="2">Tab 2</TabsTrigger>
+  </TabsList>
+</Tabs>
+```
+    </div>
+  </FmTab>
+</FmTabs>
+
+## Disabled
+
+<FmTabs items={['Preview', 'Code']}>
+  <FmTab value="Preview">
+    <DocsPreview>
+      <Tabs defaultValue="account" className="w-[400px]">
+        <TabsList>
+          <TabsTrigger value="account">Account</TabsTrigger>
+          <TabsTrigger value="password" disabled>Password (Disabled)</TabsTrigger>
+        </TabsList>
+        <TabsContent value="account" className="p-4 bg-background mt-2 rounded-xl border">
+          Make changes to your account here.
+        </TabsContent>
+      </Tabs>
+    </DocsPreview>
+  </FmTab>
+  <FmTab value="Code">
+    <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+```tsx
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+
+<Tabs defaultValue="account" className="w-[400px]">
+  <TabsList>
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="password" disabled>Password (Disabled)</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Make changes to your account here.</TabsContent>
+</Tabs>
+```
+    </div>
+  </FmTab>
+</FmTabs>

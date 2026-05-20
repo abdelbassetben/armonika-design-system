@@ -3,6 +3,25 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
+function wrapTextWithPx1(children: React.ReactNode): React.ReactNode {
+  return React.Children.map(children, (child) => {
+    if (typeof child === "string" || typeof child === "number") {
+      return <span className="px-1">{child}</span>;
+    }
+    if (React.isValidElement(child)) {
+      const childType = child.type as any;
+      const childDisplayName = childType?.displayName;
+      if (child.type === "span" || child.type === React.Fragment) {
+        return child;
+      }
+      if (childDisplayName === "BadgeDot") {
+        return child;
+      }
+    }
+    return <span className="px-1">{child}</span>;
+  });
+}
+
 const badgeVariants = cva(
   [
     "group/badge inline-flex w-fit shrink-0 items-center justify-center overflow-hidden",
@@ -77,7 +96,7 @@ function Badge({
       )}
       {...props}
     >
-      {children}
+      {wrapTextWithPx1(children)}
     </span>
   );
 }
@@ -88,9 +107,9 @@ export interface BadgeDotProps extends React.ComponentPropsWithoutRef<"span"> {}
 
 function BadgeDot({ className, ...props }: Readonly<BadgeDotProps>) {
   return (
-    <span
+    <div
       className={cn(
-        "size-1.5 shrink-0 me-0.5 rounded-full bg-current",
+        "size-1.5 shrink-0 rounded-full bg-current",
         className,
       )}
       {...props}

@@ -233,7 +233,7 @@ const InputGroupInput = React.forwardRef<
       ref={ref}
       data-slot="input-group-control"
       className={cn(
-        "h-full min-h-0 flex-1 p-0 bg-s-l1-d3 rounded-lg border-none shadow-none ring-0 focus-visible:ring-0 disabled:bg-transparent aria-invalid:ring-0 dark:bg-transparent dark:disabled:bg-transparent",
+        "h-full min-h-0 flex-1 px-1 bg-s-l1-d3 rounded-lg border-none shadow-none ring-0 focus-visible:ring-0 disabled:bg-transparent aria-invalid:ring-0 dark:bg-transparent dark:disabled:bg-transparent",
         inputGroupControlTypography({ size }),
         className,
       )}

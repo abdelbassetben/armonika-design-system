@@ -4,6 +4,19 @@ import { Button as ButtonPrimitive } from "@base-ui/react/button";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
+import { Children, Fragment, isValidElement } from "react";
+
+function wrapTextWithPx1(children: React.ReactNode): React.ReactNode {
+  return Children.map(children, (child) => {
+    if (typeof child === "string" || typeof child === "number") {
+      return <span className="px-1">{child}</span>;
+    }
+    if (isValidElement(child) && (child.type === "span" || child.type === Fragment)) {
+      return child;
+    }
+    return <span className="px-1">{child}</span>;
+  });
+}
 
 const borderMuted = "border-[#0000000d]";
 
@@ -208,6 +221,7 @@ function Button({
   className,
   variant = "default",
   size = "default",
+  children,
   ...props
 }: ButtonProps) {
   return (
@@ -215,7 +229,9 @@ function Button({
       data-slot="button"
       className={cn(buttonVariants({ variant, size }), className)}
       {...props}
-    />
+    >
+      {wrapTextWithPx1(children)}
+    </ButtonPrimitive>
   );
 }
 

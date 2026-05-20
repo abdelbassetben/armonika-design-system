@@ -3,6 +3,18 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
+function wrapTextWithPx1(children: React.ReactNode): React.ReactNode {
+  return React.Children.map(children, (child) => {
+    if (typeof child === "string" || typeof child === "number") {
+      return <span className="px-1">{child}</span>;
+    }
+    if (React.isValidElement(child) && (child.type === "span" || child.type === React.Fragment)) {
+      return child;
+    }
+    return <span className="px-1">{child}</span>;
+  });
+}
+
 
 const shadowRestInsetSm =
   "shadow-[0_1px_2px_0_var(--inverse-black-alpha-3)_inset,0_2px_1.5px_-0.5px_var(--elevation-shadow)]";
@@ -76,7 +88,7 @@ function Chip({
       )}
       {...props}
     >
-      {children}
+      {wrapTextWithPx1(children)}
     </span>
   );
 }
