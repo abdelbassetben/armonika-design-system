@@ -58,8 +58,8 @@ const chipVariants = cva(
       size: {
         default: "h-5 py-1 px-1.5 text-[10px] gap-x-0.5 rounded-md",
         sm: "h-6 px-2 py-1 text-[10px] gap-x-1 rounded-md",
-        md: "h-7 px-2 py-1 text-sm gap-x-1.5 rounded-lg",
-        lg: "h-8 px-2.5 py-1 text-sm gap-x-1.5 rounded-[10px]",
+        md: "h-8 px-2 py-1 text-sm gap-x-1.5 rounded-lg",
+        lg: "h-10 px-2.5 py-1 text-sm gap-x-1.5 rounded-[10px]",
       },
     },
     defaultVariants: {
