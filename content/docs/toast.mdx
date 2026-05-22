@@ -1,0 +1,113 @@
+---
+title: Toast
+description: A fully customizable toast component for showing temporary notifications. Built on top of Sonner.
+---
+
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+import { Icon } from "@/components/ui/icon";
+import { X } from "lucide-react";
+
+A fully customizable toast that still maintains the animations and interactions of Sonner. Built with `class-variance-authority` for variants.
+
+## Usage
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <ToastDemo />
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { toast } from "@/components/ui/toast";
+
+toast({
+  title: "Toast title",
+  variant: "default", // "default" | "success" | "error" | "warning" | "info"
+});
+```
+
+      </div>
+      <DocsPreview>
+        <ToastDemo />
+      </DocsPreview>
+    </div>
+  </Tab>
+</Tabs>
+
+## With Action
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <ToastWithActionDemo />
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { toast } from "@/components/ui/toast";
+
+toast({
+  title: "New message",
+  variant: "info",
+  action: {
+    label: "View",
+    onClick: () => console.log("Action clicked"),
+  },
+});
+```
+
+      </div>
+      <DocsPreview>
+        <ToastWithActionDemo />
+      </DocsPreview>
+    </div>
+  </Tab>
+</Tabs>
+
+## Properties
+
+| Property    | Type                                                                  | Default     | Description                              |
+| ----------- | --------------------------------------------------------------------- | ----------- | ---------------------------------------- |
+| title       | `string`                                                              | -           | The title of the toast                   |
+| description | `string`                                                              | -           | Optional description text                |
+| variant     | `"default"` \| `"success"` \| `"error"` \| `"warning"` \| `"info"`   | `"default"` | The variant style of the toast           |
+| action      | `{ label: string; onClick: () => void }`                              | -           | Optional action button                   |
+
+## Custom Component
+
+You can also use `toast.custom()` directly with your own component for full control:
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <ToastWithActionDemo />
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { toast as sonnerToast } from "sonner";
+
+sonnerToast.custom((id) => (
+  <div className="flex items-center gap-3 rounded-xl bg-white p-4 shadow-lg ring-1 ring-black/5 dark:bg-[#161615]">
+    <p className="text-sm font-medium">Your custom content</p>
+  </div>
+));
+```
+
+      </div>
+      <DocsPreview>
+        <ToastWithActionDemo />
+      </DocsPreview>
+    </div>
+  </Tab>
+</Tabs>

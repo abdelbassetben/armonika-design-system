@@ -5,7 +5,11 @@ import ShieldTick from "../../public/assets/icons/shield-tick-linear.svg";
 import VerificationTick from "../../public/assets/icons/verification_tick.svg";
 import alertDanger from "../../public/assets/icons/alert-danger.svg";
 import alertInfo from "../../public/assets/icons/alert-info.svg";
+import alertInfoFill from "../../public/assets/icons/alert-info-fill.svg";
 import alertSuccess from "../../public/assets/icons/alert-success.svg";
+import alertSuccessFill from "../../public/assets/icons/alert-success-fill.svg";
+import alert from "../../public/assets/icons/alert.svg";
+import alertFill from "../../public/assets/icons/alert-fill.svg";
 
 const icons = {
   category: Category,
@@ -13,7 +17,11 @@ const icons = {
   verificationTick: VerificationTick,
   alertDanger: alertDanger,
   alertInfo: alertInfo,
+  alertInfoFill: alertInfoFill,
   alertSuccess: alertSuccess,
+  alertSuccessFill: alertSuccessFill,
+  alert: alert,
+  alertFill: alertFill,
 };
 
 type IconName = keyof typeof icons;
