@@ -1,0 +1,232 @@
+---
+title: Combobox
+description: Displays a list of options with a button trigger and an accessible popup.
+---
+
+import {
+  Combobox,
+  ComboboxTrigger,
+  ComboboxValue,
+  ComboboxContent,
+  ComboboxList,
+  ComboboxItem,
+  ComboboxGroup,
+  ComboboxLabel,
+  ComboboxSeparator,
+  ComboboxEmpty,
+} from "@/components/ui/combobox";
+import { Button } from "@/components/ui/button";
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+
+A combobox lets users select from a list of options using an accessible popup. Use the button trigger when you want a compact, non-searchable control.
+
+## Default
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Combobox>
+        <ComboboxTrigger
+          render={
+            <Button variant="outline" className="w-[240px] justify-between">
+              <ComboboxValue placeholder="Select a framework" />
+            </Button>
+          }
+        />
+        <ComboboxContent>
+          <ComboboxList>
+            {[
+              { value: "next", label: "Next.js" },
+              { value: "svelte", label: "SvelteKit" },
+              { value: "nuxt", label: "Nuxt" },
+              { value: "remix", label: "Remix" },
+              { value: "astro", label: "Astro" },
+            ].map((framework) => (
+              <ComboboxItem key={framework.value} value={framework.value}>
+                {framework.label}
+              </ComboboxItem>
+            ))}
+            <ComboboxEmpty>No results found.</ComboboxEmpty>
+          </ComboboxList>
+        </ComboboxContent>
+      </Combobox>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  Combobox,
+  ComboboxTrigger,
+  ComboboxValue,
+  ComboboxContent,
+  ComboboxList,
+  ComboboxItem,
+  ComboboxEmpty,
+} from "@/components/ui/combobox";
+import { Button } from "@/components/ui/button";
+
+const frameworks = [
+  { value: "next", label: "Next.js" },
+  { value: "svelte", label: "SvelteKit" },
+  { value: "nuxt", label: "Nuxt" },
+  { value: "remix", label: "Remix" },
+  { value: "astro", label: "Astro" },
+];
+
+export default function ComboboxDemo() {
+  return (
+    <Combobox>
+      <ComboboxTrigger
+        render={
+          <Button variant="outline" className="w-[240px] justify-between">
+            <ComboboxValue placeholder="Select a framework" />
+          </Button>
+        }
+      />
+      <ComboboxContent>
+        <ComboboxList>
+          {frameworks.map((framework) => (
+            <ComboboxItem key={framework.value} value={framework.value}>
+              {framework.label}
+            </ComboboxItem>
+          ))}
+          <ComboboxEmpty>No results found.</ComboboxEmpty>
+        </ComboboxList>
+      </ComboboxContent>
+    </Combobox>
+  );
+}
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Grouped Options
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Combobox>
+        <ComboboxTrigger
+          render={
+            <Button variant="outline" className="w-[260px] justify-between">
+              <ComboboxValue placeholder="Select a product" />
+            </Button>
+          }
+        />
+        <ComboboxContent>
+          <ComboboxList>
+            {[
+              {
+                label: "Frameworks",
+                items: [
+                  { value: "next", label: "Next.js" },
+                  { value: "nuxt", label: "Nuxt" },
+                  { value: "remix", label: "Remix" },
+                ],
+              },
+              {
+                label: "Platforms",
+                items: [
+                  { value: "vercel", label: "Vercel" },
+                  { value: "netlify", label: "Netlify" },
+                  { value: "cloudflare", label: "Cloudflare" },
+                ],
+              },
+            ].map((group, index, array) => (
+              <ComboboxGroup key={group.label}>
+                <ComboboxLabel>{group.label}</ComboboxLabel>
+                {group.items.map((item) => (
+                  <ComboboxItem key={item.value} value={item.value}>
+                    {item.label}
+                  </ComboboxItem>
+                ))}
+                {index < array.length - 1 && <ComboboxSeparator />}
+              </ComboboxGroup>
+            ))}
+            <ComboboxEmpty>No results found.</ComboboxEmpty>
+          </ComboboxList>
+        </ComboboxContent>
+      </Combobox>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  Combobox,
+  ComboboxTrigger,
+  ComboboxValue,
+  ComboboxContent,
+  ComboboxList,
+  ComboboxItem,
+  ComboboxGroup,
+  ComboboxLabel,
+  ComboboxSeparator,
+  ComboboxEmpty,
+} from "@/components/ui/combobox";
+import { Button } from "@/components/ui/button";
+
+const groupedOptions = [
+  {
+    label: "Frameworks",
+    items: [
+      { value: "next", label: "Next.js" },
+      { value: "nuxt", label: "Nuxt" },
+      { value: "remix", label: "Remix" },
+    ],
+  },
+  {
+    label: "Platforms",
+    items: [
+      { value: "vercel", label: "Vercel" },
+      { value: "netlify", label: "Netlify" },
+      { value: "cloudflare", label: "Cloudflare" },
+    ],
+  },
+];
+
+export default function GroupedComboboxDemo() {
+  return (
+    <Combobox>
+      <ComboboxTrigger
+        render={
+          <Button variant="outline" className="w-[260px] justify-between">
+            <ComboboxValue placeholder="Select a product" />
+          </Button>
+        }
+      />
+      <ComboboxContent>
+        <ComboboxList>
+          {groupedOptions.map((group, index) => (
+            <ComboboxGroup key={group.label}>
+              <ComboboxLabel>{group.label}</ComboboxLabel>
+              {group.items.map((item) => (
+                <ComboboxItem key={item.value} value={item.value}>
+                  {item.label}
+                </ComboboxItem>
+              ))}
+              {index < groupedOptions.length - 1 && <ComboboxSeparator />}
+            </ComboboxGroup>
+          ))}
+          <ComboboxEmpty>No results found.</ComboboxEmpty>
+        </ComboboxList>
+      </ComboboxContent>
+    </Combobox>
+  );
+}
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
