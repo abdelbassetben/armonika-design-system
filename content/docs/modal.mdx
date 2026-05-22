@@ -1,0 +1,422 @@
+---
+title: Modal
+description: A dialog window that appears on top of the main content to display information or prompt an action.
+---
+
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogFooter,
+  DialogTitle,
+  DialogDescription,
+  DialogIcon,
+  DialogClose,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+
+A modal dialog that appears on top of the page content, requiring user interaction before returning to the main context.
+
+## With Icon
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Dialog>
+        <DialogTrigger render={<Button variant="outline">Upgrade Plan</Button>} />
+        <DialogContent>
+          <DialogHeader>
+            <DialogIcon name="category" />
+            <DialogTitle>Upgrade your plan</DialogTitle>
+            <DialogDescription>Get access to premium features and priority support by upgrading to a paid plan.</DialogDescription>
+          </DialogHeader>
+          <div className="flex min-h-20 items-center justify-center">
+            <p className="text-sm text-muted-foreground">Choose a plan that fits your needs and unlock premium features.</p>
+          </div>
+          <DialogFooter>
+            <DialogClose render={<Button variant="outline">Cancel</Button>} />
+            <Button variant="brand">Upgrade</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogFooter,
+  DialogTitle,
+  DialogDescription,
+  DialogIcon,
+  DialogClose,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+
+export default function ModalWithIconDemo() {
+  return (
+    <Dialog>
+      <DialogTrigger render={<Button variant="outline">Upgrade Plan</Button>} />
+      <DialogContent>
+        <DialogHeader>
+          <DialogIcon name="category" />
+          <DialogTitle>Upgrade your plan</DialogTitle>
+          <DialogDescription>Get access to premium features and priority support by upgrading to a paid plan.</DialogDescription>
+        </DialogHeader>
+        <div className="flex min-h-20 items-center justify-center">
+          <p className="text-sm text-muted-foreground">Choose a plan that fits your needs and unlock premium features.</p>
+        </div>
+        <DialogFooter>
+          <DialogClose render={<Button variant="outline">Cancel</Button>} />
+          <Button variant="brand">Upgrade</Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Centered
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Dialog>
+        <DialogTrigger render={<Button variant="outline">Success</Button>} />
+        <DialogContent>
+          <DialogHeader layout="center">
+            <DialogIcon name="alertSuccess" />
+            <DialogTitle>Payment successful</DialogTitle>
+            <DialogDescription>Your transaction has been completed successfully. You will receive a confirmation email shortly.</DialogDescription>
+          </DialogHeader>
+          <div className="flex min-h-20 items-center justify-center">
+            <p className="text-sm text-muted-foreground">Your transaction has been completed and a confirmation email is on its way.</p>
+          </div>
+          <DialogFooter layout="stretch">
+            <Button variant="default">Continue</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogFooter,
+  DialogTitle,
+  DialogDescription,
+  DialogIcon,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+
+export default function ModalCenteredDemo() {
+  return (
+    <Dialog>
+      <DialogTrigger render={<Button variant="outline">Success</Button>} />
+      <DialogContent>
+        <DialogHeader layout="center">
+          <DialogIcon name="alertSuccess" />
+          <DialogTitle>Payment successful</DialogTitle>
+          <DialogDescription>Your transaction has been completed successfully.</DialogDescription>
+        </DialogHeader>
+        <div className="flex min-h-20 items-center justify-center">
+          <p className="text-sm text-muted-foreground">Your transaction has been completed and a confirmation email is on its way.</p>
+        </div>
+        <DialogFooter layout="stretch">
+          <Button variant="default">Continue</Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## With Body Content
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Dialog>
+        <DialogTrigger render={<Button variant="outline">Open Modal</Button>} />
+        <DialogContent>
+          <DialogHeader>
+            <DialogIcon name="category" />
+            <DialogTitle>Modal Title</DialogTitle>
+            <DialogDescription>This is a description for the modal dialog.</DialogDescription>
+          </DialogHeader>
+          <div className="flex min-h-20 items-center justify-center">
+            <p className="text-sm text-muted-foreground">Body slot — place any content here.</p>
+          </div>
+          <DialogFooter>
+            <DialogClose render={<Button variant="outline">Cancel</Button>} />
+            <Button>Continue</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogFooter,
+  DialogTitle,
+  DialogDescription,
+  DialogIcon,
+  DialogClose,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+
+export default function ModalWithBodyDemo() {
+  return (
+    <Dialog>
+      <DialogTrigger render={<Button variant="outline">Open Modal</Button>} />
+      <DialogContent>
+        <DialogHeader>
+          <DialogIcon name="category" />
+          <DialogTitle>Modal Title</DialogTitle>
+          <DialogDescription>This is a description for the modal dialog.</DialogDescription>
+        </DialogHeader>
+        <div className="flex min-h-20 items-center justify-center">
+          <p className="text-sm text-muted-foreground">Body slot — place any content here.</p>
+        </div>
+        <DialogFooter>
+          <DialogClose render={<Button variant="outline">Cancel</Button>} />
+          <Button>Continue</Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+
+## Footer Layouts
+
+The `DialogFooter` component supports 4 different button layouts (`end`, `start`, `stretch`, `stacked`) through the `layout` prop.
+
+### End (Default)
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Dialog>
+        <DialogTrigger render={<Button variant="outline">End Layout (Default)</Button>} />
+        <DialogContent>
+          <DialogHeader>
+            <DialogIcon name="category" />
+            <DialogTitle>End Layout</DialogTitle>
+            <DialogDescription>Buttons align to the right side of the footer.</DialogDescription>
+          </DialogHeader>
+          <div className="flex min-h-20 items-center justify-center">
+            <p className="text-sm text-muted-foreground">Body content area for descriptions, forms, or additional information.</p>
+          </div>
+          <DialogFooter layout="end">
+            <DialogClose render={<Button variant="secondary">Cancel</Button>} />
+            <Button>Save Changes</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+<DialogFooter layout="end">
+  <DialogClose render={<Button variant="secondary">Cancel</Button>} />
+  <Button>Save Changes</Button>
+</DialogFooter>
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+### Start
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Dialog>
+        <DialogTrigger render={<Button variant="outline">Start Layout</Button>} />
+        <DialogContent>
+          <DialogHeader>
+            <DialogIcon name="category" />
+            <DialogTitle>Start Layout</DialogTitle>
+            <DialogDescription>Buttons align to the left side of the footer.</DialogDescription>
+          </DialogHeader>
+          <div className="flex min-h-20 items-center justify-center">
+            <p className="text-sm text-muted-foreground">Body content area for descriptions, forms, or additional information.</p>
+          </div>
+          <DialogFooter layout="start">
+            <Button>Save Changes</Button>
+            <DialogClose render={<Button variant="secondary">Cancel</Button>} />
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+<DialogFooter layout="start">
+  <Button>Save Changes</Button>
+  <DialogClose render={<Button variant="secondary">Cancel</Button>} />
+</DialogFooter>
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+### Stretch
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Dialog>
+        <DialogTrigger render={<Button variant="outline">Stretch Layout</Button>} />
+        <DialogContent>
+          <DialogHeader>
+            <DialogIcon name="category" />
+            <DialogTitle>Stretch Layout</DialogTitle>
+            <DialogDescription>Buttons stretch to take up equal width (50% each).</DialogDescription>
+          </DialogHeader>
+          <div className="flex min-h-20 items-center justify-center">
+            <p className="text-sm text-muted-foreground">Body content area for descriptions, forms, or additional information.</p>
+          </div>
+          <DialogFooter layout="stretch">
+            <DialogClose render={<Button variant="secondary">Cancel</Button>} />
+            <Button>Save Changes</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+<DialogFooter layout="stretch">
+  <DialogClose render={<Button variant="secondary">Cancel</Button>} />
+  <Button>Save Changes</Button>
+</DialogFooter>
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+### Stacked
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Dialog>
+        <DialogTrigger render={<Button variant="outline">Stacked Layout</Button>} />
+        <DialogContent>
+          <DialogHeader>
+            <DialogIcon name="category" />
+            <DialogTitle>Stacked Layout</DialogTitle>
+            <DialogDescription>Buttons stack vertically and take up 100% width.</DialogDescription>
+          </DialogHeader>
+          <div className="flex min-h-20 items-center justify-center">
+            <p className="text-sm text-muted-foreground">Body content area for descriptions, forms, or additional information.</p>
+          </div>
+          <DialogFooter layout="stacked">
+            <Button>Save Changes</Button>
+            <DialogClose render={<Button variant="secondary">Cancel</Button>} />
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+<DialogFooter layout="stacked">
+  <Button>Save Changes</Button>
+  <DialogClose render={<Button variant="secondary">Cancel</Button>} />
+</DialogFooter>
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Properties
+
+| Property          | Type      | Default | Description                     |
+| ----------------- | --------- | ------- | ------------------------------- |
+| `showCloseButton` | `boolean` | `true`  | Show the default X close button |
+
+### DialogContent
+
+| Property          | Type        | Default | Description                     |
+| ----------------- | ----------- | ------- | ------------------------------- |
+| `showCloseButton` | `boolean`   | `true`  | Show the default X close button |
+| `className`       | `string`    | -       | Additional CSS classes          |
+| `children`        | `ReactNode` | -       | The content of the dialog       |
+
+### DialogFooter
+
+| Property          | Type                                   | Default | Description                           |
+| ----------------- | -------------------------------------- | ------- | ------------------------------------- |
+| `showCloseButton` | `boolean`                              | `false` | Show a default Close button           |
+| `layout`          | `'end', 'start', 'stretch', 'stacked'` | `'end'` | Layout variant for the footer buttons |
+| `className`       | `string`                               | -       | Additional CSS classes                |
+| `children`        | `ReactNode`                            | -       | The content of the footer             |

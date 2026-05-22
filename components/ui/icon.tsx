@@ -24,6 +24,8 @@ interface IconProps {
   background?: boolean;
 }
 
+export type { IconName };
+
 export function Icon({ name, className, background }: IconProps) {
   const Svg = icons[name];
 
