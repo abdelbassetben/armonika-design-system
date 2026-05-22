@@ -4,6 +4,7 @@ description: A popup that displays information related to an element when the el
 ---
 
 import {
+  Tooltip,
   TooltipTrigger,
   TooltipContent,
   TooltipProvider,
@@ -11,20 +12,18 @@ import {
 import { Button } from "@/components/ui/button";
 import { Tabs, Tab } from "fumadocs-ui/components/tabs";
 
-> **Inspecting:** Live previews on this page use `TooltipForceOpen` (controlled `open` with a no-op `onOpenChange`) so the popup stays mounted in the DOM for DevTools. The **Code** tabs show the normal hover-only `Tooltip` for copy-paste.
-
 ### Standard Tooltip
 
 <Tabs items={['Preview', 'Code']} defaultIndex={0}>
   <Tab>
     <DocsPreview>
       <TooltipProvider>
-        <TooltipForceOpen>
+        <Tooltip>
           <TooltipTrigger render={<Button variant="outline">Hover</Button>} />
           <TooltipContent >
             <p>Add to library</p>
           </TooltipContent>
-        </TooltipForceOpen>
+        </Tooltip>
       </TooltipProvider>
     </DocsPreview>
   </Tab>
@@ -72,21 +71,21 @@ The destructive bubble uses `border: 1px solid var(--Outline-danger_base_em_alph
     <DocsPreview>
       <TooltipProvider>
         <div className="flex gap-10">
-          <TooltipForceOpen>
+          <Tooltip>
             <TooltipTrigger render={<Button variant="outline">Default</Button>} />
             <TooltipContent variant="default">
               <p>Default tooltip</p>
             </TooltipContent>
-          </TooltipForceOpen>
+          </Tooltip>
 
-          <TooltipForceOpen>
+          <Tooltip>
             <TooltipTrigger
               render={<Button variant="outline" >Destructive</Button>}
             />
             <TooltipContent variant="destructive" >
               <p>Destructive tooltip</p>
             </TooltipContent>
-          </TooltipForceOpen>
+          </Tooltip>
         </div>
       </TooltipProvider>
     </DocsPreview>
@@ -145,33 +144,33 @@ Tooltips can be positioned `top`, `bottom`, `left`, or `right`.
     <DocsPreview>
       <TooltipProvider>
         <div className="flex gap-20">
-          <TooltipForceOpen>
+          <Tooltip>
             <TooltipTrigger render={<Button variant="outline">Top</Button>} />
             <TooltipContent side="top">
               <p>Top tooltip</p>
             </TooltipContent>
-          </TooltipForceOpen>
+          </Tooltip>
 
-          <TooltipForceOpen>
+          <Tooltip>
             <TooltipTrigger render={<Button variant="outline">Bottom</Button>} />
             <TooltipContent side="bottom">
               <p>Bottom tooltip</p>
             </TooltipContent>
-          </TooltipForceOpen>
+          </Tooltip>
 
-          <TooltipForceOpen>
+          <Tooltip>
             <TooltipTrigger render={<Button variant="outline">Left</Button>} />
             <TooltipContent side="left">
               <p>Left tooltip</p>
             </TooltipContent>
-          </TooltipForceOpen>
+          </Tooltip>
 
-          <TooltipForceOpen>
+          <Tooltip>
             <TooltipTrigger render={<Button variant="outline">Right</Button>} />
             <TooltipContent side="right">
               <p>Right tooltip</p>
             </TooltipContent>
-          </TooltipForceOpen>
+          </Tooltip>
         </div>
       </TooltipProvider>
     </DocsPreview>
@@ -242,26 +241,26 @@ You can use the `align` property to align the tooltip (and its arrow) to the `st
     <DocsPreview>
       <TooltipProvider>
         <div className="flex gap-40">
-          <TooltipForceOpen>
+          <Tooltip>
             <TooltipTrigger render={<Button variant="outline">Start</Button>} />
             <TooltipContent side="bottom" align="start">
               <p>Aligned start</p>
             </TooltipContent>
-          </TooltipForceOpen>
+          </Tooltip>
 
-          <TooltipForceOpen>
+          <Tooltip>
             <TooltipTrigger render={<Button variant="outline">Center</Button>} />
             <TooltipContent side="bottom" align="center">
               <p>Aligned center</p>
             </TooltipContent>
-          </TooltipForceOpen>
+          </Tooltip>
 
-          <TooltipForceOpen>
+          <Tooltip>
             <TooltipTrigger render={<Button variant="outline">End</Button>} />
             <TooltipContent side="bottom" align="end">
               <p>Aligned end</p>
             </TooltipContent>
-          </TooltipForceOpen>
+          </Tooltip>
         </div>
       </TooltipProvider>
     </DocsPreview>
