@@ -1,0 +1,315 @@
+---
+title: Link
+description: A styled link component built on top of Next.js Link. Supports multiple visual variants with icon start/end slots.
+---
+
+import { Link } from "@/components/ui/link";
+import { Icon } from "@/components/ui/icon";
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+
+A navigation link component with built-in variant styling. Wraps Next.js `Link` and supports `iconStart`/`iconEnd` slots.
+
+## Primary
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Link href="#">Primary Link</Link>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Link } from "@/components/ui/link";
+
+<Link href="#">
+  Primary Link
+</Link>;
+```
+
+      </div>
+      <DocsPreview>
+        <Link href="#">Primary Link</Link>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Secondary
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Link href="#" variant="secondary">Secondary Link</Link>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Link } from "@/components/ui/link";
+
+<Link href="#" variant="secondary">
+  Secondary Link
+</Link>;
+```
+
+      </div>
+      <DocsPreview>
+        <Link href="#" variant="secondary">Secondary Link</Link>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Tertiary
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Link href="#" variant="tertiary">Tertiary Link</Link>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Link } from "@/components/ui/link";
+
+<Link href="#" variant="tertiary">
+  Tertiary Link
+</Link>;
+```
+
+      </div>
+      <DocsPreview>
+        <Link href="#" variant="tertiary">Tertiary Link</Link>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## With Icon Start
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Link href="#" iconStart={<Icon name="category" className="size-4" />}>
+        Get Started
+      </Link>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Link } from "@/components/ui/link";
+import { Icon } from "@/components/ui/icon";
+
+<Link href="#" iconStart={<Icon name="category" className="size-4" />}>
+  Get Started
+</Link>;
+```
+
+      </div>
+      <DocsPreview>
+        <Link href="#" iconStart={<Icon name="category" className="size-4" />}>
+          Get Started
+        </Link>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## With Icon End
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Link href="#" variant="secondary" iconEnd={<Icon name="shieldTick" className="size-4" />}>
+        Learn More
+      </Link>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Link } from "@/components/ui/link";
+import { Icon } from "@/components/ui/icon";
+
+<Link href="#" variant="secondary" iconEnd={<Icon name="shieldTick" className="size-4" />}>
+  Learn More
+</Link>;
+```
+
+      </div>
+      <DocsPreview>
+        <Link href="#" variant="secondary" iconEnd={<Icon name="shieldTick" className="size-4" />}>
+          Learn More
+        </Link>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## With Both Icons
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Link
+        href="#"
+        variant="secondary"
+        iconStart={<Icon name="shieldTick" className="size-4" />}
+        iconEnd={<Icon name="category" className="size-4" />}
+      >
+        Verify Now
+      </Link>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Link } from "@/components/ui/link";
+import { Icon } from "@/components/ui/icon";
+
+<Link
+  href="#"
+  variant="secondary"
+  iconStart={<Icon name="shieldTick" className="size-4" />}
+  iconEnd={<Icon name="category" className="size-4" />}
+>
+  Verify Now
+</Link>;
+```
+
+      </div>
+      <DocsPreview>
+        <Link
+          href="#"
+          variant="secondary"
+          iconStart={<Icon name="shieldTick" className="size-4" />}
+          iconEnd={<Icon name="category" className="size-4" />}
+        >
+          Verify Now
+        </Link>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Disabled
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex flex-wrap items-center gap-4">
+        <Link href="#" disabled>Primary</Link>
+        <Link href="#" variant="secondary" disabled>Secondary</Link>
+        <Link href="#" variant="tertiary" disabled>Tertiary</Link>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Link } from "@/components/ui/link";
+
+<div className="flex flex-wrap items-center gap-4">
+  <Link href="#" disabled>
+    Primary
+  </Link>
+  <Link href="#" variant="secondary" disabled>
+    Secondary
+  </Link>
+  <Link href="#" variant="tertiary" disabled>
+    Tertiary
+  </Link>
+</div>;
+```
+
+      </div>
+      <DocsPreview>
+        <div className="flex flex-wrap items-center gap-4">
+          <Link href="#" disabled>Primary</Link>
+          <Link href="#" variant="secondary" disabled>Secondary</Link>
+          <Link href="#" variant="tertiary" disabled>Tertiary</Link>
+        </div>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Variants
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex flex-wrap items-center gap-6">
+        <Link href="#" variant="primary">Primary</Link>
+        <Link href="#" variant="secondary">Secondary</Link>
+        <Link href="#" variant="tertiary">Tertiary</Link>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Link } from "@/components/ui/link";
+
+<div className="flex flex-wrap items-center gap-6">
+  <Link href="#" variant="primary">
+    Primary
+  </Link>
+  <Link href="#" variant="secondary">
+    Secondary
+  </Link>
+  <Link href="#" variant="tertiary">
+    Tertiary
+  </Link>
+</div>;
+```
+
+      </div>
+      <DocsPreview>
+        <div className="flex flex-wrap items-center gap-6">
+          <Link href="#" variant="primary">Primary</Link>
+          <Link href="#" variant="secondary">Secondary</Link>
+          <Link href="#" variant="tertiary">Tertiary</Link>
+        </div>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Properties
+
+| Property   | Type                                       | Default     | Description                              |
+| ---------- | ------------------------------------------ | ----------- | ---------------------------------------- |
+| variant    | `"primary"` \| `"secondary"` \| `"tertiary"` | `"primary"` | The variant style of the link            |
+| iconStart  | `ReactNode`                                | -           | Icon displayed before the link text      |
+| iconEnd    | `ReactNode`                                | -           | Icon displayed after the link text       |
+| disabled   | boolean                                    | `false`     | Whether the link is disabled             |
+| href       | string                                     | -           | The URL to navigate to                   |
+| children   | ReactNode                                  | -           | The content of the link                  |
