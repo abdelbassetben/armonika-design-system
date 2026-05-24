@@ -1,0 +1,763 @@
+---
+title: Pagination
+description: A navigation component for moving between pages of content. Supports page links, previous/next, and ellipsis truncation.
+---
+
+import { Pagination, PaginationContent, PaginationEllipsis, PaginationGoToPage, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious, PaginationResultsPerPage } from "@/components/ui/pagination";
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+
+A pagination component for navigating through multiple pages. Built on top of the Button component and Next.js Link.
+
+## Default
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Pagination>
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationLink href="#">1</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="#" isActive>2</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="#">3</PaginationLink>
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Pagination, PaginationContent, PaginationItem, PaginationLink } from "@/components/ui/pagination";
+
+<Pagination>
+  <PaginationContent>
+    <PaginationItem>
+      <PaginationLink href="#">
+        1
+      </PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#" isActive>
+        2
+      </PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#">
+        3
+      </PaginationLink>
+    </PaginationItem>
+  </PaginationContent>
+</Pagination>;
+```
+
+      </div>
+      <DocsPreview>
+        <Pagination>
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationLink href="#">1</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#" isActive>2</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#">3</PaginationLink>
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## With Previous and Next
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Pagination>
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious href="#" />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="#">1</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="#" isActive>2</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="#">3</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationNext href="#" />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
+
+<Pagination>
+  <PaginationContent>
+    <PaginationItem>
+      <PaginationPrevious href="#" />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#">
+        1
+      </PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#" isActive>
+        2
+      </PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#">
+        3
+      </PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationNext href="#" />
+    </PaginationItem>
+  </PaginationContent>
+</Pagination>;
+```
+
+      </div>
+      <DocsPreview>
+        <Pagination>
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious href="#" />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#">1</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#" isActive>2</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#">3</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationNext href="#" />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Interactive
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <PaginationDemo />
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+"use client";
+
+import { useState } from "react";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+
+function PaginationDemo() {
+  const [activePage, setActivePage] = useState(1);
+
+  return (
+    <Pagination>
+      <PaginationContent>
+        <PaginationItem>
+          <PaginationPrevious
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              setActivePage(Math.max(1, activePage - 1));
+            }}
+          />
+        </PaginationItem>
+        {[1, 2, 3, 4, 5].map((page) => (
+          <PaginationItem key={page}>
+            <PaginationLink
+              href="#"
+              isActive={page === activePage}
+              onClick={(e) => {
+                e.preventDefault();
+                setActivePage(page);
+              }}
+            >
+              {page}
+            </PaginationLink>
+          </PaginationItem>
+        ))}
+        <PaginationItem>
+          <PaginationNext
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              setActivePage(Math.min(5, activePage + 1));
+            }}
+          />
+        </PaginationItem>
+      </PaginationContent>
+    </Pagination>
+  );
+}
+```
+
+      </div>
+      <DocsPreview>
+        <PaginationDemo />
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## With Ellipsis
+
+For larger page sets, use `PaginationEllipsis` to truncate the page list. The ellipsis placement adapts based on the active page.
+
+### Near First
+
+When the active page is near the beginning, the ellipsis appears before the last page.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <PaginationNearFirstDemo />
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+
+<Pagination>
+  <PaginationContent>
+    <PaginationItem>
+      <PaginationPrevious href="#" />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#" isActive>1</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#">2</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#">3</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationEllipsis />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#">10</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationNext href="#" />
+    </PaginationItem>
+  </PaginationContent>
+</Pagination>;
+```
+
+      </div>
+      <DocsPreview>
+        <PaginationNearFirstDemo />
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+### Near End
+
+When the active page is near the end, the ellipsis appears after the first page.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <PaginationNearEndDemo />
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+
+<Pagination>
+  <PaginationContent>
+    <PaginationItem>
+      <PaginationPrevious href="#" />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#">1</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationEllipsis />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#">8</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#">9</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#" isActive>10</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationNext href="#" />
+    </PaginationItem>
+  </PaginationContent>
+</Pagination>;
+```
+
+      </div>
+      <DocsPreview>
+        <PaginationNearEndDemo />
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+### Middle
+
+When the active page is in the middle, ellipsis appears on both sides.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <PaginationMiddleDemo />
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+
+<Pagination>
+  <PaginationContent>
+    <PaginationItem>
+      <PaginationPrevious href="#" />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#">1</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationEllipsis />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#">4</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#" isActive>5</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#">6</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationEllipsis />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#">10</PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationNext href="#" />
+    </PaginationItem>
+  </PaginationContent>
+</Pagination>;
+```
+
+      </div>
+      <DocsPreview>
+        <PaginationMiddleDemo />
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+### Interactive
+
+An interactive example that adapts the ellipsis placement as you navigate.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <PaginationWithEllipsisDemo />
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+"use client";
+
+import { useState } from "react";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+
+function PaginationWithEllipsisDemo() {
+  const totalPages = 10;
+  const [activePage, setActivePage] = useState(1);
+
+  function renderPage(page: number) {
+    return (
+      <PaginationItem key={page}>
+        <PaginationLink
+          href="#"
+          isActive={page === activePage}
+          onClick={(e) => {
+            e.preventDefault();
+            setActivePage(page);
+          }}
+        >
+          {page}
+        </PaginationLink>
+      </PaginationItem>
+    );
+  }
+
+  function buildPages() {
+    const items = [];
+
+    if (activePage <= 3) {
+      items.push(renderPage(1), renderPage(2), renderPage(3));
+      items.push(
+        <PaginationItem key="ellipsis-end">
+          <PaginationEllipsis />
+        </PaginationItem>
+      );
+      items.push(renderPage(totalPages));
+    } else if (activePage >= 8) {
+      items.push(renderPage(1));
+      items.push(
+        <PaginationItem key="ellipsis-start">
+          <PaginationEllipsis />
+        </PaginationItem>
+      );
+      items.push(renderPage(8), renderPage(9), renderPage(10));
+    } else {
+      items.push(renderPage(1));
+      items.push(
+        <PaginationItem key="ellipsis-start">
+          <PaginationEllipsis />
+        </PaginationItem>
+      );
+      items.push(
+        renderPage(activePage - 1),
+        renderPage(activePage),
+        renderPage(activePage + 1)
+      );
+      items.push(
+        <PaginationItem key="ellipsis-end">
+          <PaginationEllipsis />
+        </PaginationItem>
+      );
+      items.push(renderPage(totalPages));
+    }
+
+    return items;
+  }
+
+  return (
+    <Pagination>
+      <PaginationContent>
+        <PaginationItem>
+          <PaginationPrevious
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              setActivePage(Math.max(1, activePage - 1));
+            }}
+          />
+        </PaginationItem>
+        {buildPages()}
+        <PaginationItem>
+          <PaginationNext
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              setActivePage(Math.min(totalPages, activePage + 1));
+            }}
+          />
+        </PaginationItem>
+      </PaginationContent>
+    </Pagination>
+  );
+}
+```
+
+      </div>
+      <DocsPreview>
+        <PaginationWithEllipsisDemo />
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Custom Previous / Next Text
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Pagination>
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious href="#" text="Back" />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="#" isActive>1</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="#">2</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationNext href="#" text="Forward" />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
+
+<Pagination>
+  <PaginationContent>
+    <PaginationItem>
+      <PaginationPrevious href="#" text="Back" />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#" isActive>
+        1
+      </PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationLink href="#">
+        2
+      </PaginationLink>
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationNext href="#" text="Forward" />
+    </PaginationItem>
+  </PaginationContent>
+</Pagination>;
+```
+
+      </div>
+      <DocsPreview>
+        <Pagination>
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious href="#" text="Back" />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#" isActive>1</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#">2</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationNext href="#" text="Forward" />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Full Layout
+
+A complete pagination bar combining page navigation, a go-to-page input, and a results-per-page selector. The go-to control is hidden on mobile.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <PaginationFullDemo />
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+"use client";
+
+import { useState } from "react";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationGoToPage,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+  PaginationResultsPerPage,
+} from "@/components/ui/pagination";
+
+function PaginationFullDemo() {
+  const totalPages = 20
+  const [activePage, setActivePage] = useState(1)
+  const [resultsPerPage, setResultsPerPage] = useState(10)
+
+  function handleGoToPage(page: number) {
+    if (page >= 1 && page <= totalPages) {
+      setActivePage(page)
+    }
+  }
+
+  return (
+    <div className="flex flex-col gap-4 sm:flex-row items-center sm:justify-between w-full">
+      <Pagination className="mx-0 w-auto">
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious href="#" />
+          </PaginationItem>
+          {[1, 2, 3, 4, 5].map((page) => (
+            <PaginationItem key={page}>
+              <PaginationLink
+                href="#"
+                isActive={page === activePage}
+              >
+                {page}
+              </PaginationLink>
+            </PaginationItem>
+          ))}
+          <PaginationItem>
+            <PaginationNext href="#" />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
+      <div className="flex items-center gap-3">
+        <PaginationGoToPage onGoToPage={handleGoToPage} />
+        <PaginationResultsPerPage
+          value={resultsPerPage}
+          onValueChange={setResultsPerPage}
+        />
+      </div>
+    </div>
+  );
+}
+```
+
+      </div>
+      <DocsPreview>
+        <PaginationFullDemo />
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Properties
+
+### Pagination
+
+| Property | Type                | Default  | Description                |
+| -------- | ------------------- | -------- | -------------------------- |
+| className | string              | -        | Additional CSS classes     |
+| children  | ReactNode           | -        | The content of the pagination |
+
+### PaginationLink
+
+| Property | Type                                              | Default     | Description                           |
+| -------- | ------------------------------------------------- | ----------- | ------------------------------------- |
+| isActive | boolean                                            | `false`     | Whether the link represents the current page |
+| size     | `"default"` \| `"sm"` \| `"md"` \| `"lg"` \| `"icon"` | `"icon"`    | The size of the button                |
+| href     | string                                             | -           | The URL to navigate to                |
+| children | ReactNode                                          | -           | The content of the link               |
+
+### PaginationPrevious / PaginationNext
+
+| Property | Type                                              | Default      | Description                 |
+| -------- | ------------------------------------------------- | ------------ | --------------------------- |
+| text     | string                                            | `"Previous"` / `"Next"` | The label text shown on larger screens |
+| href     | string                                            | -            | The URL to navigate to      |
+
+### PaginationGoToPage
+
+| Property   | Type                           | Default | Description                                  |
+| ---------- | ------------------------------ | ------- | -------------------------------------------- |
+| onGoToPage | `(page: number) => void`       | -       | Callback fired when the user clicks Go       |
+| className  | string                         | -       | Additional CSS classes                       |
+
+### PaginationResultsPerPage
+
+| Property      | Type                           | Default | Description                                  |
+| ------------- | ------------------------------ | ------- | -------------------------------------------- |
+| value         | number                         | `10`    | Current results-per-page value               |
+| onValueChange | `(value: number) => void`      | -       | Callback fired when the selection changes    |
+| className     | string                         | -       | Additional CSS classes                       |

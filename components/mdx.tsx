@@ -8,6 +8,14 @@ import {
   ActionBarPlacementDemo,
   ActionBarVariantsDemo,
 } from '@/components/action-bar-demo';
+import {
+  PaginationDemo,
+  PaginationWithEllipsisDemo,
+  PaginationNearFirstDemo,
+  PaginationNearEndDemo,
+  PaginationMiddleDemo,
+  PaginationFullDemo,
+} from '@/components/pagination-demo';
 import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
 export function getMDXComponents(components?: MDXComponents) {
@@ -16,6 +24,12 @@ export function getMDXComponents(components?: MDXComponents) {
     DocsPreview,
     ToastDemo,
     ToastWithActionDemo,
+    PaginationDemo,
+    PaginationWithEllipsisDemo,
+    PaginationNearFirstDemo,
+    PaginationNearEndDemo,
+    PaginationMiddleDemo,
+    PaginationFullDemo,
     ActionBarDemo,
     ActionBarVerticalDemo,
     ActionBarPlacementDemo,

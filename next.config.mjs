@@ -43,6 +43,10 @@ const config = {
       },
     },
   },
+  experimental: {
+    preloadEntriesOnStart: false,
+    webpackMemoryOptimizations: true,
+  },
   reactStrictMode: true,
 };
 
