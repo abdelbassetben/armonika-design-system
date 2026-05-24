@@ -11,6 +11,7 @@ import alertSuccessFill from "../../public/assets/icons/alert-success-fill.svg";
 import alert from "../../public/assets/icons/alert.svg";
 import alertFill from "../../public/assets/icons/alert-fill.svg";
 import MoreAction from "../../public/assets/icons/more-action.svg";
+import Chevron from "../../public/assets/icons/chevron.svg";
 
 const icons = {
   category: Category,
@@ -24,6 +25,7 @@ const icons = {
   alert: alert,
   alertFill: alertFill,
   moreAction: MoreAction,
+  chevron: Chevron,
 };
 
 type IconName = keyof typeof icons;

@@ -1,0 +1,515 @@
+---
+title: Select
+description: A composable select component that supports groups, labels, separators, sizes, disabled, and invalid states.
+---
+
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+  SelectGroup,
+  SelectLabel,
+  SelectSeparator,
+} from "@/components/ui/select";
+import { Field, FieldLabel, FieldError } from "@/components/ui/field";
+import { Icon } from "@/components/ui/icon";
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+import { DocsPreview } from "@/components/docs-preview";
+
+A composable select component built on [Base UI](https://base-ui.com/).
+
+## Default
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="w-full max-w-60">
+        <Field>
+          <FieldLabel>Framework</FieldLabel>
+          <Select defaultValue="react">
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="react">React</SelectItem>
+              <SelectItem value="vue">Vue</SelectItem>
+              <SelectItem value="angular">Angular</SelectItem>
+              <SelectItem value="svelte">Svelte</SelectItem>
+            </SelectContent>
+          </Select>
+        </Field>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
+import { Field, FieldLabel } from "@/components/ui/field";
+
+<Field>
+  <FieldLabel>Framework</FieldLabel>
+  <Select defaultValue="react">
+    <SelectTrigger>
+      <SelectValue />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectItem value="react">React</SelectItem>
+      <SelectItem value="vue">Vue</SelectItem>
+      <SelectItem value="angular">Angular</SelectItem>
+      <SelectItem value="svelte">Svelte</SelectItem>
+    </SelectContent>
+  </Select>
+</Field>
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## With Placeholder
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="w-full max-w-60">
+        <Field>
+          <FieldLabel>Framework</FieldLabel>
+          <Select>
+            <SelectTrigger>
+              <SelectValue placeholder="Select a framework" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="react">React</SelectItem>
+              <SelectItem value="vue">Vue</SelectItem>
+              <SelectItem value="angular">Angular</SelectItem>
+              <SelectItem value="svelte">Svelte</SelectItem>
+            </SelectContent>
+          </Select>
+        </Field>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
+import { Field, FieldLabel } from "@/components/ui/field";
+
+<Field>
+  <FieldLabel>Framework</FieldLabel>
+  <Select>
+    <SelectTrigger>
+      <SelectValue placeholder="Select a framework" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectItem value="react">React</SelectItem>
+      <SelectItem value="vue">Vue</SelectItem>
+      <SelectItem value="angular">Angular</SelectItem>
+      <SelectItem value="svelte">Svelte</SelectItem>
+    </SelectContent>
+  </Select>
+</Field>
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## With Groups
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="w-full max-w-60">
+        <Field>
+          <FieldLabel>Sort By</FieldLabel>
+          <Select defaultValue="name-asc">
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectLabel>Name</SelectLabel>
+                <SelectItem value="name-asc">Name (A–Z)</SelectItem>
+                <SelectItem value="name-desc">Name (Z–A)</SelectItem>
+              </SelectGroup>
+              <SelectSeparator />
+              <SelectGroup>
+                <SelectLabel>Date</SelectLabel>
+                <SelectItem value="date-asc">Date (Oldest)</SelectItem>
+                <SelectItem value="date-desc">Date (Newest)</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </Field>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+  SelectGroup,
+  SelectLabel,
+  SelectSeparator,
+} from "@/components/ui/select";
+import { Field, FieldLabel } from "@/components/ui/field";
+
+<Field>
+  <FieldLabel>Sort By</FieldLabel>
+  <Select defaultValue="name-asc">
+    <SelectTrigger>
+      <SelectValue />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectGroup>
+        <SelectLabel>Name</SelectLabel>
+        <SelectItem value="name-asc">Name (A–Z)</SelectItem>
+        <SelectItem value="name-desc">Name (Z–A)</SelectItem>
+      </SelectGroup>
+      <SelectSeparator />
+      <SelectGroup>
+        <SelectLabel>Date</SelectLabel>
+        <SelectItem value="date-asc">Date (Oldest)</SelectItem>
+        <SelectItem value="date-desc">Date (Newest)</SelectItem>
+      </SelectGroup>
+    </SelectContent>
+  </Select>
+</Field>
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Sizes
+
+The trigger supports `sm` and `default` sizes.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex flex-col w-full max-w-60 gap-4">
+        <Field>
+          <FieldLabel>Small</FieldLabel>
+          <Select defaultValue="react">
+            <SelectTrigger size="sm">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="react">React</SelectItem>
+              <SelectItem value="vue">Vue</SelectItem>
+              <SelectItem value="angular">Angular</SelectItem>
+            </SelectContent>
+          </Select>
+        </Field>
+        <Field>
+          <FieldLabel>Default</FieldLabel>
+          <Select defaultValue="react">
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="react">React</SelectItem>
+              <SelectItem value="vue">Vue</SelectItem>
+              <SelectItem value="angular">Angular</SelectItem>
+            </SelectContent>
+          </Select>
+        </Field>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
+import { Field, FieldLabel } from "@/components/ui/field";
+
+<Field>
+  <FieldLabel>Small</FieldLabel>
+  <Select defaultValue="react">
+    <SelectTrigger size="sm">
+      <SelectValue />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectItem value="react">React</SelectItem>
+      <SelectItem value="vue">Vue</SelectItem>
+      <SelectItem value="angular">Angular</SelectItem>
+    </SelectContent>
+  </Select>
+</Field>
+
+<Field>
+  <FieldLabel>Default</FieldLabel>
+  <Select defaultValue="react">
+    <SelectTrigger>
+      <SelectValue />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectItem value="react">React</SelectItem>
+      <SelectItem value="vue">Vue</SelectItem>
+      <SelectItem value="angular">Angular</SelectItem>
+    </SelectContent>
+  </Select>
+</Field>
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Disabled
+
+Pass `disabled` to the `Select` root to disable the entire select.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex flex-col w-full max-w-60 gap-4">
+        <Field>
+          <FieldLabel>Disabled (with value)</FieldLabel>
+          <Select defaultValue="react" disabled>
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="react">React</SelectItem>
+              <SelectItem value="vue">Vue</SelectItem>
+            </SelectContent>
+          </Select>
+        </Field>
+        <Field>
+          <FieldLabel>Disabled (placeholder)</FieldLabel>
+          <Select disabled>
+            <SelectTrigger>
+              <SelectValue placeholder="Select a framework" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="react">React</SelectItem>
+              <SelectItem value="vue">Vue</SelectItem>
+            </SelectContent>
+          </Select>
+        </Field>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
+import { Field, FieldLabel } from "@/components/ui/field";
+
+<Field>
+  <FieldLabel>Disabled (with value)</FieldLabel>
+  <Select defaultValue="react" disabled>
+    <SelectTrigger>
+      <SelectValue />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectItem value="react">React</SelectItem>
+      <SelectItem value="vue">Vue</SelectItem>
+    </SelectContent>
+  </Select>
+</Field>
+
+<Field>
+  <FieldLabel>Disabled (placeholder)</FieldLabel>
+  <Select disabled>
+    <SelectTrigger>
+      <SelectValue placeholder="Select a framework" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectItem value="react">React</SelectItem>
+      <SelectItem value="vue">Vue</SelectItem>
+    </SelectContent>
+  </Select>
+</Field>
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Invalid State
+
+Use `aria-invalid="true"` on `SelectTrigger` and `data-invalid` on `Field` to show the error state.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="w-full max-w-60">
+        <Field data-invalid>
+          <FieldLabel>Framework</FieldLabel>
+          <Select>
+            <SelectTrigger aria-invalid="true">
+              <SelectValue placeholder="Select a framework" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="react">React</SelectItem>
+              <SelectItem value="vue">Vue</SelectItem>
+              <SelectItem value="angular">Angular</SelectItem>
+              <SelectItem value="svelte">Svelte</SelectItem>
+            </SelectContent>
+          </Select>
+          <FieldError>Please select a framework.</FieldError>
+        </Field>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
+import { Field, FieldLabel, FieldError } from "@/components/ui/field";
+
+<Field data-invalid>
+  <FieldLabel>Framework</FieldLabel>
+  <Select>
+    <SelectTrigger aria-invalid="true">
+      <SelectValue placeholder="Select a framework" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectItem value="react">React</SelectItem>
+      <SelectItem value="vue">Vue</SelectItem>
+      <SelectItem value="angular">Angular</SelectItem>
+      <SelectItem value="svelte">Svelte</SelectItem>
+    </SelectContent>
+  </Select>
+  <FieldError>Please select a framework.</FieldError>
+</Field>
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## With Icons
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="w-full max-w-60">
+        <Field>
+          <FieldLabel>Payment Method</FieldLabel>
+          <Select defaultValue="visa">
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="visa">
+                <Icon name="category" className="size-4" />
+                Visa
+              </SelectItem>
+              <SelectItem value="paypal">
+                <Icon name="verificationTick" className="size-4" />
+                PayPal
+              </SelectItem>
+            </SelectContent>
+          </Select>
+        </Field>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
+import { Field, FieldLabel } from "@/components/ui/field";
+import { Icon } from "@/components/ui/icon";
+
+<Field>
+  <FieldLabel>Payment Method</FieldLabel>
+  <Select defaultValue="visa">
+    <SelectTrigger>
+      <SelectValue />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectItem value="visa">
+        <Icon name="category" /> Visa
+      </SelectItem>
+      <SelectItem value="mastercard">
+        <Icon name="card" /> Mastercard
+      </SelectItem>
+      <SelectItem value="paypal">
+        <Icon name="verificationTick" /> PayPal
+      </SelectItem>
+    </SelectContent>
+  </Select>
+</Field>
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
