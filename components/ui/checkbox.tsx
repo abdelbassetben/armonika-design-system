@@ -19,7 +19,7 @@ const checkboxVariants = cva(
         check:
           "data-checked:bg-primary-med-em dark:data-checked:bg-primary-med-em",
         minus:
-          "data-checked:bg-primary-low-em-alpha dark:data-checked:bg-primary-low-em-alpha",
+          "data-checked:bg-primary-low-em-alpha dark:data-checked:bg-primary-low-em-alpha data-indeterminate:bg-primary-low-em-alpha dark:data-indeterminate:bg-primary-low-em-alpha",
       },
     },
     defaultVariants: {

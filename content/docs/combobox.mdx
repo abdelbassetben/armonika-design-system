@@ -1,55 +1,21 @@
 ---
 title: Combobox
-description: Displays a list of options with a button trigger and an accessible popup.
+description: A searchable list of options with a button trigger and an accessible popup.
 ---
 
-import {
-  Combobox,
-  ComboboxTrigger,
-  ComboboxValue,
-  ComboboxContent,
-  ComboboxList,
-  ComboboxItem,
-  ComboboxGroup,
-  ComboboxLabel,
-  ComboboxSeparator,
-  ComboboxEmpty,
-} from "@/components/ui/combobox";
-import { Button } from "@/components/ui/button";
+import { ComboboxPopupDemo, ComboboxGroupedDemo } from "@/components/combobox-demo";
 import { Tabs, Tab } from "fumadocs-ui/components/tabs";
 
-A combobox lets users select from a list of options using an accessible popup. Use the button trigger when you want a compact, non-searchable control.
+A combobox lets users pick from a list inside an accessible popup. Use a button trigger with a search field in the popup when the list is long or needs filtering.
 
-## Default
+## Popup
+
+Use a button as the trigger and place `ComboboxInput` inside `ComboboxContent` so users can search the list. Set `showTrigger={false}` on the input so the popup does not show a second chevron.
 
 <Tabs items={['Preview', 'Code']} defaultIndex={0}>
   <Tab>
     <DocsPreview>
-      <Combobox>
-        <ComboboxTrigger
-          render={
-            <Button variant="outline" className="w-[240px] justify-between">
-              <ComboboxValue placeholder="Select a framework" />
-            </Button>
-          }
-        />
-        <ComboboxContent>
-          <ComboboxList>
-            {[
-              { value: "next", label: "Next.js" },
-              { value: "svelte", label: "SvelteKit" },
-              { value: "nuxt", label: "Nuxt" },
-              { value: "remix", label: "Remix" },
-              { value: "astro", label: "Astro" },
-            ].map((framework) => (
-              <ComboboxItem key={framework.value} value={framework.value}>
-                {framework.label}
-              </ComboboxItem>
-            ))}
-            <ComboboxEmpty>No results found.</ComboboxEmpty>
-          </ComboboxList>
-        </ComboboxContent>
-      </Combobox>
+      <ComboboxPopupDemo />
     </DocsPreview>
   </Tab>
   <Tab>
@@ -57,43 +23,51 @@ A combobox lets users select from a list of options using an accessible popup. U
       <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
 
 ```tsx
+"use client";
+
+import { Button } from "@/components/ui/button";
 import {
   Combobox,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxList,
   ComboboxTrigger,
   ComboboxValue,
-  ComboboxContent,
-  ComboboxList,
-  ComboboxItem,
-  ComboboxEmpty,
 } from "@/components/ui/combobox";
-import { Button } from "@/components/ui/button";
 
-const frameworks = [
-  { value: "next", label: "Next.js" },
-  { value: "svelte", label: "SvelteKit" },
-  { value: "nuxt", label: "Nuxt" },
-  { value: "remix", label: "Remix" },
-  { value: "astro", label: "Astro" },
+const countries = [
+  { code: "", value: "", label: "Select country" },
+  { code: "ar", value: "argentina", label: "Argentina" },
+  { code: "au", value: "australia", label: "Australia" },
+  { code: "br", value: "brazil", label: "Brazil" },
+  { code: "ca", value: "canada", label: "Canada" },
+  { code: "fr", value: "france", label: "France" },
+  { code: "de", value: "germany", label: "Germany" },
+  { code: "jp", value: "japan", label: "Japan" },
+  { code: "us", value: "united-states", label: "United States" },
 ];
 
-export default function ComboboxDemo() {
+export function ComboboxPopup() {
   return (
-    <Combobox>
+    <Combobox items={countries} defaultValue={countries[0]}>
       <ComboboxTrigger
         render={
-          <Button variant="outline" className="w-[240px] justify-between">
-            <ComboboxValue placeholder="Select a framework" />
+          <Button variant="outline" className="w-64 justify-between font-normal">
+            <ComboboxValue />
           </Button>
         }
       />
       <ComboboxContent>
+        <ComboboxInput showTrigger={false} placeholder="Search" />
+        <ComboboxEmpty>No items found.</ComboboxEmpty>
         <ComboboxList>
-          {frameworks.map((framework) => (
-            <ComboboxItem key={framework.value} value={framework.value}>
-              {framework.label}
+          {(item) => (
+            <ComboboxItem key={item.code} value={item}>
+              {item.label}
             </ComboboxItem>
-          ))}
-          <ComboboxEmpty>No results found.</ComboboxEmpty>
+          )}
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
@@ -109,51 +83,12 @@ export default function ComboboxDemo() {
 
 ## Grouped Options
 
+Organize related options with `ComboboxGroup` and `ComboboxLabel`. The popup search field filters items across all groups.
+
 <Tabs items={['Preview', 'Code']} defaultIndex={0}>
   <Tab>
     <DocsPreview>
-      <Combobox>
-        <ComboboxTrigger
-          render={
-            <Button variant="outline" className="w-[260px] justify-between">
-              <ComboboxValue placeholder="Select a product" />
-            </Button>
-          }
-        />
-        <ComboboxContent>
-          <ComboboxList>
-            {[
-              {
-                label: "Frameworks",
-                items: [
-                  { value: "next", label: "Next.js" },
-                  { value: "nuxt", label: "Nuxt" },
-                  { value: "remix", label: "Remix" },
-                ],
-              },
-              {
-                label: "Platforms",
-                items: [
-                  { value: "vercel", label: "Vercel" },
-                  { value: "netlify", label: "Netlify" },
-                  { value: "cloudflare", label: "Cloudflare" },
-                ],
-              },
-            ].map((group, index, array) => (
-              <ComboboxGroup key={group.label}>
-                <ComboboxLabel>{group.label}</ComboboxLabel>
-                {group.items.map((item) => (
-                  <ComboboxItem key={item.value} value={item.value}>
-                    {item.label}
-                  </ComboboxItem>
-                ))}
-                {index < array.length - 1 && <ComboboxSeparator />}
-              </ComboboxGroup>
-            ))}
-            <ComboboxEmpty>No results found.</ComboboxEmpty>
-          </ComboboxList>
-        </ComboboxContent>
-      </Combobox>
+      <ComboboxGroupedDemo />
     </DocsPreview>
   </Tab>
   <Tab>
@@ -161,11 +96,15 @@ export default function ComboboxDemo() {
       <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
 
 ```tsx
+"use client";
+
+import { Button } from "@/components/ui/button";
 import {
   Combobox,
   ComboboxTrigger,
   ComboboxValue,
   ComboboxContent,
+  ComboboxInput,
   ComboboxList,
   ComboboxItem,
   ComboboxGroup,
@@ -173,51 +112,34 @@ import {
   ComboboxSeparator,
   ComboboxEmpty,
 } from "@/components/ui/combobox";
-import { Button } from "@/components/ui/button";
 
-const groupedOptions = [
-  {
-    label: "Frameworks",
-    items: [
-      { value: "next", label: "Next.js" },
-      { value: "nuxt", label: "Nuxt" },
-      { value: "remix", label: "Remix" },
-    ],
-  },
-  {
-    label: "Platforms",
-    items: [
-      { value: "vercel", label: "Vercel" },
-      { value: "netlify", label: "Netlify" },
-      { value: "cloudflare", label: "Cloudflare" },
-    ],
-  },
-];
-
-export default function GroupedComboboxDemo() {
+export function GroupedComboboxDemo() {
   return (
-    <Combobox>
+    <Combobox defaultValue="next">
       <ComboboxTrigger
         render={
-          <Button variant="outline" className="w-[260px] justify-between">
+          <Button variant="outline" className="w-64 justify-between font-normal">
             <ComboboxValue placeholder="Select a product" />
           </Button>
         }
       />
       <ComboboxContent>
+        <ComboboxInput showTrigger={false} placeholder="Search" />
+        <ComboboxEmpty>No results found.</ComboboxEmpty>
         <ComboboxList>
-          {groupedOptions.map((group, index) => (
-            <ComboboxGroup key={group.label}>
-              <ComboboxLabel>{group.label}</ComboboxLabel>
-              {group.items.map((item) => (
-                <ComboboxItem key={item.value} value={item.value}>
-                  {item.label}
-                </ComboboxItem>
-              ))}
-              {index < groupedOptions.length - 1 && <ComboboxSeparator />}
-            </ComboboxGroup>
-          ))}
-          <ComboboxEmpty>No results found.</ComboboxEmpty>
+          <ComboboxGroup>
+            <ComboboxLabel>Frameworks</ComboboxLabel>
+            <ComboboxItem value="next">Next.js</ComboboxItem>
+            <ComboboxItem value="nuxt">Nuxt</ComboboxItem>
+            <ComboboxItem value="remix">Remix</ComboboxItem>
+          </ComboboxGroup>
+          <ComboboxSeparator />
+          <ComboboxGroup>
+            <ComboboxLabel>Platforms</ComboboxLabel>
+            <ComboboxItem value="vercel">Vercel</ComboboxItem>
+            <ComboboxItem value="netlify">Netlify</ComboboxItem>
+            <ComboboxItem value="cloudflare">Cloudflare</ComboboxItem>
+          </ComboboxGroup>
         </ComboboxList>
       </ComboboxContent>
     </Combobox>
