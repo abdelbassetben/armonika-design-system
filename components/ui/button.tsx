@@ -3,22 +3,44 @@
 import { Button as ButtonPrimitive } from "@base-ui/react/button";
 import { cva, type VariantProps } from "class-variance-authority";
 
+import { Icon } from "@/components/ui/icon";
 import { cn } from "@/lib/utils";
-import { Children, Fragment, isValidElement } from "react";
+import { Children, Fragment, isValidElement, type ReactElement } from "react";
+
+function shouldSkipPx1Wrap(child: ReactElement): boolean {
+  if (child.type === Icon || child.type === "svg") {
+    return true;
+  }
+  const childType = child.type as { displayName?: string };
+  if (childType.displayName === "Icon") {
+    return true;
+  }
+  if (
+    typeof child.props === "object" &&
+    child.props !== null &&
+    "data-icon" in child.props
+  ) {
+    return true;
+  }
+  return false;
+}
 
 function wrapTextWithPx1(children: React.ReactNode): React.ReactNode {
   return Children.map(children, (child) => {
     if (typeof child === "string" || typeof child === "number") {
       return <span className="px-1">{child}</span>;
     }
-    if (isValidElement(child) && (child.type === "span" || child.type === Fragment)) {
-      return child;
+    if (isValidElement(child)) {
+      if (child.type === "span" || child.type === Fragment) {
+        return child;
+      }
+      if (shouldSkipPx1Wrap(child)) {
+        return child;
+      }
     }
     return <span className="px-1">{child}</span>;
   });
 }
-
-const borderMuted = "border-[#0000000d]";
 
 const shadowRestInsetSm =
   "shadow-[0_1px_2px_0_var(--inverse-black-alpha-3)_inset,0_2px_1.5px_-0.5px_var(--elevation-shadow)]";
@@ -33,6 +55,9 @@ const gradientBorderPrimary =
 const gradientBorderNeutral =
   "border-transparent " +
   "[background:linear-gradient(var(--inverse-white),var(--inverse-white))_padding-box,var(--outline-secondary)_border-box]";
+const gradientBorderSecondary =
+  "border-transparent " +
+  "[background:linear-gradient(var(--secondary),var(--secondary))_padding-box,var(--outline-secondary)_border-box]";
 
 const gradientBorderDestructive =
   "border-transparent " +
@@ -51,6 +76,9 @@ const hoverGradientPrimary =
 
 const hoverGradientNeutral =
   "hover:[background:linear-gradient(var(--hover-overlay),var(--hover-overlay))_padding-box,linear-gradient(var(--inverse-white),var(--inverse-white))_padding-box,var(--outline-secondary)_border-box]";
+
+const hoverGradientSecondary =
+  "hover:[background:linear-gradient(var(--hover-overlay),var(--hover-overlay))_padding-box,linear-gradient(var(--secondary),var(--secondary))_padding-box,var(--outline-secondary)_border-box]";
 
 const hoverGradientDestructive =
   "hover:[background:linear-gradient(var(--hover-overlay),var(--hover-overlay))_padding-box,linear-gradient(var(--danger-med-em),var(--danger-med-em))_padding-box,var(--outline-primary)_border-box]";
@@ -125,9 +153,9 @@ const buttonVariants = cva(
 
         secondary: cn(
           "border bg-secondary bg-clip-padding text-foreground",
-          borderMuted,
+          gradientBorderSecondary,
           shadowRestInsetSm,
-          hoverBgDarkVeil,
+          hoverGradientSecondary,
           hoverShadowLiftSoft,
           focusShadowNeutral,
           "aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",

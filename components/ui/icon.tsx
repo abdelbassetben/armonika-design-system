@@ -10,6 +10,7 @@ import alertSuccess from "../../public/assets/icons/alert-success.svg";
 import alertSuccessFill from "../../public/assets/icons/alert-success-fill.svg";
 import alert from "../../public/assets/icons/alert.svg";
 import alertFill from "../../public/assets/icons/alert-fill.svg";
+import MoreAction from "../../public/assets/icons/more-action.svg";
 
 const icons = {
   category: Category,
@@ -22,6 +23,7 @@ const icons = {
   alertSuccessFill: alertSuccessFill,
   alert: alert,
   alertFill: alertFill,
+  moreAction: MoreAction,
 };
 
 type IconName = keyof typeof icons;
@@ -48,3 +50,5 @@ export function Icon({ name, className, background }: IconProps) {
     </span>
   );
 }
+
+Icon.displayName = "Icon";
