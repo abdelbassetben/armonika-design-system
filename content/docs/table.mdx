@@ -1,0 +1,180 @@
+---
+title: Table
+description: A data table with sorting, filtering, pagination, row selection, and loading states. Built on table primitives with a TanStack-inspired API.
+---
+
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+
+Use `DataTable` for interactive tables with toolbar filters, sort dropdowns, pagination, and row selection. Low-level layout primitives live in `Table`, `TableHeader`, `TableRow`, and related components.
+
+## Multi Select
+
+Filter, sort, paginate, and select multiple rows with checkboxes. The header checkbox selects all rows on the current page.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview className="block w-full">
+      <TableMultiSelectDemo />
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="bg-fd-muted/30 rounded-lg p-4 font-mono text-sm">
+
+```tsx
+"use client";
+
+import * as React from "react";
+import { DataTable, type ColumnDef } from "@/components/ui/data-table";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+
+const columns: ColumnDef<User>[] = [
+  {
+    accessorKey: "name",
+    header: "Name",
+    cell: ({ row }) => (
+      <div className="flex items-center gap-2">
+        <Avatar size="sm">
+          <AvatarImage src={row.avatar} alt={row.name} />
+          <AvatarFallback>{row.name.slice(0, 2)}</AvatarFallback>
+        </Avatar>
+        <span>{row.name}</span>
+      </div>
+    ),
+  },
+  { accessorKey: "email", header: "Email" },
+  { accessorKey: "role", header: "Role" },
+  {
+    accessorKey: "status",
+    header: "Status",
+    cell: ({ value }) => (
+      <Badge variant={value === "active" ? "green" : "gray"}>
+        {String(value)}
+      </Badge>
+    ),
+  },
+];
+
+export function TableDemo() {
+  const [selected, setSelected] = React.useState<string[]>([]);
+
+  return (
+    <DataTable
+      columns={columns}
+      data={users}
+      getRowId={(row) => row.id}
+      toolbar={{
+        sort: true,
+        filters: [
+          { id: "search", type: "text", placeholder: "Search users…" },
+          {
+            id: "status", type: "select", label: "Status",
+            accessorKey: "status",
+            options: [
+              { label: "All", value: "" },
+              { label: "Active", value: "active" },
+              { label: "Inactive", value: "inactive" },
+            ],
+          },
+        ],
+      }}
+      pagination={{ pageSize: 8 }}
+      selection={{
+        mode: "multiple",
+        value: selected,
+        onChange: setSelected,
+      }}
+    />
+  );
+}
+```
+
+    </div>
+  </Tab>
+</Tabs>
+
+## Single Select
+
+Use radio buttons to select one row at a time.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview className="block w-full">
+      <TableSingleSelectDemo />
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="bg-fd-muted/30 rounded-lg p-4 font-mono text-sm">
+
+```tsx
+const [selected, setSelected] = React.useState<string[]>([]);
+
+<DataTable
+  columns={columns}
+  data={users}
+  getRowId={(row) => row.id}
+  toolbar={{ sort: true, filters: [...] }}
+  pagination={{ pageSize: 8 }}
+  selection={{
+    mode: "single",
+    value: selected,
+    onChange: setSelected,
+  }}
+/>
+```
+
+    </div>
+  </Tab>
+</Tabs>
+
+## Loading
+
+Set `loading` to show skeleton rows using the Skeleton component.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview className="block w-full">
+      <TableLoadingDemo />
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="bg-fd-muted/30 rounded-lg p-4 font-mono text-sm">
+
+```tsx
+<DataTable
+  columns={columns}
+  data={users}
+  getRowId={(row) => row.id}
+  loading
+  skeletonRows={5}
+/>
+```
+
+    </div>
+  </Tab>
+</Tabs>
+
+## Empty
+
+When `data` is empty, the table shows a centered message.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview className="block w-full">
+      <TableEmptyDemo />
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="bg-fd-muted/30 rounded-lg p-4 font-mono text-sm">
+
+```tsx
+<DataTable
+  columns={columns}
+  data={[]}
+  emptyMessage="No users found."
+/>
+```
+
+    </div>
+  </Tab>
+</Tabs>

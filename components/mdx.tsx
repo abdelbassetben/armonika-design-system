@@ -16,6 +16,12 @@ import {
   PaginationMiddleDemo,
   PaginationFullDemo,
 } from '@/components/pagination-demo';
+import {
+  TableMultiSelectDemo,
+  TableSingleSelectDemo,
+  TableLoadingDemo,
+  TableEmptyDemo,
+} from '@/components/table-demo';
 import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
 export function getMDXComponents(components?: MDXComponents) {
@@ -30,6 +36,10 @@ export function getMDXComponents(components?: MDXComponents) {
     PaginationNearEndDemo,
     PaginationMiddleDemo,
     PaginationFullDemo,
+    TableMultiSelectDemo,
+    TableSingleSelectDemo,
+    TableLoadingDemo,
+    TableEmptyDemo,
     ActionBarDemo,
     ActionBarVerticalDemo,
     ActionBarPlacementDemo,
