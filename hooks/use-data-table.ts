@@ -75,6 +75,12 @@ export type PaginationOptions = {
 export type ToolbarOptions<TData> = {
   sort?: boolean
   filters?: FilterDef<TData>[]
+  /** Skip client-side filtering and sorting. Use when the backend handles it. */
+  manual?: boolean
+  /** Called when filter values change. Useful with manual mode to trigger a refetch. */
+  onFilterChange?: (filterValues: Record<string, unknown>) => void
+  /** Called when sort changes. Useful with manual mode to trigger a refetch. */
+  onSortChange?: (sorting: SortingState) => void
 }
 
 export type SelectionOptions = {
@@ -274,10 +280,28 @@ export function useDataTable<TData>({
   const manualPagination = paginationOptions.manual ?? false
   const paginationEnabled = pagination !== false && pagination !== undefined
 
+  const toolbarManual = toolbar?.manual ?? false
+
   const [sorting, setSortingState] = React.useState<SortingState>(null)
   const [filterValues, setFilterValues] = React.useState<
     Record<string, unknown>
   >(() => getInitialFilterValues(toolbar?.filters))
+
+  // Notify parent when filter/sort state changes (for server-side operations)
+  const onFilterChange = toolbar?.onFilterChange
+  const onSortChange = toolbar?.onSortChange
+
+  const prevFilterValues = React.useRef(filterValues)
+  React.useEffect(() => {
+    if (onFilterChange && prevFilterValues.current !== filterValues) {
+      onFilterChange(filterValues)
+      prevFilterValues.current = filterValues
+    }
+  }, [filterValues, onFilterChange])
+
+  React.useEffect(() => {
+    onSortChange?.(sorting)
+  }, [sorting, onSortChange])
 
   const [internalPageIndex, setInternalPageIndex] = React.useState(0)
   const [internalPageSize, setInternalPageSize] = React.useState(
@@ -309,13 +333,18 @@ export function useDataTable<TData>({
 
   const filteredRows = React.useMemo(
     () =>
-      getFilteredRowModel(data, filterValues, toolbar?.filters, columns),
-    [columns, data, filterValues, toolbar?.filters]
+      toolbarManual
+        ? data
+        : getFilteredRowModel(data, filterValues, toolbar?.filters, columns),
+    [columns, data, filterValues, toolbar?.filters, toolbarManual]
   )
 
   const sortedRows = React.useMemo(
-    () => getSortedRowModel(filteredRows, sorting, columns),
-    [columns, filteredRows, sorting]
+    () =>
+      toolbarManual
+        ? filteredRows
+        : getSortedRowModel(filteredRows, sorting, columns),
+    [columns, filteredRows, sorting, toolbarManual]
   )
 
   const pageCount = manualPagination
