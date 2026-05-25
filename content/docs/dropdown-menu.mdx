@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
 import { Tabs, Tab } from "fumadocs-ui/components/tabs";
 import { DocsPreview } from "@/components/docs-preview";
+import { DropdownMenuNestedDemo } from "@/components/dropdown-menu-demo";
 
 ### Standard Dropdown
 
@@ -246,6 +247,125 @@ import {
     </DropdownMenuGroup>
   </DropdownMenuContent>
 </DropdownMenu>
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Nested (Inline)
+
+Instead of rendering a sub-menu popup, swap the menu items in place when an option is selected. Put a **Previous** item at the top of the sub-view to return to the root list. Wrap panels in `DropdownMenuStackView` with a `direction` of `"forward"` or `"back"` for slide transitions. Reset view state when the menu closes (`onOpenChange`). Use `closeOnClick={false}` on navigation items so the menu stays open while drilling in.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <DropdownMenuNestedDemo />
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+"use client";
+
+import { useState } from "react";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuGroup,
+  DropdownMenuStackView,
+  type DropdownMenuStackDirection,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
+import { Icon } from "@/components/ui/icon";
+
+export function DropdownMenuNestedDemo() {
+  const [view, setView] = useState<"main" | "change-status">("main");
+  const [direction, setDirection] =
+    useState<DropdownMenuStackDirection>("forward");
+
+  return (
+    <DropdownMenu
+      onOpenChange={(open) => {
+        if (!open) setView("main");
+      }}
+    >
+      <DropdownMenuTrigger
+        render={<Button variant="outline">Manage Task</Button>}
+      />
+      <DropdownMenuContent className="min-w-48 overflow-x-hidden">
+        <DropdownMenuStackView viewKey={view} direction={direction}>
+          {view === "main" ? (
+            <DropdownMenuGroup>
+              <DropdownMenuLabel>Task Actions</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>
+                <Icon name="category" className="size-4" />
+                Details
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                closeOnClick={false}
+                onClick={() => {
+                  setDirection("forward");
+                  setView("change-status");
+                }}
+              >
+                <Icon name="verificationTick" className="size-4" />
+                Change Status
+                <Icon name="chevron" className="ml-auto size-3 rotate-90" />
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+          ) : (
+            <DropdownMenuGroup>
+              <DropdownMenuItem
+                closeOnClick={false}
+                onClick={() => {
+                  setDirection("back");
+                  setView("main");
+                }}
+                className="text-muted-foreground!"
+              >
+                <Icon name="chevron" className="size-4 -rotate-90" />
+                Previous
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuLabel>Change Status</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>
+                <Icon name="verificationTick" className="size-4" />
+                Start
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Icon name="alertDanger" className="size-4" />
+                Stop
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Icon name="moreAction" className="size-4" />
+                Pause
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Icon name="shieldTick" className="size-4" />
+                Complete
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Icon name="alert" className="size-4" />
+                Cancel
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+          )}
+        </DropdownMenuStackView>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
 ```
 
       </div>

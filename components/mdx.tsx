@@ -22,6 +22,7 @@ import {
   TableLoadingDemo,
   TableEmptyDemo,
 } from '@/components/table-demo';
+import { DropdownMenuNestedDemo } from '@/components/dropdown-menu-demo';
 import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
 export function getMDXComponents(components?: MDXComponents) {
@@ -44,6 +45,7 @@ export function getMDXComponents(components?: MDXComponents) {
     ActionBarVerticalDemo,
     ActionBarPlacementDemo,
     ActionBarVariantsDemo,
+    DropdownMenuNestedDemo,
     Tabs,
     Tab,
     ...components,
