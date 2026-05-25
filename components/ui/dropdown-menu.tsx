@@ -5,6 +5,7 @@ import { Menu as MenuPrimitive } from "@base-ui/react/menu";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
+import { wrapTextWithPx1 } from "@/components/ui/button";
 import { ChevronRightIcon, CheckIcon } from "lucide-react";
 
 function DropdownMenu({ ...props }: MenuPrimitive.Root.Props) {
@@ -68,6 +69,7 @@ export type DropdownMenuTriggerProps = MenuPrimitive.Trigger.Props &
 function DropdownMenuTrigger({
   className,
   variant = "default",
+  children,
   ...props
 }: DropdownMenuTriggerProps) {
   return (
@@ -75,7 +77,9 @@ function DropdownMenuTrigger({
       data-slot="dropdown-menu-trigger"
       className={cn(dropdownMenuTriggerVariants({ variant }), className)}
       {...props}
-    />
+    >
+      {wrapTextWithPx1(children)}
+    </MenuPrimitive.Trigger>
   );
 }
 

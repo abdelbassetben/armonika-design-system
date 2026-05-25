@@ -5,6 +5,7 @@ import { Select as SelectPrimitive } from "@base-ui/react/select"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
+import { wrapTextWithPx1 } from "@/components/ui/button"
 import { ChevronDownIcon, ChevronUpIcon } from "lucide-react"
 
 const Select = SelectPrimitive.Root
@@ -109,7 +110,7 @@ function SelectTrigger({
       className={cn(selectTriggerVariants({ variant }), className)}
       {...props}
     >
-      {children}
+      {wrapTextWithPx1(children)}
       <SelectPrimitive.Icon
         render={
           <ChevronDownIcon className="pointer-events-none size-4" />

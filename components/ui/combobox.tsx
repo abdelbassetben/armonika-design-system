@@ -5,7 +5,7 @@ import { Combobox as ComboboxPrimitive } from "@base-ui/react";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import { Button, wrapTextWithPx1 } from "@/components/ui/button";
 import {
   InputGroup,
   InputGroupAddon,
@@ -92,7 +92,7 @@ function ComboboxTrigger({
       className={cn(triggerVariants({ variant }), className)}
       {...props}
     >
-      {children}
+      {wrapTextWithPx1(children)}
       <ChevronDownIcon className="pointer-events-none size-4 shrink-0 ml-auto" />
     </ComboboxPrimitive.Trigger>
   );
