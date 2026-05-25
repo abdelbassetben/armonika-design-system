@@ -446,7 +446,7 @@ function DataTableHeader<TData>({
           {headerGroup.columns.map((column, index) => (
             <TableHead key={column.id}>
               {index === 0 && hasSelection ? (
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-3">
                   {selection?.mode === "multiple" ? (
                     <Checkbox
                       checked={table.isAllPageRowsSelected()}
@@ -464,7 +464,17 @@ function DataTableHeader<TData>({
                       disabled={loading}
                       aria-label="Select all rows"
                     />
-                  ) : null}
+                  ) : (
+                    <span
+                      role="radio"
+                      aria-hidden="true"
+                      tabIndex={-1}
+                      className={cn(
+                        radioVariants({ size: "xs" }),
+                        "invisible pointer-events-none shrink-0",
+                      )}
+                    />
+                  )}
                   {renderHeader(column)}
                 </div>
               ) : (
