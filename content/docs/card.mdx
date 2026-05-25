@@ -13,6 +13,12 @@ import {
   CardAction,
   CardIcon,
 } from "@/components/ui/card";
+import {
+  CardGroup,
+  CardGroupHeader,
+  CardGroupContent,
+  CardInset,
+} from "@/components/ui/card-group";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
 import { Tabs, Tab } from "fumadocs-ui/components/tabs";
@@ -359,6 +365,127 @@ import { Button } from "@/components/ui/button";
   </Tab>
 </Tabs>
 
+## Grouped (inset layout)
+
+A table-style layout with a gray `CardGroup` wrapper, header content in the secondary surface, and inset panels for each row of content. Uses the same `CardHeader`, `CardTitle`, `CardDescription`, `CardAction`, `CardContent`, and `CardFooter` primitives as the default card.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview className="block w-full">
+      <CardGroup className="w-full max-w-lg">
+        <CardGroupHeader>
+          <CardHeader>
+            <CardTitle>Team members</CardTitle>
+          </CardHeader>
+        </CardGroupHeader>
+        <CardGroupContent>
+          <CardInset>
+            <CardHeader>
+              <CardIcon size="sm">
+                <Icon name="shieldTick" />
+              </CardIcon>
+              <CardTitle>Jane Cooper</CardTitle>
+              <CardDescription>Admin · jane@example.com</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">Full access to billing and settings.</p>
+            </CardContent>
+          </CardInset>
+
+        </CardGroupContent>
+      </CardGroup>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardAction,
+  CardIcon,
+} from "@/components/ui/card";
+import {
+  CardGroup,
+  CardGroupHeader,
+  CardGroupContent,
+  CardInset,
+} from "@/components/ui/card-group";
+import { Button } from "@/components/ui/button";
+import { Icon } from "@/components/ui/icon";
+
+<CardGroup className="w-full max-w-lg">
+  <CardGroupHeader>
+    <CardHeader>
+      <CardTitle>Team members</CardTitle>
+    </CardHeader>
+  </CardGroupHeader>
+  <CardGroupContent>
+    <CardInset>
+      <CardHeader>
+        <CardIcon size="sm">
+          <Icon name="shieldTick" />
+        </CardIcon>
+        <CardTitle>Jane Cooper</CardTitle>
+        <CardDescription>Admin · jane@example.com</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p className="text-sm text-muted-foreground">
+          Full access to billing and settings.
+        </p>
+      </CardContent>
+    </CardInset>
+  </CardGroupContent>
+</CardGroup>
+```
+
+      </div>
+      <DocsPreview className="block w-full">
+        <CardGroup className="w-full max-w-lg">
+          <CardGroupHeader>
+            <CardHeader>
+              <CardTitle>Team members</CardTitle>
+              <CardDescription>Manage access and roles for your workspace.</CardDescription>
+              <CardAction>
+                <Button size="sm" variant="outline">
+                  Invite
+                </Button>
+              </CardAction>
+            </CardHeader>
+          </CardGroupHeader>
+          <CardGroupContent>
+            <CardInset>
+              <CardHeader>
+                <CardIcon size="sm">
+                  <Icon name="shieldTick" />
+                </CardIcon>
+                <CardTitle>Jane Cooper</CardTitle>
+                <CardDescription>Admin · jane@example.com</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">Full access to billing and settings.</p>
+              </CardContent>
+            </CardInset>
+            <CardInset>
+              <CardHeader>
+                <CardTitle>Robert Fox</CardTitle>
+                <CardDescription>Editor · robert@example.com</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">Can edit content but not billing.</p>
+              </CardContent>
+            </CardInset>
+          </CardGroupContent>
+        </CardGroup>
+      </DocsPreview>
+    </div>
+  </Tab>
+</Tabs>
+
 ## Properties
 
 | Property  | Type                                      | Default | Description             |
@@ -374,3 +501,22 @@ import { Button } from "@/components/ui/button";
 | size      | `"sm"` \| `"md"` | `"md"`  | The size of the icon container |
 | className | `string`         | -       | Additional CSS classes         |
 | children  | `ReactNode`      | -       | The icon element               |
+
+### CardGroup
+
+Table-style wrapper (`bg-secondary`, `rounded-2xl`) with a header band and inset content panels. Mirrors `Table` + inset `TableBody` styling.
+
+| Component         | Description                                                                 |
+| ----------------- | --------------------------------------------------------------------------- |
+| `CardGroup`       | Gray outer container (same surface as `Table`)                              |
+| `CardGroupHeader` | Header row on the secondary background; place `CardHeader` inside           |
+| `CardGroupContent`| Inset body area with `gap-px` spacing between `CardInset` children          |
+| `CardInset`       | Single inset panel (`bg-s-l0-d3`); use `CardHeader`, `CardContent`, etc.     |
+
+#### CardGroupContent
+
+| Property  | Type      | Default | Description                                      |
+| --------- | --------- | ------- | ------------------------------------------------ |
+| inset     | `boolean` | `true`  | Applies inset panel spacing and surface styles   |
+| className | `string`  | -       | Additional CSS classes                         |
+| children  | `ReactNode` | -     | `CardInset` elements (and optional other content) |
