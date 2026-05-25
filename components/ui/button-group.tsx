@@ -23,13 +23,13 @@ const buttonGroupVariants = cva(
         orientation: "horizontal",
         spaced: false,
         className:
-          "*:data-slot:rounded-e-none [&>[data-slot]:not(:has(~[data-slot]))]:rounded-e-lg! [&>[data-slot]~[data-slot]]:rounded-s-none [&>[data-slot]~[data-slot]]:-ms-px",
+          "*:data-slot:rounded-e-none [&>[data-slot]:not(:has(~[data-slot]))]:rounded-e-lg! [&>[data-slot]~[data-slot]]:rounded-s-none [&>[data-slot]:not(:last-child)]:border-e-0",
       },
       {
         orientation: "vertical",
         spaced: false,
         className:
-          "*:data-slot:rounded-b-none [&>[data-slot]:not(:has(~[data-slot]))]:rounded-b-lg! [&>[data-slot]~[data-slot]]:rounded-t-none [&>[data-slot]~[data-slot]]:-mt-px",
+          "*:data-slot:rounded-b-none [&>[data-slot]:not(:has(~[data-slot]))]:rounded-b-lg! [&>[data-slot]~[data-slot]]:rounded-t-none [&>[data-slot]:not(:last-child)]:border-b-0",
       },
     ],
     defaultVariants: {
@@ -50,6 +50,7 @@ function ButtonGroup({
       role="group"
       data-slot="button-group"
       data-orientation={orientation}
+      data-spaced={spaced ? "" : undefined}
       className={cn(buttonGroupVariants({ orientation, spaced }), className)}
       {...props}
     />

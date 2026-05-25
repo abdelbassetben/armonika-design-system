@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
 import { Tabs, Tab } from "fumadocs-ui/components/tabs";
 
-Groups multiple buttons or controls seamlessly together in a single row or column. Adjusts borders and radiuses automatically.
+Groups multiple buttons or controls together in a single row or column. Use **`variant="outline"`** for seamless groups (default): inner borders are collapsed so only the **last** control keeps an end border, matching the Figma spec. Use **`spaced`** when each button should keep its own full outline.
 
 ## Default
 
@@ -178,12 +178,14 @@ import { Button } from "@/components/ui/button";
   </Tab>
 </Tabs>
 
-## With Different Target Variants
+## Spaced Buttons
+
+Use `spaced` to add a gap between buttons. Each button keeps a full border on every side (no shared-edge collapse). This is the right mode for solid or gradient-filled variants (`default`, `secondary`, `neutral`, etc.) that would otherwise double up borders when joined.
 
 <Tabs items={['Preview', 'Code']} defaultIndex={0}>
   <Tab>
     <DocsPreview>
-      <ButtonGroup>
+      <ButtonGroup spaced>
         <Button variant="secondary">Cancel</Button>
         <Button>Save Changes</Button>
       </ButtonGroup>
@@ -197,7 +199,7 @@ import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
 import { Button } from "@/components/ui/button";
 
-<ButtonGroup>
+<ButtonGroup spaced>
   <Button variant="secondary">Cancel</Button>
   <Button>Save Changes</Button>
 </ButtonGroup>;
@@ -205,48 +207,9 @@ import { Button } from "@/components/ui/button";
 
       </div>
       <DocsPreview>
-        <ButtonGroup>
+        <ButtonGroup spaced>
           <Button variant="secondary">Cancel</Button>
           <Button>Save Changes</Button>
-        </ButtonGroup>
-      </DocsPreview>
-    </div>
-
-  </Tab>
-</Tabs>
-
-## Spaced Buttons
-
-Use `spaced` to add a gap between buttons instead of seamlessly combining them.
-
-<Tabs items={['Preview', 'Code']} defaultIndex={0}>
-  <Tab>
-    <DocsPreview>
-      <ButtonGroup spaced>
-        <Button variant="outline">Undo</Button>
-        <Button variant="outline">Redo</Button>
-      </ButtonGroup>
-    </DocsPreview>
-  </Tab>
-  <Tab>
-    <div className="flex flex-col gap-4">
-      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
-
-```tsx
-import { ButtonGroup } from "@/components/ui/button-group";
-import { Button } from "@/components/ui/button";
-
-<ButtonGroup spaced>
-  <Button variant="outline">Undo</Button>
-  <Button variant="outline">Redo</Button>
-</ButtonGroup>;
-```
-
-      </div>
-      <DocsPreview>
-        <ButtonGroup spaced>
-          <Button variant="outline">Undo</Button>
-          <Button variant="outline">Redo</Button>
         </ButtonGroup>
       </DocsPreview>
     </div>
@@ -321,4 +284,4 @@ import { Button } from "@/components/ui/button";
 | Property    | Type                           | Default        | Description                                                       |
 | ----------- | ------------------------------ | -------------- | ----------------------------------------------------------------- |
 | orientation | `"horizontal"` \| `"vertical"` | `"horizontal"` | The layout orientation of the grouped controls                    |
-| spaced      | `boolean`                      | `false`        | Adds gap between the buttons instead of seamlessly combining them |
+| spaced      | `boolean`                      | `false`        | Adds gap between controls; each keeps a full border. When `false`, seamless outline groups drop shared inner borders (end border only on the last item). |

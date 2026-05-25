@@ -111,6 +111,7 @@ const buttonVariants = cva(
     "shadow-(--shadow-soft-glass) outline-none select-none transition-all",
     "active:not-aria-[haspopup]:translate-y-px",
     "disabled:pointer-events-none disabled:border-0 disabled:bg-none disabled:bg-disabled-base-em disabled:bg-clip-padding disabled:text-disable",
+    "[[data-slot=button-group]:not([data-spaced])_&]:not-last:border-e-0",
     "aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20",
     "dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
     "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
