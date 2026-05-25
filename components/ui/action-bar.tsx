@@ -242,8 +242,25 @@ function ActionBar(props: ActionBarProps) {
   );
 }
 
-function ActionBarSelection(props: DivProps) {
-  const { className, asChild, children, ...selectionProps } = props;
+interface ActionBarSelectionProps extends DivProps {
+  totalCount: number;
+  selectedCount: number;
+  onCheckedChange?: () => void;
+}
+
+function ActionBarSelection(props: ActionBarSelectionProps) {
+  const {
+    totalCount,
+    selectedCount,
+    onCheckedChange,
+    className,
+    asChild,
+    children,
+    ...selectionProps
+  } = props;
+
+  const allSelected = totalCount > 0 && selectedCount === totalCount;
+  const someSelected = selectedCount > 0 && !allSelected;
 
   const SelectionPrimitive = asChild ? SlotPrimitive.Slot : "div";
 
@@ -256,7 +273,13 @@ function ActionBarSelection(props: DivProps) {
         className,
       )}
     >
-      <Checkbox icon="minus" size="md" checked />
+      <Checkbox
+        size="md"
+        checked={allSelected}
+        indeterminate={someSelected}
+        onCheckedChange={() => onCheckedChange?.()}
+        aria-label={allSelected ? "Deselect all" : "Select all"}
+      />
       {children}
     </SelectionPrimitive>
   );
@@ -718,6 +741,7 @@ export {
   ActionBarItem,
   ActionBarMoreAction,
   type ActionBarProps,
+  type ActionBarSelectionProps,
   ActionBarSelection,
   ActionBarSeparator,
 };

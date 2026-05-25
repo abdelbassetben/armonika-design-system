@@ -36,19 +36,23 @@ function Checkbox({
   className,
   size,
   icon = "check",
+  indeterminate,
   ...props
 }: CheckboxProps) {
+  const resolvedIcon = indeterminate ? "minus" : icon;
+
   return (
     <CheckboxPrimitive.Root
       data-slot="checkbox"
-      className={cn(checkboxVariants({ size, icon, className }))}
+      indeterminate={indeterminate}
+      className={cn(checkboxVariants({ size, icon: resolvedIcon, className }))}
       {...props}
     >
       <CheckboxPrimitive.Indicator
         data-slot="checkbox-indicator"
         className="grid place-content-center text-current transition-none"
       >
-        {icon === "minus" ? (
+        {resolvedIcon === "minus" ? (
           <MinusIcon className="w-2 h-0.5 text-primary-med-em" />
         ) : (
           <CheckIcon className="w-1 h-1" />

@@ -71,6 +71,20 @@ function useActionBarState(initialTasks: Task[] = INITIAL_TASKS) {
     setSelectedTaskIds(new Set());
   }, [tasks, selectedTaskIds]);
 
+  const selectAll = React.useCallback(() => {
+    setSelectedTaskIds(new Set(tasks.map((task) => task.id)));
+  }, [tasks]);
+
+  const toggleSelectAll = React.useCallback(() => {
+    const allSelected =
+      tasks.length > 0 && selectedTaskIds.size === tasks.length;
+    if (allSelected) {
+      setSelectedTaskIds(new Set());
+      return;
+    }
+    setSelectedTaskIds(new Set(tasks.map((task) => task.id)));
+  }, [tasks, selectedTaskIds.size]);
+
   return {
     tasks,
     selectedTaskIds,
@@ -79,6 +93,8 @@ function useActionBarState(initialTasks: Task[] = INITIAL_TASKS) {
     onItemSelect,
     onDuplicate,
     onDelete,
+    selectAll,
+    toggleSelectAll,
   };
 }
 
@@ -131,7 +147,11 @@ export function ActionBarDemo() {
         <ActionBarClose>
           <X />
         </ActionBarClose>
-        <ActionBarSelection>
+        <ActionBarSelection
+          totalCount={state.tasks.length}
+          selectedCount={state.selectedTaskIds.size}
+          onCheckedChange={state.toggleSelectAll}
+        >
           {state.selectedTaskIds.size} selected
         </ActionBarSelection>
         <ActionBarSeparator />
@@ -151,7 +171,7 @@ export function ActionBarDemo() {
         </ActionBarGroup>
         <ActionBarSeparator />
         <ActionBarMoreAction>
-          <DropdownMenuItem onSelect={() => console.log("select all")}>
+          <DropdownMenuItem onSelect={state.selectAll}>
             Select all
           </DropdownMenuItem>
           <DropdownMenuItem onSelect={() => console.log("archive")}>
@@ -159,7 +179,7 @@ export function ActionBarDemo() {
           </DropdownMenuItem>
           <DropdownMenuItem
             variant="destructive"
-            onSelect={() => console.log("clear")}
+            onSelect={() => state.onOpenChange(false)}
           >
             Clear selection
           </DropdownMenuItem>
@@ -187,7 +207,11 @@ export function ActionBarVerticalDemo() {
         <ActionBarClose>
           <X />
         </ActionBarClose>
-        <ActionBarSelection>
+        <ActionBarSelection
+          totalCount={state.tasks.length}
+          selectedCount={state.selectedTaskIds.size}
+          onCheckedChange={state.toggleSelectAll}
+        >
           {state.selectedTaskIds.size} selected
         </ActionBarSelection>
         <ActionBarSeparator />
@@ -202,7 +226,7 @@ export function ActionBarVerticalDemo() {
           </ActionBarItem>
         </ActionBarGroup>
         <ActionBarMoreAction>
-          <DropdownMenuItem onSelect={() => console.log("select all")}>
+          <DropdownMenuItem onSelect={state.selectAll}>
             Select all
           </DropdownMenuItem>
           <DropdownMenuItem onSelect={() => console.log("archive")}>
@@ -210,7 +234,7 @@ export function ActionBarVerticalDemo() {
           </DropdownMenuItem>
           <DropdownMenuItem
             variant="destructive"
-            onSelect={() => console.log("clear")}
+            onSelect={() => state.onOpenChange(false)}
           >
             Clear selection
           </DropdownMenuItem>
@@ -234,7 +258,11 @@ export function ActionBarVariantsDemo() {
         <ActionBarClose>
           <X />
         </ActionBarClose>
-        <ActionBarSelection>
+        <ActionBarSelection
+          totalCount={state.tasks.length}
+          selectedCount={state.selectedTaskIds.size}
+          onCheckedChange={state.toggleSelectAll}
+        >
           {state.selectedTaskIds.size} selected
         </ActionBarSelection>
         <ActionBarSeparator />
@@ -277,7 +305,7 @@ export function ActionBarVariantsDemo() {
           </ActionBarItem>
         </ActionBarGroup>
         <ActionBarMoreAction>
-          <DropdownMenuItem onSelect={() => console.log("select all")}>
+          <DropdownMenuItem onSelect={state.selectAll}>
             Select all
           </DropdownMenuItem>
           <DropdownMenuItem onSelect={() => console.log("archive")}>
@@ -285,7 +313,7 @@ export function ActionBarVariantsDemo() {
           </DropdownMenuItem>
           <DropdownMenuItem
             variant="destructive"
-            onSelect={() => console.log("clear")}
+            onSelect={() => state.onOpenChange(false)}
           >
             Clear selection
           </DropdownMenuItem>
