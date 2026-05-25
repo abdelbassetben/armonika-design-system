@@ -3,7 +3,7 @@ title: Combobox
 description: A searchable list of options with a button trigger and an accessible popup.
 ---
 
-import { ComboboxPopupDemo, ComboboxPrimaryFlatDemo, ComboboxGhostDemo, ComboboxOutlineDemo, ComboboxGroupedDemo } from "@/components/combobox-demo";
+import { ComboboxPopupDemo, ComboboxPrimaryFlatDemo, ComboboxGhostDemo, ComboboxOutlineDemo, ComboboxGroupedDemo, ComboboxWithAvatarDemo } from "@/components/combobox-demo";
 import { Tabs, Tab } from "fumadocs-ui/components/tabs";
 
 A combobox lets users pick from a list inside an accessible popup. Use a button trigger with a search field in the popup when the list is long or needs filtering.
@@ -16,6 +16,18 @@ Use a button as the trigger and place `ComboboxInput` inside `ComboboxContent` s
   <Tab>
     <DocsPreview>
       <ComboboxPopupDemo />
+    </DocsPreview>
+   </Tab>
+</Tabs>
+
+## With Avatar
+
+Display items with avatars and show the selected avatar in the trigger. Useful for user selectors and profile pickers.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <ComboboxWithAvatarDemo />
     </DocsPreview>
   </Tab>
   <Tab>
@@ -35,32 +47,66 @@ import {
   ComboboxTrigger,
   ComboboxValue,
 } from "@/components/ui/combobox";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
-const countries = [
-  { code: "", value: "", label: "Select country" },
-  { code: "ar", value: "argentina", label: "Argentina" },
-  { code: "au", value: "australia", label: "Australia" },
-  { code: "br", value: "brazil", label: "Brazil" },
-  { code: "ca", value: "canada", label: "Canada" },
-  { code: "fr", value: "france", label: "France" },
-  { code: "de", value: "germany", label: "Germany" },
-  { code: "jp", value: "japan", label: "Japan" },
-  { code: "us", value: "united-states", label: "United States" },
+const users = [
+  {
+    id: "",
+    value: "",
+    name: "Select user",
+    avatar: "",
+  },
+  {
+    id: "1",
+    value: "john-doe",
+    name: "John Doe",
+    avatar: "https://i.pravatar.cc/150?u=john",
+  },
+  {
+    id: "2",
+    value: "jane-smith",
+    name: "Jane Smith",
+    avatar: "https://i.pravatar.cc/150?u=jane",
+  },
 ];
 
-export function ComboboxPopup() {
+export function ComboboxWithAvatar() {
   return (
-    <Combobox items={countries} defaultValue={countries[0]}>
+    <Combobox items={users}>
       <ComboboxTrigger className="w-64">
-        <ComboboxValue />
+        <ComboboxValue placeholder="Select a user">
+          {(item) => (
+            <div className="flex items-center gap-2">
+              <Avatar size="xs">
+                <AvatarImage src={item.avatar} alt={item.name} />
+                <AvatarFallback>
+                  {item.name
+                    .split(" ")
+                    .map((n) => n[0])
+                    .join("")}
+                </AvatarFallback>
+              </Avatar>
+              <span>{item.name}</span>
+            </div>
+          )}
+        </ComboboxValue>
       </ComboboxTrigger>
       <ComboboxContent>
-        <ComboboxInput showTrigger={false} placeholder="Search" />
-        <ComboboxEmpty>No items found.</ComboboxEmpty>
+        <ComboboxInput showTrigger={false} placeholder="Search users" />
+        <ComboboxEmpty>No users found.</ComboboxEmpty>
         <ComboboxList>
           {(item) => (
-            <ComboboxItem key={item.code} value={item}>
-              {item.label}
+            <ComboboxItem key={item.id} value={item}>
+              <Avatar size="xs">
+                <AvatarImage src={item.avatar} alt={item.name} />
+                <AvatarFallback>
+                  {item.name
+                    .split(" ")
+                    .map((n) => n[0])
+                    .join("")}
+                </AvatarFallback>
+              </Avatar>
+              <span>{item.name}</span>
             </ComboboxItem>
           )}
         </ComboboxList>
@@ -75,6 +121,7 @@ export function ComboboxPopup() {
 
   </Tab>
 </Tabs>
+
 
 ## Grouped Options
 
