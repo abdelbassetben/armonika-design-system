@@ -1,0 +1,376 @@
+---
+title: Card
+description: Displays a content container with customizable header, footer, and sizing options.
+---
+
+import {
+  Card,
+  CardHeader,
+  CardFooter,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardAction,
+  CardIcon,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Icon } from "@/components/ui/icon";
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+
+A flexible content container built with `data-size` context propagation for consistent spacing.
+
+## Default
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Card className="w-full max-w-sm">
+        <CardHeader>
+          <CardTitle>Card Title</CardTitle>
+          <CardDescription>Card description goes here.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm">Main card content area.</p>
+        </CardContent>
+        <CardFooter>
+          <Button size="sm">Action</Button>
+        </CardFooter>
+      </Card>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  Card,
+  CardHeader,
+  CardFooter,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+
+<Card className="w-full max-w-sm">
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>Card description goes here.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p className="text-sm">Main card content area.</p>
+  </CardContent>
+  <CardFooter>
+    <Button size="sm">Action</Button>
+  </CardFooter>
+</Card>;
+```
+
+      </div>
+      <DocsPreview>
+        <Card className="w-full max-w-sm">
+          <CardHeader>
+            <CardTitle>Card Title</CardTitle>
+            <CardDescription>Card description goes here.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm">Main card content area.</p>
+          </CardContent>
+          <CardFooter>
+            <Button size="sm">Action</Button>
+          </CardFooter>
+        </Card>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Sizes
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex flex-col gap-4 w-full">
+        <Card size="md" className="w-full max-w-sm">
+          <CardHeader>
+            <CardTitle>Medium Card</CardTitle>
+            <CardDescription>Default size with balanced spacing.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm">Standard padding and rounded-2xl.</p>
+          </CardContent>
+        </Card>
+        <Card size="lg" className="w-full max-w-sm">
+          <CardHeader>
+            <CardTitle>Large Card</CardTitle>
+            <CardDescription>Generous padding with rounded-3xl.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm">Spacious layout for featured content.</p>
+          </CardContent>
+        </Card>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "@/components/ui/card";
+
+
+
+<Card size="md" className="w-full max-w-sm">
+  <CardHeader>
+    <CardTitle>Medium Card</CardTitle>
+    <CardDescription>Default size with balanced spacing.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p className="text-sm">Standard padding and rounded-2xl.</p>
+  </CardContent>
+</Card>
+
+<Card size="lg" className="w-full max-w-sm">
+  <CardHeader>
+    <CardTitle>Large Card</CardTitle>
+    <CardDescription>Generous padding with rounded-3xl.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p className="text-sm">Spacious layout for featured content.</p>
+  </CardContent>
+</Card>
+```
+
+      </div>
+      <DocsPreview>
+        <div className="flex flex-col gap-4 w-full">
+          <Card size="sm" className="w-full max-w-sm">
+            <CardHeader>
+              <CardTitle>Small Card</CardTitle>
+              <CardDescription>Compact padding with rounded-xl.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm">Reduced spacing for dense layouts.</p>
+            </CardContent>
+          </Card>
+          <Card size="md" className="w-full max-w-sm">
+            <CardHeader>
+              <CardTitle>Medium Card</CardTitle>
+              <CardDescription>Default size with balanced spacing.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm">Standard padding and rounded-2xl.</p>
+            </CardContent>
+          </Card>
+          <Card size="lg" className="w-full max-w-sm">
+            <CardHeader>
+              <CardTitle>Large Card</CardTitle>
+              <CardDescription>Generous padding with rounded-3xl.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm">Spacious layout for featured content.</p>
+            </CardContent>
+          </Card>
+        </div>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## With Icon
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex flex-col gap-4 w-full">
+        <Card className="w-full max-w-sm">
+          <CardHeader className="border-b">
+            <CardIcon size="sm">
+              <Icon name="shieldTick" />
+            </CardIcon>
+            <CardTitle>Small Icon</CardTitle>
+          </CardHeader>
+          <CardContent>
+              icon part
+          </CardContent>
+        </Card>
+        <Card className="w-full max-w-sm">
+          <CardHeader className="border-b">
+            <CardIcon size="md">
+              <Icon name="shieldTick" />
+            </CardIcon>
+            <CardTitle>Medium Icon</CardTitle>
+            <CardDescription>Default icon size with rounded-xl.</CardDescription>
+          </CardHeader>
+                 <CardContent>
+              icon part
+          </CardContent>
+        </Card>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardIcon,
+} from "@/components/ui/card";
+import { Icon } from "@/components/ui/icon";
+
+<Card className="w-full max-w-sm">
+  <CardHeader className="border-b">
+    <CardIcon size="sm">
+      <Icon name="shieldTick" />
+    </CardIcon>
+    <CardTitle>Small Icon</CardTitle>
+  </CardHeader>
+         <CardContent>
+              icon part
+          </CardContent>
+</Card>
+
+<Card className="w-full max-w-sm">
+  <CardHeader className="border-b">
+    <CardIcon size="md">
+      <Icon name="shieldTick" />
+    </CardIcon>
+    <CardTitle>Medium Icon</CardTitle>
+    <CardDescription>Default icon size with rounded-xl.</CardDescription>
+  </CardHeader>
+         <CardContent>
+              icon part
+          </CardContent>
+</Card>
+```
+
+      </div>
+      <DocsPreview>
+        <div className="flex flex-col gap-4 w-full">
+          <Card className="w-full max-w-sm">
+            <CardHeader>
+              <CardIcon size="sm">
+                <Icon name="shieldTick" />
+              </CardIcon>
+              <CardTitle>Small Icon</CardTitle>
+              <CardDescription>Icon appears before the title.</CardDescription>
+            </CardHeader>
+          </Card>
+          <Card className="w-full max-w-sm">
+            <CardHeader>
+              <CardIcon size="md">
+                <Icon name="shieldTick" />
+              </CardIcon>
+              <CardTitle>Medium Icon</CardTitle>
+              <CardDescription>Default icon size with rounded-xl.</CardDescription>
+            </CardHeader>
+          </Card>
+        </div>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## With Action
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Card className="w-full max-w-sm">
+        <CardHeader>
+          <CardTitle>Card with Action</CardTitle>
+          <CardDescription>Action button sits in the top-right corner.</CardDescription>
+          <CardAction>
+            <Button size="sm" variant="outline">Edit</Button>
+          </CardAction>
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm">Content goes here.</p>
+        </CardContent>
+      </Card>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardAction,
+  CardContent,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+
+<Card className="w-full max-w-sm">
+  <CardHeader>
+    <CardTitle>Card with Action</CardTitle>
+    <CardDescription>
+      Action button sits in the top-right corner.
+    </CardDescription>
+    <CardAction>
+      <Button size="sm" variant="outline">
+        Edit
+      </Button>
+    </CardAction>
+  </CardHeader>
+  <CardContent>
+    <p className="text-sm">Content goes here.</p>
+  </CardContent>
+</Card>;
+```
+
+      </div>
+      <DocsPreview>
+        <Card className="w-full max-w-sm">
+          <CardHeader>
+            <CardTitle>Card with Action</CardTitle>
+            <CardDescription>Action button sits in the top-right corner.</CardDescription>
+            <CardAction>
+              <Button size="sm" variant="outline">Edit</Button>
+            </CardAction>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm">Content goes here.</p>
+          </CardContent>
+        </Card>
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Properties
+
+| Property  | Type                                      | Default | Description             |
+| --------- | ----------------------------------------- | ------- | ----------------------- |
+| size      | `"sm"` \| `"md"` \| `"lg"` \| `"default"` | `"md"`  | The size of the card    |
+| className | `string`                                  | -       | Additional CSS classes  |
+| children  | `ReactNode`                               | -       | The content of the card |
+
+### CardIcon
+
+| Property  | Type             | Default | Description                    |
+| --------- | ---------------- | ------- | ------------------------------ |
+| size      | `"sm"` \| `"md"` | `"md"`  | The size of the icon container |
+| className | `string`         | -       | Additional CSS classes         |
+| children  | `ReactNode`      | -       | The icon element               |
