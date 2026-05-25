@@ -172,7 +172,7 @@ function PaginationResultsPerPage({
         <SelectTrigger size="sm" className="w-fit" variant="outline">
           <SelectValue />
         </SelectTrigger>
-        <SelectContent className={"w-30"}>
+        <SelectContent className={"w-26"} side="bottom" alignOffset={24}>
           <SelectItem value="10">10</SelectItem>
           <SelectItem value="20">20</SelectItem>
           <SelectItem value="50">50</SelectItem>

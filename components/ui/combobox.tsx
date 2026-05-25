@@ -23,7 +23,7 @@ function ComboboxValue({ ...props }: ComboboxPrimitive.Value.Props) {
 
 const triggerVariants = cva(
   cn(
-    "flex items-center gap-2 outline-none select-none transition-all duration-150",
+    "group/combobox-trigger flex items-center gap-2 outline-none select-none transition-all duration-150",
     "rounded-[10px] px-2.5 py-2.25 text-sm font-semibold whitespace-nowrap",
     "*:data-[slot=combobox-value]:line-clamp-1 *:data-[slot=combobox-value]:flex *:data-[slot=combobox-value]:flex-1 *:data-[slot=combobox-value]:text-left",
     "[&_svg:not([class*='size-'])]:size-4",
@@ -93,7 +93,7 @@ function ComboboxTrigger({
       {...props}
     >
       {wrapTextWithPx1(children)}
-      <ChevronDownIcon className="pointer-events-none size-4 shrink-0 ml-auto" />
+      <ChevronDownIcon className="pointer-events-none size-4 shrink-0 ml-auto transition-transform duration-200 group-aria-expanded:rotate-180" />
     </ComboboxPrimitive.Trigger>
   );
 }
@@ -176,7 +176,7 @@ function ComboboxContent({
         <ComboboxPrimitive.Popup
           data-slot="combobox-content"
           className={cn(
-            "bg-s-0/80 border border-outline-low-em z-50 max-h-(--available-height) w-(--anchor-width) min-w-60 backdrop-blur-sm origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-2xl p-2 text-popover-foreground shadow-2xl ring-1 ring-foreground/5 duration-100 outline-none data-[side=bottom]:slide-in-from-top-2 data-[side=inline-end]:slide-in-from-left-2 data-[side=inline-start]:slide-in-from-right-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 dark:ring-foreground/10 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:overflow-hidden data-closed:fade-out-0 data-closed:zoom-out-95 animate-none! relative before:pointer-events-none before:absolute before:inset-0 before:-z-1 before:rounded-[inherit] before:backdrop-blur-2xl before:backdrop-saturate-150 **:data-[slot$=-item]:focus:bg-foreground/10 **:data-[slot$=-item]:data-highlighted:bg-hover-overlay-inverse **:data-[slot$=-separator]:bg-foreground/5 **:data-[slot$=-trigger]:focus:bg-foreground/10 **:data-[slot$=-trigger]:aria-expanded:bg-foreground/10! **:data-[variant=destructive]:focus:bg-foreground/10! **:data-[variant=destructive]:text-accent-foreground! **:data-[variant=destructive]:**:text-accent-foreground!",
+            "bg-s-0/80 border border-outline-low-em z-50 max-h-(--available-height) w-(--anchor-width) min-w-60 backdrop-blur-sm origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-2xl p-2 text-popover-foreground shadow-2xl ring-1 ring-foreground/5 duration-100 outline-none data-[side=bottom]:slide-in-from-top-2 data-[side=inline-end]:slide-in-from-left-2 data-[side=inline-start]:slide-in-from-right-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 dark:ring-foreground/10 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:overflow-hidden data-closed:fade-out-0 data-closed:zoom-out-95 relative before:pointer-events-none before:absolute before:inset-0 before:-z-1 before:rounded-[inherit] before:backdrop-blur-2xl before:backdrop-saturate-150 **:data-[slot$=-item]:focus:bg-foreground/10 **:data-[slot$=-item]:data-highlighted:bg-hover-overlay-inverse **:data-[slot$=-separator]:bg-foreground/5 **:data-[slot$=-trigger]:focus:bg-foreground/10 **:data-[slot$=-trigger]:aria-expanded:bg-foreground/10! **:data-[variant=destructive]:focus:bg-foreground/10! **:data-[variant=destructive]:text-accent-foreground! **:data-[variant=destructive]:**:text-accent-foreground!",
             className,
           )}
           {...props}
