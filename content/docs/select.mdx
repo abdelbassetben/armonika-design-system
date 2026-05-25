@@ -513,3 +513,103 @@ import { Icon } from "@/components/ui/icon";
 
   </Tab>
 </Tabs>
+
+## Primary Flat
+
+A subtle primary-toned trigger without a border.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="w-full max-w-60">
+        <Field>
+          <FieldLabel>Framework</FieldLabel>
+          <Select defaultValue="react">
+            <SelectTrigger variant="primary-flat">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="react">React</SelectItem>
+              <SelectItem value="vue">Vue</SelectItem>
+              <SelectItem value="angular">Angular</SelectItem>
+            </SelectContent>
+          </Select>
+        </Field>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+<Field>
+  <FieldLabel>Framework</FieldLabel>
+  <Select defaultValue="react">
+    <SelectTrigger variant="primary-flat">
+      <SelectValue />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectItem value="react">React</SelectItem>
+      <SelectItem value="vue">Vue</SelectItem>
+      <SelectItem value="angular">Angular</SelectItem>
+    </SelectContent>
+  </Select>
+</Field>
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Ghost
+
+A borderless and transparent trigger that reveals its content on hover.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="w-full max-w-60">
+        <Field>
+          <FieldLabel>Framework</FieldLabel>
+          <Select defaultValue="react">
+            <SelectTrigger variant="ghost">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="react">React</SelectItem>
+              <SelectItem value="vue">Vue</SelectItem>
+              <SelectItem value="angular">Angular</SelectItem>
+            </SelectContent>
+          </Select>
+        </Field>
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+<Field>
+  <FieldLabel>Framework</FieldLabel>
+  <Select defaultValue="react">
+    <SelectTrigger variant="ghost">
+      <SelectValue />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectItem value="react">React</SelectItem>
+      <SelectItem value="vue">Vue</SelectItem>
+      <SelectItem value="angular">Angular</SelectItem>
+    </SelectContent>
+  </Select>
+</Field>
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>

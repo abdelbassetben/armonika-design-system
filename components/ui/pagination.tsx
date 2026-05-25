@@ -169,10 +169,10 @@ function PaginationResultsPerPage({
         value={String(value)}
         onValueChange={(v) => onValueChange?.(Number(v))}
       >
-        <SelectTrigger size="sm" className="w-fit">
+        <SelectTrigger size="sm" className="w-fit" variant="outline">
           <SelectValue />
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent className={"w-30"}>
           <SelectItem value="10">10</SelectItem>
           <SelectItem value="20">20</SelectItem>
           <SelectItem value="50">50</SelectItem>

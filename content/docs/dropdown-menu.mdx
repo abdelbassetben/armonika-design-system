@@ -85,3 +85,171 @@ export default function DropdownMenuDemo() {
 
   </Tab>
 </Tabs>
+
+## Default
+
+A styled trigger built directly into the component. Use it without a custom `render` prop.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <DropdownMenu>
+        <DropdownMenuTrigger>Open Menu</DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <DropdownMenuGroup>
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem><Icon name="category" className="size-4" /> Profile</DropdownMenuItem>
+            <DropdownMenuItem><Icon name="shieldTick" className="size-4" /> Billing</DropdownMenuItem>
+            <DropdownMenuItem><Icon name="verificationTick" className="size-4" /> Settings</DropdownMenuItem>
+          </DropdownMenuGroup>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuGroup,
+} from "@/components/ui/dropdown-menu";
+
+<DropdownMenu>
+  <DropdownMenuTrigger>
+    Open Menu
+  </DropdownMenuTrigger>
+  <DropdownMenuContent>
+    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+    <DropdownMenuSeparator />
+    <DropdownMenuGroup>
+      <DropdownMenuItem>
+        <Icon name="category" /> Profile
+      </DropdownMenuItem>
+      <DropdownMenuItem>
+        <Icon name="shieldTick" /> Billing
+      </DropdownMenuItem>
+      <DropdownMenuItem>
+        <Icon name="verificationTick" /> Settings
+      </DropdownMenuItem>
+    </DropdownMenuGroup>
+  </DropdownMenuContent>
+</DropdownMenu>
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Primary Flat
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <DropdownMenu>
+        <DropdownMenuTrigger variant="primary-flat">Open Menu</DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <DropdownMenuGroup>
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem><Icon name="category" className="size-4" /> Profile</DropdownMenuItem>
+            <DropdownMenuItem><Icon name="shieldTick" className="size-4" /> Billing</DropdownMenuItem>
+            <DropdownMenuItem><Icon name="verificationTick" className="size-4" /> Settings</DropdownMenuItem>
+          </DropdownMenuGroup>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+<DropdownMenu>
+  <DropdownMenuTrigger variant="primary-flat">
+    Open Menu
+  </DropdownMenuTrigger>
+  <DropdownMenuContent>
+    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+    <DropdownMenuSeparator />
+    <DropdownMenuGroup>
+      <DropdownMenuItem>
+        <Icon name="category" /> Profile
+      </DropdownMenuItem>
+      <DropdownMenuItem>
+        <Icon name="shieldTick" /> Billing
+      </DropdownMenuItem>
+      <DropdownMenuItem>
+        <Icon name="verificationTick" /> Settings
+      </DropdownMenuItem>
+    </DropdownMenuGroup>
+  </DropdownMenuContent>
+</DropdownMenu>
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Ghost
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <DropdownMenu>
+        <DropdownMenuTrigger variant="ghost">Open Menu</DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <DropdownMenuGroup>
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem><Icon name="category" className="size-4" /> Profile</DropdownMenuItem>
+            <DropdownMenuItem><Icon name="shieldTick" className="size-4" /> Billing</DropdownMenuItem>
+            <DropdownMenuItem><Icon name="verificationTick" className="size-4" /> Settings</DropdownMenuItem>
+          </DropdownMenuGroup>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+<DropdownMenu>
+  <DropdownMenuTrigger variant="ghost">
+    Open Menu
+  </DropdownMenuTrigger>
+  <DropdownMenuContent>
+    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+    <DropdownMenuSeparator />
+    <DropdownMenuGroup>
+      <DropdownMenuItem>
+        <Icon name="category" /> Profile
+      </DropdownMenuItem>
+      <DropdownMenuItem>
+        <Icon name="shieldTick" /> Billing
+      </DropdownMenuItem>
+      <DropdownMenuItem>
+        <Icon name="verificationTick" /> Settings
+      </DropdownMenuItem>
+    </DropdownMenuGroup>
+  </DropdownMenuContent>
+</DropdownMenu>
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>

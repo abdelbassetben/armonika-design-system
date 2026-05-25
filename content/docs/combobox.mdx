@@ -3,7 +3,7 @@ title: Combobox
 description: A searchable list of options with a button trigger and an accessible popup.
 ---
 
-import { ComboboxPopupDemo, ComboboxGroupedDemo } from "@/components/combobox-demo";
+import { ComboboxPopupDemo, ComboboxPrimaryFlatDemo, ComboboxGhostDemo, ComboboxOutlineDemo, ComboboxGroupedDemo } from "@/components/combobox-demo";
 import { Tabs, Tab } from "fumadocs-ui/components/tabs";
 
 A combobox lets users pick from a list inside an accessible popup. Use a button trigger with a search field in the popup when the list is long or needs filtering.
@@ -25,7 +25,6 @@ Use a button as the trigger and place `ComboboxInput` inside `ComboboxContent` s
 ```tsx
 "use client";
 
-import { Button } from "@/components/ui/button";
 import {
   Combobox,
   ComboboxContent,
@@ -52,13 +51,9 @@ const countries = [
 export function ComboboxPopup() {
   return (
     <Combobox items={countries} defaultValue={countries[0]}>
-      <ComboboxTrigger
-        render={
-          <Button variant="outline" className="w-64 justify-between font-normal">
-            <ComboboxValue />
-          </Button>
-        }
-      />
+      <ComboboxTrigger className="w-64">
+        <ComboboxValue />
+      </ComboboxTrigger>
       <ComboboxContent>
         <ComboboxInput showTrigger={false} placeholder="Search" />
         <ComboboxEmpty>No items found.</ComboboxEmpty>
@@ -98,7 +93,6 @@ Organize related options with `ComboboxGroup` and `ComboboxLabel`. The popup sea
 ```tsx
 "use client";
 
-import { Button } from "@/components/ui/button";
 import {
   Combobox,
   ComboboxTrigger,
@@ -116,13 +110,9 @@ import {
 export function GroupedComboboxDemo() {
   return (
     <Combobox defaultValue="next">
-      <ComboboxTrigger
-        render={
-          <Button variant="outline" className="w-64 justify-between font-normal">
-            <ComboboxValue placeholder="Select a product" />
-          </Button>
-        }
-      />
+      <ComboboxTrigger className="w-64">
+        <ComboboxValue placeholder="Select a product" />
+      </ComboboxTrigger>
       <ComboboxContent>
         <ComboboxInput showTrigger={false} placeholder="Search" />
         <ComboboxEmpty>No results found.</ComboboxEmpty>
@@ -140,6 +130,144 @@ export function GroupedComboboxDemo() {
             <ComboboxItem value="netlify">Netlify</ComboboxItem>
             <ComboboxItem value="cloudflare">Cloudflare</ComboboxItem>
           </ComboboxGroup>
+        </ComboboxList>
+      </ComboboxContent>
+    </Combobox>
+  );
+}
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Primary Flat
+
+A subtle primary-toned trigger without a border. Use it when the combobox needs to blend into a primary-colored section.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <ComboboxPrimaryFlatDemo />
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+"use client";
+
+import {
+  Combobox,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxList,
+  ComboboxTrigger,
+  ComboboxValue,
+} from "@/components/ui/combobox";
+import { Icon } from "@/components/ui/icon";
+
+const countries = [
+  { code: "", value: "", label: "Select country" },
+  { code: "ar", value: "argentina", label: "Argentina" },
+  { code: "au", value: "australia", label: "Australia" },
+  { code: "br", value: "brazil", label: "Brazil" },
+  { code: "ca", value: "canada", label: "Canada" },
+  { code: "fr", value: "france", label: "France" },
+  { code: "de", value: "germany", label: "Germany" },
+  { code: "jp", value: "japan", label: "Japan" },
+  { code: "us", value: "united-states", label: "United States" },
+];
+
+export function ComboboxPrimaryFlat() {
+  return (
+    <Combobox items={countries} defaultValue={countries[0]}>
+      <ComboboxTrigger variant="primary-flat" className="w-64">
+        <ComboboxValue />
+      </ComboboxTrigger>
+      <ComboboxContent>
+        <ComboboxInput showTrigger={false} placeholder="Search" />
+        <ComboboxEmpty>No items found.</ComboboxEmpty>
+        <ComboboxList>
+          {(item) => (
+            <ComboboxItem key={item.code} value={item}>
+              {item.label}
+            </ComboboxItem>
+          )}
+        </ComboboxList>
+      </ComboboxContent>
+    </Combobox>
+  );
+}
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Ghost
+
+A borderless and transparent trigger that reveals its content on hover. Ideal for inline or toolbar use cases where visual weight should be minimal.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <ComboboxGhostDemo />
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+"use client";
+
+import {
+  Combobox,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxList,
+  ComboboxTrigger,
+  ComboboxValue,
+} from "@/components/ui/combobox";
+import { Icon } from "@/components/ui/icon";
+
+const countries = [
+  { code: "", value: "", label: "Select country" },
+  { code: "ar", value: "argentina", label: "Argentina" },
+  { code: "au", value: "australia", label: "Australia" },
+  { code: "br", value: "brazil", label: "Brazil" },
+  { code: "ca", value: "canada", label: "Canada" },
+  { code: "fr", value: "france", label: "France" },
+  { code: "de", value: "germany", label: "Germany" },
+  { code: "jp", value: "japan", label: "Japan" },
+  { code: "us", value: "united-states", label: "United States" },
+];
+
+export function ComboboxGhost() {
+  return (
+    <Combobox items={countries} defaultValue={countries[0]}>
+      <ComboboxTrigger variant="ghost" className="w-64">
+        <ComboboxValue />
+      </ComboboxTrigger>
+      <ComboboxContent>
+        <ComboboxInput showTrigger={false} placeholder="Search" />
+        <ComboboxEmpty>No items found.</ComboboxEmpty>
+        <ComboboxList>
+          {(item) => (
+            <ComboboxItem key={item.code} value={item}>
+              {item.label}
+            </ComboboxItem>
+          )}
         </ComboboxList>
       </ComboboxContent>
     </Combobox>

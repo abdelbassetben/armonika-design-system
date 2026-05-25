@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { Menu as MenuPrimitive } from "@base-ui/react/menu";
+import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 import { ChevronRightIcon, CheckIcon } from "lucide-react";
@@ -14,8 +15,68 @@ function DropdownMenuPortal({ ...props }: MenuPrimitive.Portal.Props) {
   return <MenuPrimitive.Portal data-slot="dropdown-menu-portal" {...props} />;
 }
 
-function DropdownMenuTrigger({ ...props }: MenuPrimitive.Trigger.Props) {
-  return <MenuPrimitive.Trigger data-slot="dropdown-menu-trigger" {...props} />;
+const dropdownMenuTriggerVariants = cva(
+  cn(
+    "inline-flex items-center gap-2 outline-none select-none transition-all duration-150",
+    "rounded-[10px] px-2.5 py-2.25 text-sm font-semibold whitespace-nowrap",
+    "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  ),
+  {
+    variants: {
+      variant: {
+        default: cn(
+          "border border-outline-low-em bg-s-l1-d3 text-foreground",
+          "hover:[background:linear-gradient(var(--hover-overlay-inverse),var(--hover-overlay-inverse))_padding-box,linear-gradient(var(--s-l0-d3),var(--s-l1-d3))_padding-box,var(--outline-low-em)_border-box]",
+          "focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-offset-2",
+          "disabled:pointer-events-none disabled:bg-disabled-base-em disabled:text-disabled-med-em",
+          "aria-expanded:[background:linear-gradient(var(--hover-overlay-inverse),var(--hover-overlay-inverse))_padding-box,linear-gradient(var(--s-l0-d3),var(--s-l1-d3))_padding-box,var(--outline-low-em)_border-box]",
+        ),
+        "primary-flat": cn(
+          "bg-primary-base-em-alpha text-primary-med-em shadow-none border-0",
+          "hover:bg-[image:linear-gradient(0deg,var(--hover-overlay-inverse)_0%,var(--hover-overlay-inverse)_100%)]",
+          "hover:shadow-[0_2px_3px_0_var(--inverse-black-alpha-9)_inset,0_1px_1px_-0.5px_var(--elevation-shadow),0_3px_3px_-1.5px_var(--elevation-shadow),0_20px_20px_-12px_var(--elevation-shadow)]",
+          "focus-visible:shadow-[0_0_0_2px_var(--primary-base-em-alpha)] focus-visible:ring-0",
+          "disabled:pointer-events-none disabled:bg-disabled-base-em disabled:text-disabled-med-em",
+        ),
+        ghost: cn(
+          "bg-transparent text-muted-foreground shadow-none border-0",
+          "hover:bg-[image:linear-gradient(0deg,var(--hover-overlay-inverse)_0%,var(--hover-overlay-inverse)_100%)]",
+          "focus-visible:shadow-[0_0_0_2px_var(--outline-med-em)] focus-visible:ring-0",
+          "disabled:pointer-events-none disabled:bg-s-0 disabled:text-disabled-med-em",
+        ),
+        outline: cn(
+          "border text-muted-foreground",
+          "border-transparent [background:linear-gradient(var(--s-l0-d3),var(--s-l0-d3))_padding-box,var(--outline-secondary)_border-box]",
+          "shadow-[0_1px_2px_0_var(--inverse-black-alpha-3)_inset,0_2px_1.5px_-0.5px_var(--elevation-shadow)]",
+          "hover:[background:linear-gradient(var(--hover-overlay-inverse),var(--hover-overlay-inverse))_padding-box,linear-gradient(var(--s-l0-d3),var(--s-l0-d3))_padding-box,var(--outline-secondary)_border-box]",
+          "hover:shadow-[0_2px_3px_0_var(--inverse-black-alpha-9)_inset,0_1px_1px_-0.5px_var(--elevation-shadow),0_3px_3px_-1.5px_var(--elevation-shadow),0_20px_20px_-12px_var(--elevation-shadow)]",
+          "focus-visible:shadow-[0_0_0_2px_var(--outline-med-em)] focus-visible:ring-0",
+          "disabled:pointer-events-none disabled:bg-disabled-base-em disabled:text-disabled-med-em",
+          "aria-expanded:bg-muted aria-expanded:text-foreground",
+        ),
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  },
+);
+
+export type DropdownMenuTriggerProps = MenuPrimitive.Trigger.Props &
+  VariantProps<typeof dropdownMenuTriggerVariants>;
+
+function DropdownMenuTrigger({
+  className,
+  variant = "default",
+  ...props
+}: DropdownMenuTriggerProps) {
+  return (
+    <MenuPrimitive.Trigger
+      data-slot="dropdown-menu-trigger"
+      className={cn(dropdownMenuTriggerVariants({ variant }), className)}
+      {...props}
+    />
+  );
 }
 
 function DropdownMenuContent({
