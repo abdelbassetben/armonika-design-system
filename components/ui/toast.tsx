@@ -8,7 +8,7 @@ import { Icon } from "@/components/ui/icon";
 import { Button } from "./button";
 
 const toastVariants = cva(
-  "flex w-full  items-start gap-2 rounded-xl p-1.5 shadow-xl ring-0 min-w-[360px] backdrop-blur-xl",
+  "flex w-full items-stretch gap-2 rounded-2xl p-1 shadow-xl ring-0 corner-round/72 min-w-[360px] backdrop-blur-xl",
   {
     variants: {
       variant: {
@@ -75,7 +75,7 @@ function ToastContent({
 
   return (
     <div className={cn(toastVariants({ variant }))}>
-      <div className="flex flex-1 flex-col  rounded-xl py-2 pr-2 pl-3 bg-s-l0-d3">
+      <div className="flex h-full min-h-0 flex-1 flex-col gap-1.5 corner-round/72 rounded-xl px-2.5 bg-s-l0-d3">
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-1.5">
             <div
@@ -102,7 +102,7 @@ function ToastContent({
           <p className="text-xs text-current/70">{description}</p>
         )}
         {action && (
-          <div className="mt-1 flex w-full">
+          <div className="flex w-full">
             <Button
               variant={"ghost"}
               size={"sm"}

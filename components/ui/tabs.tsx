@@ -37,7 +37,7 @@ function Tabs({
 }
 
 const tabsListVariants = cva(
-  "group/tabs-list inline-flex w-fit items-center justify-center gap-x-1.5 text-muted group-data-vertical/tabs:h-fit group-data-vertical/tabs:flex-col data-[variant=line]:rounded-none data-[variant=line]:p-0",
+  "group/tabs-list inline-flex w-fit corner-round/72 items-stretch justify-center gap-x-1.5 text-muted group-data-vertical/tabs:h-fit group-data-vertical/tabs:flex-col data-[variant=line]:rounded-none data-[variant=line]:p-0",
   {
     variants: {
       variant: {
@@ -49,8 +49,8 @@ const tabsListVariants = cva(
         line: "gap-1 bg-transparent",
       },
       size: {
-        xs: "rounded-[10px] p-1",
-        sm: "rounded-xl p-1",
+        xs: "rounded-[10px] p-1 h-8",
+        sm: "rounded-xl p-1 h-8",
         md: "rounded-2xl p-1.5 h-12",
         lg: "rounded-[18px] p-1.5 h-14",
         xl: "rounded-[20px] p-1.5 h-16",
@@ -88,7 +88,7 @@ function TabsList({
 }
 
 const tabsTriggerVariants = cva(
-  "relative inline-flex items-center justify-center gap-1.5 border border-transparent font-medium whitespace-nowrap text-foreground/60 transition-all group-data-vertical/tabs:w-full group-data-vertical/tabs:justify-start focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "relative inline-flex items-center justify-center gap-1.5 border border-transparent corner-round/72 font-medium whitespace-nowrap text-foreground/60 transition-all group-data-vertical/tabs:w-full group-data-vertical/tabs:justify-start focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
@@ -128,11 +128,11 @@ const tabsTriggerVariants = cva(
         line: "data-active:bg-transparent data-active:shadow-none dark:data-active:border-transparent after:absolute after:bg-foreground after:opacity-0 after:transition-opacity group-data-horizontal/tabs:after:inset-x-0 group-data-horizontal/tabs:after:bottom-[-1px] group-data-horizontal/tabs:after:h-0.5 group-data-vertical/tabs:after:inset-y-0 group-data-vertical/tabs:after:-right-1 group-data-vertical/tabs:after:w-0.5 data-active:after:opacity-100",
       },
       size: {
-        xs: "h-6 rounded-md py-1 px-1.5 text-[10px] [&_svg:not([class*='size-'])]:size-3 group-data-vertical/tabs:px-2 group-data-vertical/tabs:py-1",
-        sm: "h-8 rounded-lg px-2 py-1.5 text-sm [&_svg:not([class*='size-'])]:size-3.5 group-data-vertical/tabs:px-2.5 group-data-vertical/tabs:py-1.5",
-        md: "h-10 rounded-[10px] py-2 px-2.5 text-sm group-data-vertical/tabs:px-3 group-data-vertical/tabs:py-2",
-        lg: "h-12 rounded-xl px-3 py-2.5 text-base group-data-vertical/tabs:px-4 group-data-vertical/tabs:py-3",
-        xl: "h-14 rounded-2xl px-3.5 py-3 text-[18px] group-data-vertical/tabs:px-5 group-data-vertical/tabs:py-3.5",
+        xs: "h-full min-h-0 rounded-md px-1.5 text-[10px] [&_svg:not([class*='size-'])]:size-3 group-data-vertical/tabs:h-auto group-data-vertical/tabs:px-2 group-data-vertical/tabs:py-1",
+        sm: "h-full min-h-0 rounded-lg px-2 text-sm [&_svg:not([class*='size-'])]:size-3.5 group-data-vertical/tabs:h-auto group-data-vertical/tabs:px-2.5 group-data-vertical/tabs:py-1.5",
+        md: "h-full min-h-0 rounded-[10px] px-2.5 text-sm group-data-vertical/tabs:h-auto group-data-vertical/tabs:px-3 group-data-vertical/tabs:py-2",
+        lg: "h-full min-h-0 rounded-xl px-3 text-base group-data-vertical/tabs:h-auto group-data-vertical/tabs:px-4 group-data-vertical/tabs:py-3",
+        xl: "h-full min-h-0 rounded-2xl px-3.5 text-[18px] group-data-vertical/tabs:h-auto group-data-vertical/tabs:px-5 group-data-vertical/tabs:py-3.5",
       },
     },
     defaultVariants: {
