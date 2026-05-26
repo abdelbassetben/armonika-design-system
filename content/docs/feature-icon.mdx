@@ -1,0 +1,124 @@
+---
+title: FeatureIcon
+description: A decorative icon container with support for multiple visual variants and sizes.
+---
+
+import { FeatureIcon } from "@/components/ui/feature-icon";
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+
+A decorative icon container. Built with `class-variance-authority` for variants and sizes.
+
+## Default
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <FeatureIcon name="category" />
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { FeatureIcon } from "@/components/ui/feature-icon";
+
+<FeatureIcon name="category" />;
+```
+
+      </div>
+      <DocsPreview>
+        <FeatureIcon name="category" />
+      </DocsPreview>
+    </div>
+  </Tab>
+</Tabs>
+
+## Variants
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex items-center gap-2">
+        <FeatureIcon variant="default" name="shieldTick" />
+        <FeatureIcon variant="primary-light" name="shieldTick" />
+        <FeatureIcon variant="neutral" name="shieldTick" />
+        <FeatureIcon variant="secondary" name="shieldTick" />
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { FeatureIcon } from "@/components/ui/feature-icon";
+
+<FeatureIcon variant="default" name="shieldTick" />;
+<FeatureIcon variant="primary-light" name="shieldTick" />;
+<FeatureIcon variant="neutral" name="shieldTick" />;
+<FeatureIcon variant="secondary" name="shieldTick" />;
+```
+
+      </div>
+      <DocsPreview>
+        <div className="flex items-center gap-2">
+          <FeatureIcon variant="default" name="shieldTick" />
+          <FeatureIcon variant="primary-light" name="shieldTick" />
+          <FeatureIcon variant="neutral" name="shieldTick" />
+          <FeatureIcon variant="secondary" name="shieldTick" />
+        </div>
+      </DocsPreview>
+    </div>
+  </Tab>
+</Tabs>
+
+## Sizes
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <div className="flex items-center gap-2">
+        <FeatureIcon size="xs" name="shieldTick" />
+        <FeatureIcon size="sm" name="shieldTick" />
+        <FeatureIcon size="md" name="shieldTick" />
+        <FeatureIcon size="lg" name="shieldTick" />
+        <FeatureIcon size="xl" name="shieldTick" />
+      </div>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { FeatureIcon } from "@/components/ui/feature-icon";
+
+<FeatureIcon size="xs" name="shieldTick" />;
+<FeatureIcon size="sm" name="shieldTick" />;
+<FeatureIcon size="md" name="shieldTick" />;
+<FeatureIcon size="lg" name="shieldTick" />;
+<FeatureIcon size="xl" name="shieldTick" />;
+```
+
+      </div>
+      <DocsPreview>
+        <div className="flex items-center gap-2">
+          <FeatureIcon size="xs" name="shieldTick" />
+          <FeatureIcon size="sm" name="shieldTick" />
+          <FeatureIcon size="md" name="shieldTick" />
+          <FeatureIcon size="lg" name="shieldTick" />
+          <FeatureIcon size="xl" name="shieldTick" />
+        </div>
+      </DocsPreview>
+    </div>
+  </Tab>
+</Tabs>
+
+## Properties
+
+| Property | Type | Default | Description |
+| -------- | ---- | ------- | ----------- |
+| name     | `IconName` | — | The icon to display |
+| variant  | `"default"` \| `"primary-light"` \| `"neutral"` \| `"secondary"` | `"default"` | The variant style |
+| size     | `"xs"` \| `"sm"` \| `"md"` \| `"lg"` \| `"xl"` | `"md"` | The size of the icon container |
