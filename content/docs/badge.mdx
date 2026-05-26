@@ -86,7 +86,7 @@ import { Badge, BadgeDot } from "@/components/ui/badge";
 <Tabs items={['Preview', 'Code']} defaultIndex={0}>
   <Tab>
     <DocsPreview>
-      <Badge variant="primary-flat">
+      <Badge variant="primary-light">
         <BadgeDot />
         Primary Flat
       </Badge>
@@ -99,7 +99,7 @@ import { Badge, BadgeDot } from "@/components/ui/badge";
 ```tsx
 import { Badge, BadgeDot } from "@/components/ui/badge";
 
-<Badge variant="primary-flat">
+<Badge variant="primary-light">
   <BadgeDot />
   Primary Flat
 </Badge>;
@@ -107,7 +107,7 @@ import { Badge, BadgeDot } from "@/components/ui/badge";
 
       </div>
       <DocsPreview>
-        <Badge variant="primary-flat">
+        <Badge variant="primary-light">
           <BadgeDot />
           Primary Flat
         </Badge>
@@ -501,7 +501,7 @@ import { Badge, BadgeDot } from "@/components/ui/badge";
 
 | Property | Type                                                                                                                                                            | Default     | Description                               |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ----------------------------------------- |
-| variant  | `"default"` \| `"outline"` \| `"primary-flat"` \| `"gray"` \| `"green"` \| `"red"` \| `"orange"` \| `"lime"` \| `"emerald"` \| `"teal"` \| `"cyan"` \| `"info"` | `"default"` | The variant style of the badge            |
+| variant  | `"default"` \| `"outline"` \| `"primary-light"` \| `"gray"` \| `"green"` \| `"red"` \| `"orange"` \| `"lime"` \| `"emerald"` \| `"teal"` \| `"cyan"` \| `"info"` | `"default"` | The variant style of the badge            |
 | size     | `"default"` \| `"sm"` \| `"md"` \| `"icon-only"`                                                                                                                | `"default"` | The size of the badge                     |
 | radius   | `boolean`                                                                                                                                                       | `false`     | Whether the badge is fully rounded or not |
 | children | `ReactNode`                                                                                                                                                     | -           | The content of the badge                  |

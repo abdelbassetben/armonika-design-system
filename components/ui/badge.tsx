@@ -3,9 +3,8 @@ import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
+import { surfaceBadge } from "@/lib/surface-styles";
 import { wrapTextWithPx1 } from "./button";
-
-
 
 const badgeVariants = cva(
   [
@@ -16,13 +15,10 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          "text-primary-foreground border-transparent [background:linear-gradient(var(--primary),var(--primary))_padding-box,var(--outline-primary)_border-box]",
-        outline:
-          "text-muted-foreground border-transparent [background:linear-gradient(var(--s-l0-d3),var(--s-l0-d3))_padding-box,var(--outline-secondary)_border-box] shadow-[0_1px_2px_0_rgba(255,255,255,0.03)_inset,0_2px_1.5px_-0.5px_rgba(0,0,0,0.03)]",
-        "primary-flat":
-          "text-primary-med-em border-transparent bg-primary-base-em-alpha",
-        gray: "text-foreground bg-secondary border border-outline-low-em",
+        default: surfaceBadge.default,
+        outline: surfaceBadge.outline,
+        "primary-light": surfaceBadge.primaryLight,
+        gray: surfaceBadge.gray,
         green:
           "text-success-high-em border-success-base-em-alpha [background:linear-gradient(0deg,var(--inverse-black-alpha-18)_0%,var(--inverse-black-alpha-18)_100%),var(--success-base-em-alpha)]",
         red: "text-danger-high-em border-danger-base-em-alpha [background:linear-gradient(0deg,var(--inverse-black-alpha-18)_0%,var(--inverse-black-alpha-18)_100%),var(--danger-base-em-alpha)]",

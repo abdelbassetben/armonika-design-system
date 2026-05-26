@@ -4,6 +4,7 @@ import { Button as ButtonPrimitive } from "@base-ui/react/button";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { Icon } from "@/components/ui/icon";
+import { surface } from "@/lib/surface-styles";
 import { cn } from "@/lib/utils";
 import { Children, Fragment, isValidElement, type ReactElement } from "react";
 
@@ -42,68 +43,6 @@ function wrapTextWithPx1(children: React.ReactNode): React.ReactNode {
   });
 }
 
-const shadowRestInsetSm =
-  "shadow-[0_1px_2px_0_var(--inverse-black-alpha-3)_inset,0_2px_1.5px_-0.5px_var(--elevation-shadow)]";
-
-const hoverBgDarkVeil =
-  "hover:bg-[image:linear-gradient(0deg,var(--hover-overlay-inverse)_0%,var(--hover-overlay-inverse)_100%)]";
-
-const gradientBorderPrimary =
-  "border-transparent " +
-  "[background:linear-gradient(var(--primary),var(--primary))_padding-box,var(--outline-primary)_border-box]";
-
-const gradientBorderNeutral =
-  "border-transparent " +
-  "[background:linear-gradient(var(--inverse-white),var(--inverse-white))_padding-box,var(--outline-secondary)_border-box]";
-const gradientBorderSecondary =
-  "border-transparent " +
-  "[background:linear-gradient(var(--secondary),var(--secondary))_padding-box,var(--outline-secondary)_border-box]";
-
-const gradientBorderDestructive =
-  "border-transparent " +
-  "[background:linear-gradient(var(--danger-med-em),var(--danger-med-em))_padding-box,var(--outline-primary)_border-box]";
-
-const gradientBorderSuccess =
-  "border-transparent " +
-  "[background:linear-gradient(var(--success-med-em),var(--success-med-em))_padding-box,var(--outline-primary)_border-box]";
-
-const gradientBorderOutline =
-  "border-transparent " +
-  "[background:linear-gradient(var(--s-l0-d3),var(--s-l0-d3))_padding-box,var(--outline-secondary)_border-box]";
-
-const hoverGradientPrimary =
-  "hover:[background:linear-gradient(var(--hover-overlay),var(--hover-overlay))_padding-box,linear-gradient(var(--primary),var(--primary))_padding-box,var(--outline-primary)_border-box]";
-
-const hoverGradientNeutral =
-  "hover:[background:linear-gradient(var(--hover-overlay),var(--hover-overlay))_padding-box,linear-gradient(var(--inverse-white),var(--inverse-white))_padding-box,var(--outline-secondary)_border-box]";
-
-const hoverGradientSecondary =
-  "hover:[background:linear-gradient(var(--hover-overlay),var(--hover-overlay))_padding-box,linear-gradient(var(--secondary),var(--secondary))_padding-box,var(--outline-secondary)_border-box]";
-
-const hoverGradientDestructive =
-  "hover:[background:linear-gradient(var(--hover-overlay),var(--hover-overlay))_padding-box,linear-gradient(var(--danger-med-em),var(--danger-med-em))_padding-box,var(--outline-primary)_border-box]";
-
-const hoverGradientSuccess =
-  "hover:[background:linear-gradient(var(--hover-overlay),var(--hover-overlay))_padding-box,linear-gradient(var(--success-med-em),var(--success-med-em))_padding-box,var(--outline-primary)_border-box]";
-
-const hoverGradientOutline =
-  "hover:[background:linear-gradient(var(--hover-overlay-inverse),var(--hover-overlay-inverse))_padding-box,linear-gradient(var(--s-l0-d3),var(--s-l0-d3))_padding-box,var(--outline-secondary)_border-box]";
-
-const hoverShadowLiftStrong =
-  "hover:shadow-[0_3px_3px_0_var(--inverse-black-alpha-18))_inset,0_1px_1px_-0.5px_var(--elevation-shadow),0_3px_3px_-1.5px_var(--elevation-shadow),0_20px_20px_-12px_var(--elevation-shadow)]";
-const hoverShadowLiftSoft =
-  "hover:shadow-[0_2px_3px_0_var(--inverse-black-alpha-9)_inset,0_1px_1px_-0.5px_var(--elevation-shadow),0_3px_3px_-1.5px_var(--elevation-shadow),0_20px_20px_-12px_var(--elevation-shadow)]";
-
-const focusRingOff = "focus-visible:ring-0";
-const focusShadowPrimary =
-  "focus-visible:shadow-[0_0_0_2px_var(--primary-base-em-alpha)]";
-const focusShadowNeutral =
-  "focus-visible:shadow-[0_0_0_2px_var(--outline-med-em)]";
-const focusShadowDestructive =
-  "focus-visible:shadow-[0_0_0_2px_var(--danger-base-em-alpha)]";
-const focusShadowSuccess =
-  "focus-visible:shadow-[0_0_0_2px_var(--success-base-em-alpha)]";
-
 const buttonVariants = cva(
   cn(
     "group/button inline-flex shrink-0 items-center justify-center corner-round/72",
@@ -119,73 +58,20 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: cn(
-          "border text-primary-foreground shadow-[0_3px_3px_0_var(--inverse-black-alpha-12)_inset,0_1px_1px_-0.5px_var(--elevation-shadow)]",
-          gradientBorderPrimary,
-          hoverGradientPrimary,
-          hoverShadowLiftStrong,
-          focusRingOff,
-          focusShadowPrimary,
-        ),
-
-        "primary-light": cn(
-          "bg-primary-base-em-alpha text-primary-med-em shadow-none ",
-          hoverBgDarkVeil,
-          hoverShadowLiftSoft,
-          focusShadowPrimary,
-        ),
-
-        neutral: cn(
-          "border text-s-0 shadow-[0_3px_3px_0_var(--inverse-black-alpha-12)_inset,0_1px_1px_-0.5px_var(--elevation-shadow)]",
-          gradientBorderNeutral,
-          hoverGradientNeutral,
-          hoverShadowLiftSoft,
-          focusShadowNeutral,
-        ),
-
+        default: surface.default,
+        "primary-light": surface.primaryLight,
+        neutral: surface.neutral,
         outline: cn(
-          "border text-muted-foreground",
-          gradientBorderOutline,
-          shadowRestInsetSm,
-          hoverGradientOutline,
-          hoverShadowLiftSoft,
+          surface.outline,
           "aria-expanded:bg-muted aria-expanded:text-foreground",
         ),
-
         secondary: cn(
-          "border bg-secondary bg-clip-padding text-foreground",
-          gradientBorderSecondary,
-          shadowRestInsetSm,
-          hoverGradientSecondary,
-          hoverShadowLiftSoft,
-          focusShadowNeutral,
+          surface.secondary,
           "aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
         ),
-
-        ghost: cn(
-          "bg-transparent text-muted-foreground shadow-none disabled:bg-s-0",
-          "hover:bg-[image:linear-gradient(0deg,var(--hover-overlay-inverse)_0%,var(--hover-overlay-inverse)_100%)]",
-          focusShadowNeutral,
-        ),
-
-        destructive: cn(
-          "border text-destructive-foreground shadow-[0_3px_3px_0_var(--inverse-black-alpha-12)_inset,0_1px_1px_-0.5px_var(--elevation-shadow)]",
-          gradientBorderDestructive,
-          hoverGradientDestructive,
-          hoverShadowLiftStrong,
-          focusRingOff,
-          focusShadowDestructive,
-        ),
-
-        success: cn(
-          "border text-success-foreground shadow-[0_3px_3px_0_var(--inverse-black-alpha-12)_inset,0_1px_1px_-0.5px_var(--elevation-shadow)]",
-          gradientBorderSuccess,
-          hoverGradientSuccess,
-          hoverShadowLiftStrong,
-          focusRingOff,
-          focusShadowSuccess,
-        ),
-
+        ghost: surface.ghost,
+        destructive: surface.destructive,
+        success: surface.success,
         link: "border-transparent bg-transparent shadow-none text-primary underline-offset-4 hover:underline",
       },
       size: {

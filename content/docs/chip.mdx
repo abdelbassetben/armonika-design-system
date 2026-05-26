@@ -40,7 +40,7 @@ import { Chip } from "@/components/ui/chip";
 <Tabs items={['Preview', 'Code']} defaultIndex={0}>
   <Tab>
     <DocsPreview>
-      <Chip variant="primary-flat">
+      <Chip variant="primary-light">
         Primary
       </Chip>
     </DocsPreview>
@@ -52,12 +52,12 @@ import { Chip } from "@/components/ui/chip";
 ```tsx
 import { Chip } from "@/components/ui/chip";
 
-<Chip variant="primary-flat">Primary</Chip>;
+<Chip variant="primary-light">Primary</Chip>;
 ```
 
       </div>
       <DocsPreview>
-        <Chip variant="primary-flat">Primary</Chip>
+        <Chip variant="primary-light">Primary</Chip>
       </DocsPreview>
     </div>
 
@@ -110,6 +110,6 @@ import { Chip } from "@/components/ui/chip";
 
 | Property | Type                                 | Default      | Description                          |
 | -------- | ------------------------------------ | ------------ | ------------------------------------ |
-| variant  | `"secondary"` \| `"primary-flat"`  | `"secondary"`| The variant style of the chip        |
+| variant  | `"secondary"` \| `"primary-light"`  | `"secondary"`| The variant style of the chip        |
 | size     | `"default"` \| `"sm"` \| `"md"` \| `"lg"` | `"default"` | The size of the chip       |
 | children | `ReactNode`                          | -            | The content of the chip              |

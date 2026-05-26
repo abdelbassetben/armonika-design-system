@@ -5,6 +5,7 @@ import { Select as SelectPrimitive } from "@base-ui/react/select"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
+import { controlTriggerVariants } from "@/lib/surface-styles"
 import { wrapTextWithPx1 } from "@/components/ui/button"
 import { ChevronDownIcon, ChevronUpIcon } from "lucide-react"
 
@@ -35,6 +36,7 @@ const selectTriggerVariants = cva(
     "group/button inline-flex w-fit items-center justify-between min-w-15 gap-1 text-sm whitespace-nowrap",
     "outline-none select-none transition-colors",
     "data-[size=default]:h-9 data-[size=sm]:h-8",
+    "rounded-[10px] px-3 py-1.5",
     "*:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-1.5",
     "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   ),
@@ -42,46 +44,23 @@ const selectTriggerVariants = cva(
     variants: {
       variant: {
         default: cn(
-          "border border-outline-low-em bg-s-l1-d3 text-foreground",
-          "rounded-[10px] px-3 py-1.5",
+          controlTriggerVariants({ variant: "default" }),
           "data-placeholder:text-muted-foreground",
           "*:data-[slot=select-value]:text-foreground *:data-[slot=select-value]:data-placeholder:text-muted-foreground",
-          "hover:[background:linear-gradient(var(--hover-overlay-inverse),var(--hover-overlay-inverse))_padding-box,linear-gradient(var(--s-l0-d3),var(--s-l1-d3))_padding-box,var(--outline-low-em)_border-box]",
-          "focus:ring-2 focus:ring-ring/50 focus:ring-offset-2",
-          "disabled:pointer-events-none disabled:bg-disabled-base-em disabled:text-disabled-med-em",
-          "aria-expanded:[background:linear-gradient(var(--hover-overlay-inverse),var(--hover-overlay-inverse))_padding-box,linear-gradient(var(--s-l0-d3),var(--s-l1-d3))_padding-box,var(--outline-low-em)_border-box]",
-          "aria-invalid:ring-danger-med-em aria-invalid:ring-1",
         ),
-        "primary-flat": cn(
-          "bg-primary-base-em-alpha text-primary-med-em shadow-none border-0",
-          "rounded-[10px] px-3 py-1.5",
+        "primary-light": cn(
+          controlTriggerVariants({ variant: "primary-light" }),
           "data-placeholder:text-primary-med-em/70",
           "*:data-[slot=select-value]:text-primary-med-em *:data-[slot=select-value]:data-placeholder:text-primary-med-em/70",
-          "hover:bg-[image:linear-gradient(0deg,var(--hover-overlay-inverse)_0%,var(--hover-overlay-inverse)_100%)]",
-          "hover:shadow-[0_2px_3px_0_var(--inverse-black-alpha-9)_inset,0_1px_1px_-0.5px_var(--elevation-shadow),0_3px_3px_-1.5px_var(--elevation-shadow),0_20px_20px_-12px_var(--elevation-shadow)]",
-          "focus-visible:shadow-[0_0_0_2px_var(--primary-base-em-alpha)] focus-visible:ring-0",
-          "disabled:pointer-events-none disabled:bg-disabled-base-em disabled:text-disabled-med-em",
         ),
         ghost: cn(
-          "bg-transparent text-muted-foreground shadow-none border-0",
-          "rounded-[10px] px-3 py-1.5",
+          controlTriggerVariants({ variant: "ghost" }),
           "data-placeholder:text-muted-foreground",
           "*:data-[slot=select-value]:text-foreground *:data-[slot=select-value]:data-placeholder:text-muted-foreground",
-          "hover:bg-[image:linear-gradient(0deg,var(--hover-overlay-inverse)_0%,var(--hover-overlay-inverse)_100%)]",
-          "focus-visible:shadow-[0_0_0_2px_var(--outline-med-em)] focus-visible:ring-0",
-          "disabled:pointer-events-none disabled:bg-s-0 disabled:text-disabled-med-em",
         ),
         outline: cn(
-          "border text-muted-foreground",
-          "rounded-[10px] px-3 py-1.5",
-          "border-transparent [background:linear-gradient(var(--s-l0-d3),var(--s-l0-d3))_padding-box,var(--outline-secondary)_border-box]",
-          "shadow-[0_1px_2px_0_var(--inverse-black-alpha-3)_inset,0_2px_1.5px_-0.5px_var(--elevation-shadow)]",
+          controlTriggerVariants({ variant: "outline" }),
           "data-placeholder:text-muted-foreground",
-          "hover:[background:linear-gradient(var(--hover-overlay-inverse),var(--hover-overlay-inverse))_padding-box,linear-gradient(var(--s-l0-d3),var(--s-l0-d3))_padding-box,var(--outline-secondary)_border-box]",
-          "hover:shadow-[0_2px_3px_0_var(--inverse-black-alpha-9)_inset,0_1px_1px_-0.5px_var(--elevation-shadow),0_3px_3px_-1.5px_var(--elevation-shadow),0_20px_20px_-12px_var(--elevation-shadow)]",
-          "focus-visible:shadow-[0_0_0_2px_var(--outline-med-em)] focus-visible:ring-0",
-          "disabled:pointer-events-none disabled:bg-disabled-base-em disabled:text-disabled-med-em",
-          "aria-expanded:bg-muted aria-expanded:text-foreground",
         ),
       },
     },

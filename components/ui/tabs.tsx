@@ -4,19 +4,9 @@ import * as React from "react";
 import { Tabs as TabsPrimitive } from "@base-ui/react/tabs";
 import { cva, type VariantProps } from "class-variance-authority";
 
+import { surfaceTabs } from "@/lib/surface-styles";
 import { cn } from "@/lib/utils";
-
-function wrapTextWithPx1(children: React.ReactNode): React.ReactNode {
-  return React.Children.map(children, (child) => {
-    if (typeof child === "string" || typeof child === "number") {
-      return <span className="px-1">{child}</span>;
-    }
-    if (React.isValidElement(child) && (child.type === "span" || child.type === React.Fragment)) {
-      return child;
-    }
-    return <span className="px-1">{child}</span>;
-  });
-}
+import { wrapTextWithPx1 } from "@/components/ui/button";
 
 function Tabs({
   className,
@@ -92,39 +82,11 @@ const tabsTriggerVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          "data-active:bg-s-l0-d4 data-active:text-foreground data-active:shadow-[0_1px_2px_0_var(--inverse-black-alpha-3)_inset,0_2px_1.5px_-0.5px_var(--elevation-shadow)] data-active:border-outline-base-em",
-        primary:
-          "data-active:border data-active:text-primary-foreground data-active:shadow-[0_3px_3px_0_var(--inverse-black-alpha-12)_inset,0_1px_1px_-0.5px_var(--elevation-shadow)] " +
-          "data-active:border-transparent " +
-          "data-active:[background:linear-gradient(var(--primary),var(--primary))_padding-box,var(--outline-primary)_border-box] " +
-          "data-active:hover:[background:linear-gradient(var(--hover-overlay),var(--hover-overlay))_padding-box,linear-gradient(var(--primary),var(--primary))_padding-box,var(--outline-primary)_border-box] " +
-          "data-active:hover:shadow-[0_3px_3px_0_var(--inverse-black-alpha-18)_inset,0_1px_1px_-0.5px_var(--elevation-shadow),0_3px_3px_-1.5px_var(--elevation-shadow),0_20px_20px_-12px_var(--elevation-shadow)] " +
-          "data-active:focus-visible:ring-0 " +
-          "data-active:focus-visible:shadow-[0_0_0_2px_var(--primary-base-em-alpha)]",
-
-        "primary-light":
-          "data-active:bg-primary-base-em-alpha data-active:text-primary-med-em data-active:shadow-none " +
-          "data-active:hover:bg-[image:linear-gradient(0deg,var(--hover-overlay-inverse)_0%,var(--hover-overlay-inverse)_100%)] " +
-          "data-active:hover:shadow-[0_2px_3px_0_var(--inverse-black-alpha-9)_inset,0_1px_1px_-0.5px_var(--elevation-shadow),0_3px_3px_-1.5px_var(--elevation-shadow),0_20px_20px_-12px_var(--elevation-shadow)] " +
-          "data-active:focus-visible:shadow-[0_0_0_2px_var(--primary-base-em-alpha)]",
-
-        neutral:
-          "data-active:border data-active:text-s-0 data-active:shadow-[0_3px_3px_0_var(--inverse-black-alpha-12)_inset,0_1px_1px_-0.5px_var(--elevation-shadow)] " +
-          "data-active:border-transparent " +
-          "data-active:[background:linear-gradient(var(--inverse-white),var(--inverse-white))_padding-box,var(--outline-secondary)_border-box] " +
-          "data-active:hover:[background:linear-gradient(var(--hover-overlay),var(--hover-overlay))_padding-box,linear-gradient(var(--inverse-white),var(--inverse-white))_padding-box,var(--outline-secondary)_border-box] " +
-          "data-active:hover:shadow-[0_2px_3px_0_var(--inverse-black-alpha-9)_inset,0_1px_1px_-0.5px_var(--elevation-shadow),0_3px_3px_-1.5px_var(--elevation-shadow),0_20px_20px_-12px_var(--elevation-shadow)] " +
-          "data-active:focus-visible:shadow-[0_0_0_2px_var(--outline-med-em)]",
-
-        secondary:
-          "data-active:border data-active:bg-secondary data-active:bg-clip-padding data-active:text-foreground " +
-          "data-active:border-[#0000000d] " +
-          "data-active:shadow-[0_1px_2px_0_var(--inverse-black-alpha-3)_inset,0_2px_1.5px_-0.5px_var(--elevation-shadow)] " +
-          "data-active:hover:bg-[image:linear-gradient(0deg,var(--hover-overlay-inverse)_0%,var(--hover-overlay-inverse)_100%)] " +
-          "data-active:hover:shadow-[0_2px_3px_0_var(--inverse-black-alpha-9)_inset,0_1px_1px_-0.5px_var(--elevation-shadow),0_3px_3px_-1.5px_var(--elevation-shadow),0_20px_20px_-12px_var(--elevation-shadow)] " +
-          "data-active:focus-visible:shadow-[0_0_0_2px_var(--outline-med-em)]",
-
+        default: surfaceTabs.default,
+        primary: surfaceTabs.primary,
+        "primary-light": surfaceTabs.primaryLight,
+        neutral: surfaceTabs.neutral,
+        secondary: surfaceTabs.secondary,
         line: "data-active:bg-transparent data-active:shadow-none dark:data-active:border-transparent after:absolute after:bg-foreground after:opacity-0 after:transition-opacity group-data-horizontal/tabs:after:inset-x-0 group-data-horizontal/tabs:after:bottom-[-1px] group-data-horizontal/tabs:after:h-0.5 group-data-vertical/tabs:after:inset-y-0 group-data-vertical/tabs:after:-right-1 group-data-vertical/tabs:after:w-0.5 data-active:after:opacity-100",
       },
       size: {

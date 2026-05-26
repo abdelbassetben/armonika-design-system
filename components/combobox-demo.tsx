@@ -53,7 +53,7 @@ export function ComboboxPopupDemo() {
 export function ComboboxPrimaryFlatDemo() {
   return (
     <Combobox items={countries}>
-      <ComboboxTrigger variant="primary-flat" className="w-64">
+      <ComboboxTrigger variant="primary-light" className="w-64">
         <Icon name="category" className="text-primary-med-em" />
         <ComboboxValue placeholder="Select a country" />
       </ComboboxTrigger>
