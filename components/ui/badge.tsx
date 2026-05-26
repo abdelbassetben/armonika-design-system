@@ -2,25 +2,9 @@ import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
+import { wrapTextWithPx1 } from "./button";
 
-function wrapTextWithPx1(children: React.ReactNode): React.ReactNode {
-  return React.Children.map(children, (child) => {
-    if (typeof child === "string" || typeof child === "number") {
-      return <span className="px-1">{child}</span>;
-    }
-    if (React.isValidElement(child)) {
-      const childType = child.type as any;
-      const childDisplayName = childType?.displayName;
-      if (child.type === "span" || child.type === React.Fragment) {
-        return child;
-      }
-      if (childDisplayName === "BadgeDot") {
-        return child;
-      }
-    }
-    return <span className="px-1">{child}</span>;
-  });
-}
+
 
 const badgeVariants = cva(
   [
