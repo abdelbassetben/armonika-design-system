@@ -1,0 +1,68 @@
+---
+title: File Upload
+description: A component for uploading files with drag and drop support and progress tracking.
+---
+
+import { FileUpload } from "@/components/ui/file-upload";
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+
+## Usage
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <FileUpload 
+        maxFiles={3}
+        maxSize={5 * 1024 * 1024}
+        accept="image/*"
+      />
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import { FileUpload } from "@/components/ui/file-upload";
+
+export default function Demo() {
+  return (
+    <FileUpload
+      maxFiles={3}
+      maxSize={5 * 1024 * 1024}
+      accept="image/*"
+      onUpload={async (file, onProgress) => {
+        // Simulate an upload in your app
+        for (let i = 0; i <= 100; i += 10) {
+          await new Promise((resolve) => setTimeout(resolve, 200));
+          onProgress(i);
+        }
+      }}
+    />
+  );
+}
+```
+
+      </div>
+      <DocsPreview>
+        <FileUpload
+          maxFiles={3}
+          maxSize={5 * 1024 * 1024}
+          accept="image/*"
+        />
+      </DocsPreview>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Props
+
+- `maxFiles` (number): Maximum number of files to upload. Defaults to 5.
+- `maxSize` (number): Maximum size in bytes per file. Defaults to 10MB.
+- `accept` (string): Allowed file types. Defaults to "\*".
+- `multiple` (boolean): Whether multiple files are allowed. Defaults to true.
+- `disabled` (boolean): Whether the input is disabled.
+- `value` (FileUploadItem[]): Array of controlled file items for manually handling state.
+- `onChange` (function): Callback triggered when files selection/status changes.
+- `onUpload` (function): Async callback for handling real file upload logic and reporting progress using `onProgress`.

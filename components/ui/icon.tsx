@@ -12,6 +12,21 @@ import alert from "../../public/assets/icons/alert.svg";
 import alertFill from "../../public/assets/icons/alert-fill.svg";
 import MoreAction from "../../public/assets/icons/more-action.svg";
 import Chevron from "../../public/assets/icons/chevron.svg";
+import upload from "../../public/assets/icons/upload.svg";
+import trash from "../../public/assets/icons/trash.svg";
+import closeCircle from "../../public/assets/icons/close-circle.svg";
+// files
+import mp3 from "../../public/assets/icons/mp3.svg";
+import mp4 from "../../public/assets/icons/mp4.svg";
+import pdf from "../../public/assets/icons/pdf.svg";
+import ppt from "../../public/assets/icons/ppt.svg";
+import doc from "../../public/assets/icons/doc.svg";
+import xls from "../../public/assets/icons/xls.svg";
+import rar from "../../public/assets/icons/rar.svg";
+import zip from "../../public/assets/icons/zip.svg"; 
+import csv from "../../public/assets/icons/csv.svg";
+import exe from "../../public/assets/icons/exe.svg";
+import txt from "../../public/assets/icons/txt.svg";
 
 const icons = {
   category: Category,
@@ -26,6 +41,22 @@ const icons = {
   alertFill: alertFill,
   moreAction: MoreAction,
   chevron: Chevron,
+  upload: upload,
+  trash: trash,
+  closeCircle: closeCircle,
+  // files
+  mp3: mp3,
+  mp4: mp4,
+  pdf: pdf,
+  ppt: ppt,
+  doc: doc,
+  xls: xls,
+  rar: rar,
+  zip: zip,
+  csv: csv,
+  exe: exe,
+  txt: txt,
+  
 };
 
 type IconName = keyof typeof icons;
