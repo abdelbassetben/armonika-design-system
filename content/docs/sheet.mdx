@@ -1,0 +1,165 @@
+---
+title: Sheet
+description: A sliding panel that emerges from the edge of the screen, commonly used for navigation menus, settings, or detailed information.
+---
+
+import {
+  Sheet,
+  SheetAction,
+  SheetBody,
+  SheetClose,
+  SheetContent,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
+import { Icon } from "@/components/ui/icon";
+import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+import { FeatureIcon } from "@/components/ui/feature-icon";
+import { DocsPreview } from "@/components/docs-preview";
+
+A panel that slides in from the edge of the screen, providing a focused space for forms, settings, or supplementary content without leaving the current page.
+
+## Default
+
+A sheet with an icon header: icon on the left, title and description stacked in a column, and an optional action on the right.
+
+<Tabs items={['Preview', 'Code']} defaultIndex={0}>
+  <Tab>
+    <DocsPreview>
+      <Sheet>
+        <SheetTrigger render={<Button variant="outline">Open Sheet</Button>} />
+        <SheetContent>
+          <SheetHeader className="border-b">
+          
+          <FeatureIcon name="category" size="sm"/>
+           <div className="gap-2">
+            <SheetTitle>Medium Icon</SheetTitle>
+            <SheetDescription>Default icon size with rounded-xl.</SheetDescription>
+           </div>
+            <SheetAction>
+              <Button variant="ghost" size="icon-sm">
+                <Icon name="moreAction" />
+              </Button>
+              <Button variant="ghost" size="icon-sm">
+                <Icon name="moreAction" />
+              </Button>
+            </SheetAction>
+          </SheetHeader>
+          <SheetBody>
+            {Array.from({ length: 20 }, (_, index) => (
+              <p
+                key={index}
+                className="mb-4 text-sm text-muted-foreground last:mb-0"
+              >
+                Profile field {index + 1} — long-form content scrolls inside the
+                body while the header and footer stay fixed.
+              </p>
+            ))}
+          </SheetBody>
+          <SheetFooter>
+            <SheetClose render={<Button variant="outline">Cancel</Button>} />
+            <Button>Save Changes</Button>
+          </SheetFooter>
+        </SheetContent>
+      </Sheet>
+    </DocsPreview>
+  </Tab>
+  <Tab>
+    <div className="flex flex-col gap-4">
+      <div className="bg-fd-muted/30 p-4 rounded-lg text-sm font-mono">
+
+```tsx
+import {
+  Sheet,
+  SheetAction,
+  SheetBody,
+  SheetClose,
+  SheetContent,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
+import { Icon } from "@/components/ui/icon";
+
+export default function SheetDemo() {
+  return (
+    <Sheet>
+        <SheetTrigger render={<Button variant="outline">Open Sheet</Button>} />
+        <SheetContent>
+          <SheetHeader className="border-b">
+          <FeatureIcon name="category" size="sm"/>
+           <div className="gap-2">
+            <SheetTitle>Medium Icon</SheetTitle>
+            <SheetDescription>Default icon size with rounded-xl.</SheetDescription>
+           </div>
+            <SheetAction>
+              <Button variant="ghost" size="icon-sm">
+                <Icon name="moreAction" />
+              </Button>
+            </SheetAction>
+          </SheetHeader>
+          <SheetBody>
+            {Array.from({ length: 20 }, (_, index) => (
+              <p
+                key={index}
+                className="mb-4 text-sm text-muted-foreground last:mb-0"
+              >
+                Profile field {index + 1} — long-form content scrolls inside the
+                body while the header and footer stay fixed.
+              </p>
+            ))}
+          </SheetBody>
+          <SheetFooter>
+            <SheetClose render={<Button variant="outline">Cancel</Button>} />
+            <Button>Save Changes</Button>
+          </SheetFooter>
+        </SheetContent>
+      </Sheet>
+  );
+}
+```
+
+      </div>
+    </div>
+
+  </Tab>
+</Tabs>
+
+## Properties
+
+### SheetHeader
+
+Renders as a flex row: on the left, `SheetTitle` and `SheetDescription` in a column, and optional `SheetAction` on the right.
+
+| Property    | Type     | Default | Description            |
+| ----------- | -------- | ------- | ---------------------- |
+| `className` | `string` | -       | Additional CSS classes |
+
+| Child              | Description                                    |
+| ------------------ | ---------------------------------------------- |
+| `SheetTitle`       | Header title text                              |
+| `SheetDescription` | Header description text                        |
+| `SheetAction`      | Optional action rendered in the top-right toolbar next to the close button |
+
+### SheetBody
+
+Scrollable main content between `SheetHeader` and `SheetFooter`. Grows to fill the remaining sheet height (`flex-1 min-h-0`) so the header and footer stay visible while the body scrolls.
+
+| Property    | Type     | Default | Description            |
+| ----------- | -------- | ------- | ---------------------- |
+| `className` | `string` | -       | Additional CSS classes |
+
+### SheetAction
+
+Optional header action (e.g. overflow menu). Place inside `SheetHeader`; it is hoisted into the absolute top-right toolbar (`flex` row with the close button).
+
+| Property    | Type     | Default | Description            |
+| ----------- | -------- | ------- | ---------------------- |
+| `className` | `string` | -       | Additional CSS classes |
