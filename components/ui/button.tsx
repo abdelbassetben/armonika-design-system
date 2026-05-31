@@ -32,7 +32,7 @@ function wrapTextWithPx1(children: React.ReactNode): React.ReactNode {
       return <span className="px-1">{child}</span>;
     }
     if (isValidElement(child)) {
-      if (child.type === "span" || child.type === Fragment) {
+      if (child.type === "span" || child.type === "div" || child.type === Fragment) {
         return child;
       }
       if (shouldSkipPx1Wrap(child)) {
