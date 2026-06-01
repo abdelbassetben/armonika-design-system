@@ -24,6 +24,10 @@ export type ColumnDef<TData> = {
   }) => React.ReactNode
   enableSorting?: boolean
   sortingFn?: (a: TData, b: TData) => number
+  /** Fixed column width. Prefer percentages (e.g. "25%") with table-fixed layout. */
+  width?: number | string
+  /** Minimum column width. Use px number or CSS length (e.g. "160px"). */
+  minWidth?: number | string
   meta?: Record<string, unknown>
 }
 
@@ -132,6 +136,7 @@ export type UseDataTableReturn<TData> = {
   isAllPageRowsSelected: () => boolean
   isSomePageRowsSelected: () => boolean
   manualPagination: boolean
+  pageSizeOptions: number[]
   toolbar: ToolbarOptions<TData> | undefined
   selection: SelectionOptions | undefined
 }
@@ -308,12 +313,22 @@ export function useDataTable<TData>({
     paginationOptions.pageSize ?? 10
   )
 
+  React.useEffect(() => {
+    if (paginationOptions.pageSize == null) return
+    setInternalPageSize(paginationOptions.pageSize)
+  }, [paginationOptions.pageSize])
+
   const pageIndex =
     manualPagination && paginationOptions.pageIndex != null
       ? paginationOptions.pageIndex
       : internalPageIndex
 
-  const pageSize = internalPageSize
+  const pageSize =
+    manualPagination && paginationOptions.pageSize != null
+      ? paginationOptions.pageSize
+      : internalPageSize
+
+  const pageSizeOptions = paginationOptions.pageSizeOptions ?? [10, 20, 50, 100]
 
   const [internalSelection, setInternalSelection] = React.useState<string[]>(
     () => selection?.defaultValue ?? []
@@ -513,6 +528,7 @@ export function useDataTable<TData>({
     isAllPageRowsSelected,
     isSomePageRowsSelected,
     manualPagination,
+    pageSizeOptions,
     toolbar,
     selection,
   }

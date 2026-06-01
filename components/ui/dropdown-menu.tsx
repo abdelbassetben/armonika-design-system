@@ -6,8 +6,8 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 import { controlTriggerVariants } from "@/lib/surface-styles";
-import { wrapTextWithPx1 } from "@/components/ui/button";
 import { ChevronRightIcon, CheckIcon } from "lucide-react";
+import { wrapTextWithPx } from "./button";
 
 function DropdownMenu({ ...props }: MenuPrimitive.Root.Props) {
   return <MenuPrimitive.Root data-slot="dropdown-menu" {...props} />;
@@ -39,11 +39,14 @@ const dropdownMenuTriggerVariants = cva(
 );
 
 export type DropdownMenuTriggerProps = MenuPrimitive.Trigger.Props &
-  VariantProps<typeof dropdownMenuTriggerVariants>;
+  VariantProps<typeof dropdownMenuTriggerVariants> & {
+    skiped?: boolean;
+  };
 
 function DropdownMenuTrigger({
   className,
   variant = "default",
+  skiped,
   children,
   ...props
 }: DropdownMenuTriggerProps) {
@@ -53,7 +56,7 @@ function DropdownMenuTrigger({
       className={cn(dropdownMenuTriggerVariants({ variant }), className)}
       {...props}
     >
-      {wrapTextWithPx1(children)}
+      {wrapTextWithPx(children, 1, skiped)}
     </MenuPrimitive.Trigger>
   );
 }

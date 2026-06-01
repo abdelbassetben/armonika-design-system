@@ -6,7 +6,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 import { controlTriggerVariants } from "@/lib/surface-styles";
-import { Button, wrapTextWithPx1 } from "@/components/ui/button";
+import { Button, wrapTextWithPx } from "@/components/ui/button";
 import {
   InputGroup,
   InputGroupAddon,
@@ -61,11 +61,14 @@ const triggerVariants = cva(
 );
 
 export type ComboboxTriggerProps = ComboboxPrimitive.Trigger.Props &
-  VariantProps<typeof triggerVariants>;
+  VariantProps<typeof triggerVariants> & {
+    skiped?: boolean;
+  };
 
 function ComboboxTrigger({
   className,
   variant = "default",
+  skiped,
   children,
   ...props
 }: ComboboxTriggerProps) {
@@ -75,7 +78,7 @@ function ComboboxTrigger({
       className={cn(triggerVariants({ variant }), className)}
       {...props}
     >
-      {wrapTextWithPx1(children)}
+      {wrapTextWithPx(children, 1, skiped)}
       <ChevronDownIcon className="pointer-events-none size-4 shrink-0 ml-auto transition-transform duration-200 group-aria-expanded:rotate-180" />
     </ComboboxPrimitive.Trigger>
   );
@@ -127,7 +130,7 @@ function ComboboxInput({
         </InputGroupAddon>
         {children}
       </InputGroup>
-      <Separator className={"my-2.5"}/>
+      <Separator className={"my-2.5"} />
     </>
   );
 }

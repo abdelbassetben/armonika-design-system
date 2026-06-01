@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 import { surfaceBadge } from "@/lib/surface-styles";
-import { wrapTextWithPx1 } from "./button";
+import { wrapTextWithPx } from "./button";
 
 const badgeVariants = cva(
   [
@@ -31,15 +31,16 @@ const badgeVariants = cva(
         teal: "text-teal-600 border-teal-500/24 [background:linear-gradient(0deg,var(--inverse-black-alpha-18)_0%,var(--inverse-black-alpha-18)_100%),oklch(70.4% 0.14 182.503 / 0.2)]",
         cyan: "text-cyan-600 border-cyan-500/24 [background:linear-gradient(0deg,var(--inverse-black-alpha-18)_0%,var(--inverse-black-alpha-18)_100%),oklch(71.5% 0.143 215.221 / 0.2)]",
         info: "text-info-high-em border-info-base-em-alpha [background:linear-gradient(0deg,var(--inverse-black-alpha-18)_0%,var(--inverse-black-alpha-18)_100%),var(--info-base-em-alpha)]",
+        "special-info":`${surfaceBadge.outline} text-info-high-em `,
       },
       radius: {
         true: "rounded-full",
         false: "rounded-md",
       },
       size: {
-        default: "h-5 py-1 px-1.5 text-[10px] gap-x-0.5",
-        sm: "h-6 px-2 py-1 text-xs gap-x-1",
-        md: "h-7 px-2 py-1 text-xs gap-x-1.5",
+        default: "h-5 py-1 px-1 text-[10px] gap-x-0.5",
+        sm: "h-6 p-1.5 text-xs gap-x-1",
+        md: "h-7 px-2.5 py-1.5 text-xs gap-x-1.5",
         "icon-only": "!gap-0 !p-0 leading-none",
       },
     },
@@ -55,6 +56,7 @@ export type BadgeProps = React.ComponentPropsWithoutRef<"span"> &
   VariantProps<typeof badgeVariants> & {
     /** Backward-compatible alias for `radius`. */
     raduis?: boolean;
+    skiped?: boolean;
   };
 
 function Badge({
@@ -63,6 +65,7 @@ function Badge({
   radius = false,
   raduis,
   size = "default",
+  skiped,
   children,
   ...props
 }: BadgeProps) {
@@ -77,14 +80,14 @@ function Badge({
       )}
       {...props}
     >
-      {wrapTextWithPx1(children)}
+      {wrapTextWithPx(children, size === "md" ? 1 : 0.5)}
     </span>
   );
 }
 
 Badge.displayName = "Badge";
 
-export interface BadgeDotProps extends React.ComponentPropsWithoutRef<"span"> {}
+export interface BadgeDotProps extends React.ComponentPropsWithoutRef<"span"> { }
 
 function BadgeDot({ className, ...props }: Readonly<BadgeDotProps>) {
   return (

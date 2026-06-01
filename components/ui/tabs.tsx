@@ -6,7 +6,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { surfaceTabs } from "@/lib/surface-styles";
 import { cn } from "@/lib/utils";
-import { wrapTextWithPx1 } from "@/components/ui/button";
+import { wrapTextWithPx } from "@/components/ui/button";
 
 function Tabs({
   className,
@@ -108,9 +108,10 @@ function TabsTrigger({
   className,
   variant,
   size,
+  skiped,
   children,
   ...props
-}: TabsPrimitive.Tab.Props & VariantProps<typeof tabsTriggerVariants>) {
+}: TabsPrimitive.Tab.Props & VariantProps<typeof tabsTriggerVariants> & { skiped?: boolean }) {
   const context = React.useContext(TabsContext);
   const triggerVariant = variant || context.variant;
   const triggerSize = size || context.size;
@@ -127,7 +128,7 @@ function TabsTrigger({
       )}
       {...props}
     >
-      {wrapTextWithPx1(children)}
+      {wrapTextWithPx(children, 1, skiped)}
     </TabsPrimitive.Tab>
   );
 }

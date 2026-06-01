@@ -4,9 +4,9 @@ import { Button as ButtonPrimitive } from "@base-ui/react/button";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { Icon } from "@/components/ui/icon";
-import { surface } from "@/lib/surface-styles";
 import { cn } from "@/lib/utils";
 import { Children, Fragment, isValidElement, type ReactElement } from "react";
+import { surface } from "@/lib/surface-styles";
 
 function shouldSkipPx1Wrap(child: ReactElement): boolean {
   if (child.type === Icon || child.type === "svg") {
@@ -26,20 +26,25 @@ function shouldSkipPx1Wrap(child: ReactElement): boolean {
   return false;
 }
 
-function wrapTextWithPx1(children: React.ReactNode): React.ReactNode {
+function wrapTextWithPx(children: React.ReactNode, padding: number = 1, skiped?: boolean): React.ReactNode {
   return Children.map(children, (child) => {
     if (typeof child === "string" || typeof child === "number") {
-      return <span className="px-1">{child}</span>;
+      return <span className={skiped ? "" : `px-${padding}`}>{child}</span>;
     }
     if (isValidElement(child)) {
+      const childType = child.type as any;
+      const childDisplayName = childType?.displayName;
       if (child.type === "span" || child.type === "div" || child.type === Fragment) {
+        return child;
+      }
+      if (childDisplayName === "BadgeDot") {
         return child;
       }
       if (shouldSkipPx1Wrap(child)) {
         return child;
       }
     }
-    return <span className="px-1">{child}</span>;
+    return <span className={skiped ? "" : `px-${padding}`}>{child}</span>;
   });
 }
 
@@ -130,12 +135,15 @@ const buttonVariants = cva(
 );
 
 export type ButtonProps = ButtonPrimitive.Props &
-  VariantProps<typeof buttonVariants>;
+  VariantProps<typeof buttonVariants> & {
+    skiped?: boolean;
+  };
 
 function Button({
   className,
   variant = "default",
   size = "default",
+  skiped,
   children,
   ...props
 }: ButtonProps) {
@@ -145,11 +153,11 @@ function Button({
       className={cn(buttonVariants({ variant, size }), className)}
       {...props}
     >
-      {wrapTextWithPx1(children)}
+      {wrapTextWithPx(children, 1, skiped)}
     </ButtonPrimitive>
   );
 }
 
 Button.displayName = "Button";
 
-export { Button, buttonVariants, wrapTextWithPx1 };
+export { Button, buttonVariants, wrapTextWithPx };

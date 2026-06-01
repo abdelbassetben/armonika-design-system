@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 import { surfaceChip } from "@/lib/surface-styles";
-import { wrapTextWithPx1 } from "./button";
+import { wrapTextWithPx } from "./button";
 
 const chipVariants = cva(
   [
@@ -34,12 +34,15 @@ const chipVariants = cva(
 );
 
 export type ChipProps = React.ComponentPropsWithoutRef<"span"> &
-  VariantProps<typeof chipVariants>;
+  VariantProps<typeof chipVariants> & {
+    skiped?: boolean;
+  };
 
 function Chip({
   className,
   variant = "secondary",
   size = "default",
+  skiped,
   children,
   ...props
 }: ChipProps) {
@@ -52,7 +55,7 @@ function Chip({
       )}
       {...props}
     >
-      {wrapTextWithPx1(children)}
+      {wrapTextWithPx(children, 1, skiped)}
     </span>
   );
 }

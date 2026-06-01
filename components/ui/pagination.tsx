@@ -12,6 +12,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  DEFAULT_PAGE_SIZE,
+  PAGE_SIZE_OPTIONS,
+  resolvePageSizeOptions,
+} from "@/lib/pagination";
 
 function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
   return (
@@ -109,9 +114,11 @@ function PaginationNext({
 
 function PaginationGoToPage({
   className,
+  maxPage,
   onGoToPage,
   ...props
 }: Omit<React.ComponentProps<"form">, "onSubmit"> & {
+  maxPage?: number;
   onGoToPage?: (page: number) => void;
 }) {
   const [value, setValue] = React.useState("");
@@ -119,10 +126,12 @@ function PaginationGoToPage({
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const page = Number.parseInt(value, 10);
-    if (page > 0 && value) {
-      onGoToPage?.(page);
-      setValue("");
-    }
+    if (Number.isNaN(page) || page < 1 || !value) return;
+
+    const upper = maxPage != null && maxPage > 0 ? maxPage : page;
+    const clamped = Math.min(Math.max(1, page), upper);
+    onGoToPage?.(clamped);
+    setValue("");
   }
 
   return (
@@ -134,13 +143,14 @@ function PaginationGoToPage({
       <span className="text-xs text-muted font-semibold whitespace-nowrap">
         Go to
       </span>
-      <div className="h-8 max-h-8 py-1 pr-1 pl-2 gap-1 flex items-center rounded-lg corner-round/72 border border-outline-low-em bg-s-l2-d3">
+      <div className="h-8 max-h-8  py-1 pr-1 pl-2 gap-1 flex items-center rounded-lg corner-round/72 border border-outline-low-em bg-s-l2-d3">
         <input
           type="number"
           min={1}
+          max={maxPage != null && maxPage > 0 ? maxPage : undefined}
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          className="px-1 py-0  text-center max-w-13.75 text-xs transition-colors outline-none  [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+          className="pr-1 py-0 text-center min-w-13 w-13 text-xs transition-colors outline-none  [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
           placeholder="Number"
         />
         <Button type="submit" variant="outline" size="xs">
@@ -153,13 +163,17 @@ function PaginationGoToPage({
 
 function PaginationResultsPerPage({
   className,
-  value = 10,
+  value = DEFAULT_PAGE_SIZE,
+  options = PAGE_SIZE_OPTIONS,
   onValueChange,
 }: {
   className?: string;
   value?: number;
+  options?: readonly number[];
   onValueChange?: (value: number) => void;
 }) {
+  const sizeOptions = resolvePageSizeOptions(value, options);
+
   return (
     <div className={cn("flex items-center gap-1.5", className)}>
       <span className="text-xs text-muted font-semibold whitespace-nowrap">
@@ -173,10 +187,11 @@ function PaginationResultsPerPage({
           <SelectValue />
         </SelectTrigger>
         <SelectContent className={"w-26"} side="bottom" alignOffset={24}>
-          <SelectItem value="10">10</SelectItem>
-          <SelectItem value="20">20</SelectItem>
-          <SelectItem value="50">50</SelectItem>
-          <SelectItem value="100">100</SelectItem>
+          {sizeOptions.map((size) => (
+            <SelectItem key={size} value={String(size)}>
+              {size}
+            </SelectItem>
+          ))}
         </SelectContent>
       </Select>
     </div>

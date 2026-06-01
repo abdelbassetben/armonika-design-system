@@ -100,6 +100,31 @@ type DataTableProps<TData> = {
   bodyClassName?: string;
 };
 
+function toCssLength(value: number | string): string {
+  return typeof value === "number" ? `${value}px` : value;
+}
+
+function getColumnSizeStyle(column: {
+  width?: number | string;
+  minWidth?: number | string;
+}): React.CSSProperties | undefined {
+  const style: React.CSSProperties = {};
+
+  if (column.width != null) {
+    style.width = toCssLength(column.width);
+  }
+
+  if (column.minWidth != null) {
+    style.minWidth = toCssLength(column.minWidth);
+  }
+
+  return Object.keys(style).length ? style : undefined;
+}
+
+function useFixedTableLayout<TData>(columns: ColumnDef<TData>[]) {
+  return columns.length > 0 && columns.every((column) => column.width != null);
+}
+
 function renderHeader<TData>(
   column: ColumnDef<TData> & { id: string },
 ): React.ReactNode {
@@ -267,7 +292,6 @@ function DataTablePagination<TData>({
   table,
 }: {
   table: UseDataTableReturn<TData>;
-  pageSizeOptions?: number[];
 }) {
   const pageCount = table.getPageCount();
   const activePage = table.pageIndex + 1;
@@ -329,9 +353,10 @@ function DataTablePagination<TData>({
       </Pagination>
 
       <div className="flex items-center gap-3">
-        <PaginationGoToPage onGoToPage={goToPage} />
+        <PaginationGoToPage maxPage={pageCount} onGoToPage={goToPage} />
         <PaginationResultsPerPage
           value={table.pageSize}
+          options={table.pageSizeOptions}
           onValueChange={table.setPageSize}
         />
       </div>
@@ -403,7 +428,7 @@ function DataTableRowCells<TData>({
         const value = row.getValue(column.id);
 
         return (
-          <TableCell key={column.id}>
+          <TableCell key={column.id} style={getColumnSizeStyle(column)}>
             {index === 0 && selection && table ? (
               <div className="flex items-center gap-3">
                 <DataTableSelectionCell
@@ -444,7 +469,7 @@ function DataTableHeader<TData>({
       {headerGroups.map((headerGroup, groupIndex) => (
         <TableRow key={`header-group-${groupIndex}`}>
           {headerGroup.columns.map((column, index) => (
-            <TableHead key={column.id}>
+            <TableHead key={column.id} style={getColumnSizeStyle(column)}>
               {index === 0 && hasSelection ? (
                 <div className="flex items-center gap-3">
                   {selection?.mode === "multiple" ? (
@@ -737,12 +762,20 @@ function DataTable<TData>({
   const showPaginationFooter =
     paginationEnabled &&
     (table.manualPagination || table.getFilteredRowCount() > table.pageSize);
+  const fixedLayout = useFixedTableLayout(columns);
 
   return (
     <div data-slot="data-table" className={cn("w-full", className)}>
       <DataTableToolbar table={table} disabled={loading} />
 
-      <Table insetBody={bodyInset}>
+      <Table
+        insetBody={bodyInset}
+        className={
+          fixedLayout
+            ? "table-fixed [&_td]:overflow-hidden [&_th]:overflow-hidden"
+            : undefined
+        }
+      >
         <DataTableHeader
           table={table}
           selection={selection}
