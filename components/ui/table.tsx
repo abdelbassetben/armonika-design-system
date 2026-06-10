@@ -4,8 +4,10 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
+const ROW_HEIGHTS = { sm: 44, md: 56, lg: 64 } as const
+
 const tableBodyInsetClassName =
-  "[&>tr]:border-0 [&>tr]:hover:bg-transparent [&>tr[data-state=selected]]:bg-transparent [&>tr>td]:bg-s-l0-d3 [&>tr>td]:border-b [&>tr>td]:border-outline-low-em [&>tr:last-child>td]:border-b-0 [&>tr:first-child>td:first-child]:rounded-tl-xl [&>tr:first-child>td:last-child]:rounded-tr-xl [&>tr:last-child>td:first-child]:rounded-bl-xl [&>tr:last-child>td:last-child]:rounded-br-xl [&>tr:hover>td]:bg-hover-overlay-inverse"
+  "[&>tr]:border-0 [&>tr]:hover:bg-transparent [&>tr[data-state=selected]]:bg-transparent [&>tr>td]:bg-s-l0-d3 [&>tr>td]:border-b [&>tr>td]:border-outline-low-em [&>tr:last-child>td]:border-b-0 [&>tr:first-child>td:first-child]:rounded-tl-2xl [&>tr:first-child>td:last-child]:rounded-tr-2xl [&>tr:last-child>td:first-child]:rounded-bl-2xl [&>tr:last-child>td:last-child]:rounded-br-2xl [&>tr:hover>td]:bg-hover-overlay-inverse corner-round/72"
 
 type TableProps = React.ComponentProps<"table"> & {
   insetBody?: boolean
@@ -15,14 +17,14 @@ function Table({ className, insetBody, ...props }: TableProps) {
   return (
     <div
       data-slot="table-container"
-      className="relative w-full overflow-x-auto rounded-2xl backdrop-blur-xl bg-secondary"
+      className="relative w-full overflow-x-auto rounded-2xl backdrop-blur-xl bg-secondary corner-round/72"
     >
       <table
         data-slot="table"
         data-inset-body={insetBody || undefined}
         className={cn(
           "w-full caption-bottom text-sm",
-          insetBody ? "border-separate border-spacing-px px-0.5 pb-1" : "px-1",
+          insetBody ? "border-separate border-spacing-px px-0.5 pb-0.5" : "px-1",
           className
         )}
         {...props}
@@ -73,7 +75,11 @@ function TableFooter({ className, ...props }: React.ComponentProps<"tfoot">) {
   )
 }
 
-function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
+type TableRowProps = React.ComponentProps<"tr"> & {
+  size?: "sm" | "md" | "lg"
+}
+
+function TableRow({ className, size, style, ...props }: TableRowProps) {
   return (
     <tr
       data-slot="table-row"
@@ -81,6 +87,7 @@ function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
         "border-b-2 transition-colors hover:bg-hover-overlay-inverse has-aria-expanded:bg-hover-overlay-inverse ",
         className
       )}
+      style={{ ...(size ? { height: ROW_HEIGHTS[size] } : {}), ...style }}
       {...props}
     />
   )
@@ -104,7 +111,7 @@ function TableCell({ className, ...props }: React.ComponentProps<"td">) {
     <td
       data-slot="table-cell"
       className={cn(
-        "py-2.5 px-4 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&:has([role=radio])]:pr-0",
+        " px-4 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&:has([role=radio])]:pr-0",
         className
       )}
       {...props}

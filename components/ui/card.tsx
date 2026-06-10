@@ -36,7 +36,7 @@ function Card({
 }
 
 const cardHeaderGridClassName =
-  "group/card-header @container/card-header grid auto-rows-min items-center gap-2 has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto] [.border-b]:pb-2"
+  "group/card-header @container/card-header grid auto-rows-min items-center gap-2 has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto] has-data-[slot=card-action]:[.border-b]:pb-0 [.border-b]:border-outline-low-em [.border-b]:pb-2"
 
 function CardHeader({
   className,
@@ -77,7 +77,7 @@ function CardHeader({
     <div
       data-slot="card-header"
       className={cn(
-        "group/card-header @container/card-header flex flex-row items-center [.border-b]:pb-2",
+        "group/card-header @container/card-header flex flex-row items-center has-data-[slot=card-action]:[.border-b]:pb-2 [.border-b]:border-outline-low-em [.border-b]:pb-2",
         iconSize === "sm" ? "gap-1.5" : "gap-3",
         className
       )}
@@ -94,7 +94,7 @@ function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-title"
-      className={cn("font-heading text-sm font-medium", className)}
+      className={cn("font-heading text-sm font-semibold", className)}
       {...props}
     />
   )
@@ -104,7 +104,7 @@ function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card-description"
-      className={cn("text-sm text-muted-foreground", className)}
+      className={cn("text-sm text-muted-foreground font-medium", className)}
       {...props}
     />
   )

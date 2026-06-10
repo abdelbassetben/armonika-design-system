@@ -1,6 +1,4 @@
 @import "tailwindcss";
-@import "fumadocs-ui/css/neutral.css";
-@import "fumadocs-ui/css/preset.css";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @plugin "@toolwind/corner-shape";
@@ -222,9 +220,20 @@ html > body[data-scroll-locked] {
       transform: translateX(0);
     }
   }
-}
+
+  --animate-spin-around: spin-around 0.8s linear infinite
+;
+  @keyframes spin-around {
+  0% {
+    transform: rotate(-90deg);
+    }
+  100% {
+    transform: rotate(270deg);
+    }
+  }}
 
 :root {
+
   --elevation-shadow: rgba(0, 0, 0, 0.03);
   --radius: 0.625rem;
 
@@ -271,12 +280,12 @@ html > body[data-scroll-locked] {
   --border: oklch(0.922 0 0); /* #E5E5E5 */
   --input: var(--s-1);
   --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.809 0.105 251.813);
-  --chart-2: oklch(0.623 0.214 259.815);
-  --chart-3: oklch(0.546 0.245 262.881);
-  --chart-4: oklch(0.488 0.243 264.376);
-  --chart-5: oklch(0.424 0.199 265.638);
-  --sidebar: var(--s-2);
+  --chart-1: var(--primary-med-em);
+  --chart-2: var(--info-med-em);
+  --chart-3: var(--success-med-em);
+  --chart-4: var(--warning-med-em);
+  --chart-5: var(--danger-med-em);
+  --sidebar: var(--s-1);
   --sidebar-foreground: oklch(0.4917 0.0206 264.37);
   --sidebar-primary: oklch(0.205 0 0);
   --sidebar-primary-foreground: oklch(0.985 0 0);
@@ -371,7 +380,7 @@ html > body[data-scroll-locked] {
   --s-l5-d4: var(--s-light-5);
   --s-l5-d5: var(--s-light-5);
 
-  /* Within-theme blend (type C); var(--s-*) resolves on the element */
+  /* Within-theme blend (type C); var(--s-*) resolves on the element  */
   --s-gradient-0-1: linear-gradient(180deg, var(--s-0), var(--s-1));
 
   /* Outlines */
@@ -383,7 +392,7 @@ html > body[data-scroll-locked] {
   --outline-secondary: linear-gradient(
     90deg,
     var(--outline-secondary-button-top, rgba(0, 0, 0, 0.05)) 50%,
-    var(--outline-secondary-button-bottom, rgba(0, 0, 0, 0.12)) 100%
+    var(--outline-secondary-button-bottom, rgba(0, 0, 0, 0.12)) 100% 
   );
   --outline-sheet-special: linear-gradient(
     180deg,
@@ -427,11 +436,11 @@ html > body[data-scroll-locked] {
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.809 0.105 251.813);
-  --chart-2: oklch(0.623 0.214 259.815);
-  --chart-3: oklch(0.546 0.245 262.881);
-  --chart-4: oklch(0.488 0.243 264.376);
-  --chart-5: oklch(0.424 0.199 265.638);
+  --chart-1: var(--primary-med-em);
+  --chart-2: var(--info-med-em);
+  --chart-3: var(--success-med-em);
+  --chart-4: var(--warning-med-em);
+  --chart-5: var(--destructive-med-em);
   --sidebar: var(--s-2);
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.488 0.243 264.376);
@@ -587,8 +596,39 @@ html > body[data-scroll-locked] {
   @apply py-3 sm:py-5;
 }
 
+.sidebar_inset_panel {
+  @apply relative flex min-h-0 flex-1 flex-col overflow-hidden bg-s-l0-d2 md:m-2 md:ml-0 md:rounded-xl md:shadow-sm md:group-data-[state=collapsed]/sidebar-wrapper:ml-2;
+}
+
+.sidebar_inset_scroll {
+  @apply @container/main flex min-h-0 flex-1 flex-col overflow-y-auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.sidebar_inset_scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.page_shell {
+  @apply flex flex-1 flex-col;
+}
+
 .page_content {
-  @apply w-full max-w-278 mx-auto px-5 min-[1440px]:px-0;
+  @apply flex w-full max-w-278 flex-1 flex-col mx-auto px-6 pb-6 min-[1440px]:px-0;
+}
+
+.create_footer_inner {
+  @apply flex w-full min-w-0 flex-row items-center justify-between gap-4 p-4;
+}
+
+.create_page .page_content {
+  flex: 0 0 auto;
+  padding-bottom: var(--create-footer-offset, 0px);
+}
+
+.page_table_section {
+  @apply mt-7 flex min-w-0 flex-col;
 }
 
 .card_page {
@@ -605,3 +645,5 @@ html > body[data-scroll-locked] {
     scrollbar-width: none;
   }
 }
+
+

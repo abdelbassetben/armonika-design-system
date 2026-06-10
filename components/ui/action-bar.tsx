@@ -714,6 +714,7 @@ function ActionBarMoreAction({ children }: { children: React.ReactNode }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
+        variant={"ghost"}
         render={(props) => (
           <Button
             {...props}

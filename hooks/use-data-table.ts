@@ -15,8 +15,8 @@ export type ColumnDef<TData> = {
   accessorKey?: keyof TData & string
   accessorFn?: (row: TData) => unknown
   header?:
-    | React.ReactNode
-    | ((ctx: { column: ResolvedColumn<TData> }) => React.ReactNode)
+  | React.ReactNode
+  | ((ctx: { column: ResolvedColumn<TData> }) => React.ReactNode)
   cell?: (ctx: {
     row: TData
     value: unknown
@@ -45,9 +45,10 @@ export type SelectFilterDef<TData> = {
   type: "select"
   label?: string
   accessorKey?: keyof TData & string
-  options: { label: string; value: string }[]
-  defaultValue?: string
-  filterFn?: (row: TData, value: string) => boolean
+  options: { label: string; value: string; icon?: string }[]
+  defaultValue?: string | string[]
+  multiple?: boolean
+  filterFn?: (row: TData, value: string | string[]) => boolean
 }
 
 export type CustomFilterDef<TData> = {
@@ -59,6 +60,7 @@ export type CustomFilterDef<TData> = {
     onChange: (value: unknown) => void
   }) => React.ReactNode
   filterFn: (row: TData, value: unknown) => boolean
+  className?: string
 }
 
 export type FilterDef<TData> =
@@ -105,6 +107,14 @@ export type Row<TData> = {
   getValue: (columnId: string) => unknown
 }
 
+export type RowSize = "sm" | "md" | "lg"
+
+export const ROW_SIZE_MAP: Record<RowSize, number> = {
+  sm: 44,
+  md: 56,
+  lg: 64,
+}
+
 export type UseDataTableOptions<TData> = {
   data: TData[]
   columns: ColumnDef<TData>[]
@@ -112,6 +122,7 @@ export type UseDataTableOptions<TData> = {
   toolbar?: ToolbarOptions<TData>
   pagination?: boolean | PaginationOptions
   selection?: SelectionOptions
+  size?: RowSize
 }
 
 export type UseDataTableReturn<TData> = {
@@ -139,6 +150,7 @@ export type UseDataTableReturn<TData> = {
   pageSizeOptions: number[]
   toolbar: ToolbarOptions<TData> | undefined
   selection: SelectionOptions | undefined
+  size: RowSize
 }
 
 function resolveColumns<TData>(
@@ -270,6 +282,7 @@ export function useDataTable<TData>({
   toolbar,
   pagination,
   selection,
+  size = "md",
 }: UseDataTableOptions<TData>): UseDataTableReturn<TData> {
   const columns = React.useMemo(
     () => resolveColumns(columnDefs),
@@ -531,5 +544,6 @@ export function useDataTable<TData>({
     pageSizeOptions,
     toolbar,
     selection,
+    size,
   }
 }

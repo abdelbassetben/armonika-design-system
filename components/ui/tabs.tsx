@@ -18,7 +18,7 @@ function Tabs({
       data-slot="tabs"
       data-orientation={orientation}
       className={cn(
-        "group/tabs flex gap-2 data-horizontal:flex-col",
+        "group/tabs flex gap-6 data-horizontal:flex-col",
         className,
       )}
       {...props}
@@ -27,7 +27,7 @@ function Tabs({
 }
 
 const tabsListVariants = cva(
-  "group/tabs-list inline-flex w-fit corner-round/72 items-stretch justify-center gap-x-1.5 text-muted group-data-vertical/tabs:h-fit group-data-vertical/tabs:flex-col data-[variant=line]:rounded-none data-[variant=line]:p-0",
+  "group/tabs-list inline-flex w-fit corner-round/72 items-stretch justify-start w-full gap-x-1.5 text-muted group-data-vertical/tabs:h-fit group-data-vertical/tabs:flex-col data-[variant=line]:rounded-none data-[variant=line]:p-0",
   {
     variants: {
       variant: {
@@ -36,11 +36,11 @@ const tabsListVariants = cva(
         "primary-light": "bg-s-l1-d3 shadow-xs border border-outline-base-em",
         neutral: "bg-s-l1-d3 shadow-xs border border-outline-base-em",
         secondary: "bg-s-l1-d3 shadow-xs border border-outline-base-em",
-        line: "gap-1 bg-transparent",
+        line: "gap-1 bg-transparent border-b border-outline-low-em data-[orientation=vertical]:border-b-0 data-[orientation=vertical]:border-r",
       },
       size: {
         xs: "rounded-[10px] p-1 h-8",
-        sm: "rounded-xl p-1 h-8",
+        sm: "rounded-xl p-1 h-10",
         md: "rounded-2xl p-1.5 h-12",
         lg: "rounded-[18px] p-1.5 h-14",
         xl: "rounded-[20px] p-1.5 h-16",
@@ -78,7 +78,7 @@ function TabsList({
 }
 
 const tabsTriggerVariants = cva(
-  "relative inline-flex items-center justify-center gap-1.5 border border-transparent corner-round/72 font-medium whitespace-nowrap text-foreground/60 transition-all group-data-vertical/tabs:w-full group-data-vertical/tabs:justify-start focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "relative inline-flex items-center justify-center gap-1.5 border border-transparent corner-round/72 font-semibold whitespace-nowrap text-muted transition-all group-data-vertical/tabs:w-full group-data-vertical/tabs:justify-start focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
@@ -87,7 +87,7 @@ const tabsTriggerVariants = cva(
         "primary-light": surfaceTabs.primaryLight,
         neutral: surfaceTabs.neutral,
         secondary: surfaceTabs.secondary,
-        line: "data-active:bg-transparent data-active:shadow-none dark:data-active:border-transparent after:absolute after:bg-foreground after:opacity-0 after:transition-opacity group-data-horizontal/tabs:after:inset-x-0 group-data-horizontal/tabs:after:bottom-[-1px] group-data-horizontal/tabs:after:h-0.5 group-data-vertical/tabs:after:inset-y-0 group-data-vertical/tabs:after:-right-1 group-data-vertical/tabs:after:w-0.5 data-active:after:opacity-100",
+        line: "data-active:bg-transparent data-active:shadow-none data-active:text-foreground dark:data-active:border-transparent after:absolute after:bg-foreground after:opacity-0 after:transition-opacity group-data-horizontal/tabs:after:inset-x-0 group-data-horizontal/tabs:after:bottom-[-1px] group-data-horizontal/tabs:after:h-0.5 group-data-vertical/tabs:after:inset-y-0 group-data-vertical/tabs:after:-right-1 group-data-vertical/tabs:after:w-0.5 data-active:after:opacity-100",
       },
       size: {
         xs: "h-full min-h-0 rounded-md px-1.5 text-[10px] [&_svg:not([class*='size-'])]:size-3 group-data-vertical/tabs:h-auto group-data-vertical/tabs:px-2 group-data-vertical/tabs:py-1",

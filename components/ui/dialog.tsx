@@ -121,7 +121,7 @@ function DialogIcon({
       )}
       {...props}
     >
-      <Icon name={name} className="text-primary-med-em" />
+      <Icon name={name} className="text-primary-med-em size-7" />
     </div>
   );
 }

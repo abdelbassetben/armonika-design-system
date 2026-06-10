@@ -8,11 +8,25 @@ import { cn } from "@/lib/utils";
 import { Children, Fragment, isValidElement, type ReactElement } from "react";
 import { surface } from "@/lib/surface-styles";
 
+function getDataSlot(props: unknown): string | undefined {
+  if (typeof props !== "object" || props === null) {
+    return undefined;
+  }
+  const slot = (props as Record<string, unknown>)["data-slot"];
+  return typeof slot === "string" ? slot : undefined;
+}
+
 function shouldSkipPx1Wrap(child: ReactElement): boolean {
-  if (child.type === Icon || child.type === "svg") {
+  if (getDataSlot(child.props) === "combobox-clear") {
     return true;
   }
   const childType = child.type as { displayName?: string };
+  if (childType.displayName === "ComboboxClear") {
+    return true;
+  }
+  if (child.type === Icon || child.type === "svg") {
+    return true;
+  }
   if (childType.displayName === "Icon") {
     return true;
   }
@@ -68,7 +82,7 @@ const buttonVariants = cva(
         neutral: surface.neutral,
         outline: cn(
           surface.outline,
-          "aria-expanded:bg-muted aria-expanded:text-foreground",
+          // "aria-expanded:bg-hover-overlay aria-expanded:backdrop-blur-[12px] aria-expanded:shadow-[inset_0_2px_3px_0_rgba(255,255,255,0.08),0_1px_1px_-0.5px_rgba(0,0,0,0.03),0_3px_3px_-1.5px_rgba(0,0,0,0.03),0_20px_20px_-12px_rgba(0,0,0,0.03)] aria-expanded:border-green-500",
         ),
         secondary: cn(
           surface.secondary,

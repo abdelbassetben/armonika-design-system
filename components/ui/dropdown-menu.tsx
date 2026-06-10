@@ -6,8 +6,15 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 import { controlTriggerVariants } from "@/lib/surface-styles";
-import { ChevronRightIcon, CheckIcon } from "lucide-react";
+import {
+  menuItemIndicatorSizeVariants,
+  menuItemSizeVariants,
+  menuTriggerSizeVariants,
+  type MenuItemSize,
+} from "@/components/ui/menu-item-variants";
+import { CheckIcon } from "lucide-react";
 import { wrapTextWithPx } from "./button";
+import { Icon } from "./icon";
 
 function DropdownMenu({ ...props }: MenuPrimitive.Root.Props) {
   return <MenuPrimitive.Root data-slot="dropdown-menu" {...props} />;
@@ -20,8 +27,8 @@ function DropdownMenuPortal({ ...props }: MenuPrimitive.Portal.Props) {
 const dropdownMenuTriggerVariants = cva(
   cn(
     "inline-flex items-center gap-2 outline-none select-none transition-all duration-150",
-    "rounded-[10px] px-2.5 py-2.25 text-sm font-semibold whitespace-nowrap",
-    "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+    "font-semibold whitespace-nowrap",
+    "[&_svg]:pointer-events-none [&_svg]:shrink-0",
   ),
   {
     variants: {
@@ -39,13 +46,15 @@ const dropdownMenuTriggerVariants = cva(
 );
 
 export type DropdownMenuTriggerProps = MenuPrimitive.Trigger.Props &
-  VariantProps<typeof dropdownMenuTriggerVariants> & {
+  VariantProps<typeof dropdownMenuTriggerVariants> &
+  VariantProps<typeof menuTriggerSizeVariants> & {
     skiped?: boolean;
   };
 
 function DropdownMenuTrigger({
   className,
   variant = "default",
+  size = "md",
   skiped,
   children,
   ...props
@@ -53,7 +62,12 @@ function DropdownMenuTrigger({
   return (
     <MenuPrimitive.Trigger
       data-slot="dropdown-menu-trigger"
-      className={cn(dropdownMenuTriggerVariants({ variant }), className)}
+      data-size={size}
+      className={cn(
+        dropdownMenuTriggerVariants({ variant }),
+        menuTriggerSizeVariants({ size }),
+        className,
+      )}
       {...props}
     >
       {wrapTextWithPx(children, 1, skiped)}
@@ -85,7 +99,7 @@ function DropdownMenuContent({
         <MenuPrimitive.Popup
           data-slot="dropdown-menu-content"
           className={cn(
-            "bg-s-0/80 border border-outline-low-em z-50 max-h-(--available-height) w-(--anchor-width) min-w-60 backdrop-blur-sm origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-2xl p-2 text-popover-foreground shadow-2xl ring-1 ring-foreground/5 duration-100 outline-none data-[side=bottom]:slide-in-from-top-2 data-[side=inline-end]:slide-in-from-left-2 data-[side=inline-start]:slide-in-from-right-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 dark:ring-foreground/10 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:overflow-hidden data-closed:fade-out-0 data-closed:zoom-out-95 relative before:pointer-events-none before:absolute before:inset-0 before:-z-1 before:rounded-[inherit] before:backdrop-blur-2xl before:backdrop-saturate-150 **:data-[slot$=-item]:focus:bg-foreground/10 **:data-[slot$=-item]:data-highlighted:bg-hover-overlay-inverse **:data-[slot$=-separator]:bg-foreground/5 **:data-[slot$=-trigger]:focus:bg-foreground/10 **:data-[slot$=-trigger]:aria-expanded:bg-foreground/10! **:data-[variant=destructive]:focus:bg-foreground/10! **:data-[variant=destructive]:text-accent-foreground! **:data-[variant=destructive]:**:text-accent-foreground!",
+            "bg-s-0 opacity-90 border border-outline-low-em z-50 max-h-(--available-height) w-(--anchor-width) min-w-60  backdrop-blur-sm origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-2xl p-2 text-popover-foreground shadow-2xl ring-1 ring-foreground/5 duration-100 outline-none data-[side=bottom]:slide-in-from-top-2 data-[side=inline-end]:slide-in-from-left-2 data-[side=inline-start]:slide-in-from-right-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 dark:ring-foreground/10 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:overflow-hidden data-closed:fade-out-0 data-closed:zoom-out-95 relative before:pointer-events-none before:absolute before:inset-0 before:-z-1 before:rounded-[inherit] before:backdrop-blur-2xl before:backdrop-saturate-150 **:data-[slot$=-item]:focus:bg-foreground/10 **:data-[slot$=-item]:data-highlighted:bg-hover-overlay-inverse **:data-[slot$=-separator]:bg-foreground/5 **:data-[slot$=-trigger]:focus:bg-foreground/10 **:data-[slot$=-trigger]:aria-expanded:bg-foreground/10! **:data-[variant=destructive]:focus:bg-foreground/10! **:data-[variant=destructive]:text-accent-foreground! **:data-[variant=destructive]:**:text-accent-foreground!",
             className,
           )}
           {...props}
@@ -95,8 +109,14 @@ function DropdownMenuContent({
   );
 }
 
-function DropdownMenuGroup({ ...props }: MenuPrimitive.Group.Props) {
-  return <MenuPrimitive.Group data-slot="dropdown-menu-group" {...props} />;
+function DropdownMenuGroup({ className, ...props }: MenuPrimitive.Group.Props) {
+  return (
+    <MenuPrimitive.Group
+      data-slot="dropdown-menu-group"
+      className={cn("flex w-full flex-col", className)}
+      {...props}
+    />
+  );
 }
 
 function DropdownMenuLabel({
@@ -119,24 +139,45 @@ function DropdownMenuLabel({
   );
 }
 
+const dropdownMenuItemLayoutClassName =
+  "w-full [&>span:first-child]:shrink-0 [&>svg:first-child]:shrink-0 [&>[data-slot=dropdown-menu-item-trailing]]:ml-auto [&>[data-slot=dropdown-menu-item-trailing]]:shrink-0 [&>span:last-child:not(:first-child)]:ml-auto [&>span:last-child:not(:first-child)]:shrink-0 [&>svg:last-child:not(:first-child)]:ml-auto [&>svg:last-child:not(:first-child)]:shrink-0";
+
 function DropdownMenuItem({
   className,
   inset,
   variant = "default",
+  size = "md",
   ...props
-}: MenuPrimitive.Item.Props & {
-  inset?: boolean;
-  variant?: "default" | "destructive";
-}) {
+}: MenuPrimitive.Item.Props &
+  VariantProps<typeof menuItemSizeVariants> & {
+    inset?: boolean;
+    variant?: "default" | "destructive";
+  }) {
   return (
     <MenuPrimitive.Item
       data-slot="dropdown-menu-item"
       data-inset={inset}
       data-variant={variant}
+      data-size={size}
       className={cn(
-        "group/dropdown-menu-item font-semibold text-t-med-em relative flex cursor-default items-center gap-2.5 rounded-xl px-3 py-2 text-sm outline-hidden select-none hover:text-foreground focus:bg-accent focus:text-foreground not-data-[variant=destructive]:focus:**:text-foreground data-inset:pl-9.5 data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 data-[variant=destructive]:focus:text-destructive dark:data-[variant=destructive]:focus:bg-destructive/20 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 data-[variant=destructive]:*:[svg]:text-destructive",
+        "group/dropdown-menu-item font-semibold text-t-med-em relative flex cursor-default items-center gap-2 rounded-xl text-sm outline-hidden select-none hover:text-foreground focus:bg-accent focus:text-foreground not-data-[variant=destructive]:focus:**:text-danger--em data-inset:pl-9.5 data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 data-[variant=destructive]:focus:text-destructive dark:data-[variant=destructive]:focus:bg-destructive/20 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 data-[variant=destructive]:*:[svg]:text-danger-med-em",
+        menuItemSizeVariants({ size }),
+        dropdownMenuItemLayoutClassName,
         className,
       )}
+      {...props}
+    />
+  );
+}
+
+function DropdownMenuItemTrailing({
+  className,
+  ...props
+}: React.ComponentProps<"span">) {
+  return (
+    <span
+      data-slot="dropdown-menu-item-trailing"
+      className={cn("ml-auto inline-flex shrink-0 items-center", className)}
       {...props}
     />
   );
@@ -149,23 +190,28 @@ function DropdownMenuSub({ ...props }: MenuPrimitive.SubmenuRoot.Props) {
 function DropdownMenuSubTrigger({
   className,
   inset,
+  size = "md",
   children,
   ...props
-}: MenuPrimitive.SubmenuTrigger.Props & {
-  inset?: boolean;
-}) {
+}: MenuPrimitive.SubmenuTrigger.Props &
+  VariantProps<typeof menuItemSizeVariants> & {
+    inset?: boolean;
+  }) {
   return (
     <MenuPrimitive.SubmenuTrigger
       data-slot="dropdown-menu-sub-trigger"
       data-inset={inset}
+      data-size={size}
       className={cn(
-        "flex cursor-default items-center gap-2 rounded-xl px-3 py-2 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground data-inset:pl-9.5 data-popup-open:bg-accent data-popup-open:text-accent-foreground data-open:bg-accent data-open:text-accent-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "flex w-full cursor-default items-center gap-2 rounded-xl text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground data-inset:pl-9.5 data-popup-open:bg-accent data-popup-open:text-accent-foreground data-open:bg-accent data-open:text-accent-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        menuItemSizeVariants({ size }),
+        dropdownMenuItemLayoutClassName,
         className,
       )}
       {...props}
     >
       {children}
-      <ChevronRightIcon className="ml-auto" />
+      <Icon name="chevronRight" className="size-4" />
     </MenuPrimitive.SubmenuTrigger>
   );
 }
@@ -199,16 +245,20 @@ function DropdownMenuCheckboxItem({
   children,
   checked,
   inset,
+  size = "md",
   ...props
-}: MenuPrimitive.CheckboxItem.Props & {
-  inset?: boolean;
-}) {
+}: MenuPrimitive.CheckboxItem.Props &
+  VariantProps<typeof menuItemIndicatorSizeVariants> & {
+    inset?: boolean;
+  }) {
   return (
     <MenuPrimitive.CheckboxItem
       data-slot="dropdown-menu-checkbox-item"
       data-inset={inset}
+      data-size={size}
       className={cn(
-        "relative flex cursor-default items-center gap-2.5 rounded-xl py-2 pr-8 pl-3 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground data-inset:pl-9.5 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "relative flex cursor-default items-center gap-2.5 rounded-xl text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground data-inset:pl-9.5 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        menuItemIndicatorSizeVariants({ size }),
         className,
       )}
       checked={checked}
@@ -240,16 +290,20 @@ function DropdownMenuRadioItem({
   className,
   children,
   inset,
+  size = "md",
   ...props
-}: MenuPrimitive.RadioItem.Props & {
-  inset?: boolean;
-}) {
+}: MenuPrimitive.RadioItem.Props &
+  VariantProps<typeof menuItemIndicatorSizeVariants> & {
+    inset?: boolean;
+  }) {
   return (
     <MenuPrimitive.RadioItem
       data-slot="dropdown-menu-radio-item"
       data-inset={inset}
+      data-size={size}
       className={cn(
-        "relative flex cursor-default items-center gap-2.5 rounded-xl py-2 pr-8 pl-3 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground data-inset:pl-9.5 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "relative flex cursor-default items-center gap-2.5 rounded-xl text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground focus:**:text-accent-foreground data-inset:pl-9.5 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        menuItemIndicatorSizeVariants({ size }),
         className,
       )}
       {...props}
@@ -334,6 +388,7 @@ export {
   DropdownMenuGroup,
   DropdownMenuLabel,
   DropdownMenuItem,
+  DropdownMenuItemTrailing,
   DropdownMenuCheckboxItem,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
@@ -344,4 +399,4 @@ export {
   DropdownMenuSubContent,
   DropdownMenuStackView,
 };
-export type { DropdownMenuStackDirection };
+export type { DropdownMenuStackDirection, MenuItemSize };

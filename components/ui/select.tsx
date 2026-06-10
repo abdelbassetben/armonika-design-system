@@ -6,6 +6,11 @@ import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 import { controlTriggerVariants } from "@/lib/surface-styles"
+import {
+  menuItemSizeVariants,
+  menuTriggerSizeVariants,
+  type MenuItemSize,
+} from "@/components/ui/menu-item-variants"
 import { wrapTextWithPx } from "@/components/ui/button"
 import { ChevronDownIcon, ChevronUpIcon } from "lucide-react"
 
@@ -33,12 +38,10 @@ function SelectValue({ className, ...props }: SelectPrimitive.Value.Props) {
 
 const selectTriggerVariants = cva(
   cn(
-    "group/button inline-flex w-fit items-center justify-between min-w-15 gap-1 text-sm whitespace-nowrap",
+    "group/button inline-flex w-fit items-center justify-between min-w-15 gap-1 font-semibold whitespace-nowrap",
     "outline-none select-none transition-colors",
-    "data-[size=default]:h-9 data-[size=sm]:h-8",
-    "rounded-[10px] px-3 py-1.5",
     "*:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-1.5",
-    "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+    "[&_svg]:pointer-events-none [&_svg]:shrink-0",
   ),
   {
     variants: {
@@ -71,16 +74,18 @@ const selectTriggerVariants = cva(
 );
 
 export type SelectTriggerProps = SelectPrimitive.Trigger.Props &
-  VariantProps<typeof selectTriggerVariants> & {
-    size?: "sm" | "default"
+  VariantProps<typeof selectTriggerVariants> &
+  VariantProps<typeof menuTriggerSizeVariants> & {
     skiped?: boolean
+    showChevron?: boolean
   };
 
 function SelectTrigger({
   className,
   variant = "default",
-  size = "default",
+  size = "md",
   skiped,
+  showChevron = true,
   children,
   ...props
 }: SelectTriggerProps) {
@@ -88,15 +93,21 @@ function SelectTrigger({
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
       data-size={size}
-      className={cn(selectTriggerVariants({ variant }), className)}
+      className={cn(
+        selectTriggerVariants({ variant }),
+        menuTriggerSizeVariants({ size }),
+        className,
+      )}
       {...props}
     >
       {wrapTextWithPx(children, 1, skiped)}
-      <SelectPrimitive.Icon
-        render={
-          <ChevronDownIcon className="pointer-events-none size-4 transition-transform duration-200 group-aria-expanded:rotate-180" />
-        }
-      />
+      {showChevron && (
+        <SelectPrimitive.Icon
+          render={
+            <ChevronDownIcon className="pointer-events-none size-4 transition-transform duration-200 group-aria-expanded:rotate-180" />
+          }
+        />
+      )}
     </SelectPrimitive.Trigger>
   )
 }
@@ -159,13 +170,16 @@ function SelectLabel({
 function SelectItem({
   className,
   children,
+  size = "md",
   ...props
-}: SelectPrimitive.Item.Props) {
+}: SelectPrimitive.Item.Props & VariantProps<typeof menuItemSizeVariants>) {
   return (
     <SelectPrimitive.Item
       data-slot="select-item"
+      data-size={size}
       className={cn(
-        "group/select-item font-semibold text-t-med-em relative flex w-full cursor-default items-center gap-2.5 rounded-xl px-3 py-2 text-sm outline-hidden select-none hover:text-foreground focus:bg-accent focus:text-foreground data-selected:bg-[linear-gradient(0deg,var(--Surface-hover_overlay_inverse,rgba(0,0,0,0.03))_0%,var(--Surface-hover_overlay_inverse,rgba(0,0,0,0.03))_100%),var(--Surface-hover_overlay_inverse,rgba(0,0,0,0.03))] not-data-[variant=destructive]:focus:**:text-foreground data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
+        "group/select-item font-semibold text-t-med-em relative flex w-full cursor-default items-center gap-2.5 rounded-xl text-sm outline-hidden select-none hover:text-foreground focus:bg-accent focus:text-foreground data-selected:bg-[linear-gradient(0deg,var(--Surface-hover_overlay_inverse,rgba(0,0,0,0.03))_0%,var(--Surface-hover_overlay_inverse,rgba(0,0,0,0.03))_100%),var(--Surface-hover_overlay_inverse,rgba(0,0,0,0.03))] not-data-[variant=destructive]:focus:**:text-foreground data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
+        menuItemSizeVariants({ size }),
         className
       )}
       {...props}
@@ -243,3 +257,4 @@ export {
   SelectTrigger,
   SelectValue,
 }
+export type { MenuItemSize }

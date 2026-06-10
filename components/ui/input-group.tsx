@@ -27,10 +27,10 @@ const inputGroupRowSizeVariants = cva("", {
     size: {
       default: "h-10 px-2.5 py-2 text-sm",
       xs: "h-6 rounded-md px-1.5 py-1 text-[10px]",
-      sm: "h-8 rounded-lg px-2 py-1.5 text-xs",
-      md: "h-10 rounded-[10px] px-2.5 py-2 text-sm",
-      lg: "h-12 px-3 py-3 text-base rounded-[12px]",
-      xl: "h-14 px-3.5 py-3.5 text-[18px] rounded-[14px]",
+      sm: "h-8 rounded-lg px-2 py-1 text-xs",
+      md: "h-10 rounded-[10px] px-2.5 py-1 text-sm",
+      lg: "h-12 px-3 py-1 text-base rounded-[12px]",
+      xl: "h-14 px-3.5 py-1 text-[18px] rounded-[14px]",
     },
   },
   defaultVariants: {
@@ -120,7 +120,7 @@ function InputGroup({
         className={cn(
           inputGroupSurfaceClass({ variant, size }),
           inputGroupRadiusVariants({ radius }),
-          "group/input-group bg-s-l1-d3 corner-round/72 relative flex w-full min-w-0 items-center transition-colors outline-none in-data-[slot=combobox-content]:focus-within:border-inherit in-data-[slot=combobox-content]:focus-within:ring-0 has-disabled:bg-disabled-base-em has-[[data-slot][aria-invalid=true]]:border-destructive has-[[data-slot][aria-invalid=true]]:ring-0 has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>textarea]:h-auto dark:bg-input/30 dark:has-disabled:bg-input/80 dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40 has-[>[data-align=block-end]]:[&>input]:pt-3 has-[>[data-align=block-start]]:[&>input]:pb-3 has-[>[data-align=inline-end]]:[&>input]:pe-1.5 has-[>[data-align=inline-start]]:[&>input]:ps-1.5",
+          "group/input-group bg-s-l1-d3 corner-round/72 relative flex w-full min-w-0 items-center transition-colors outline-none in-data-[slot=combobox-content]:focus-within:border-inherit in-data-[slot=combobox-content]:focus-within:shadow-none in-data-[slot=combobox-content]:focus-within:ring-0 in-data-[slot=combobox-content]:[&_[data-slot=input-group-control]]:focus-visible:border-transparent in-data-[slot=combobox-content]:[&_[data-slot=input-group-control]]:focus-visible:ring-0 in-data-[slot=combobox-content]:[&_input]:focus-visible:border-transparent in-data-[slot=combobox-content]:[&_input]:focus-visible:ring-0 has-disabled:bg-disabled-base-em has-[[data-slot][aria-invalid=true]]:border-destructive has-[[data-slot][aria-invalid=true]]:ring-0 has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>textarea]:h-auto dark:bg-input/30 dark:has-disabled:bg-input/80 dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40 has-[>[data-align=block-end]]:[&>input]:pt-3 has-[>[data-align=block-start]]:[&>input]:pb-3 has-[>[data-align=inline-end]]:[&>input]:pe-1.5 has-[>[data-align=inline-start]]:[&>input]:ps-1.5",
           className,
         )}
         {...props}
@@ -137,7 +137,7 @@ const inputGroupAddonVariants = cva(
         "inline-start":
           "order-first has-[>button]:ms-[-0.3rem] has-[>kbd]:ms-[-0.15rem]",
         "inline-end":
-          "order-last has-[>button]:me-[-0.3rem] has-[>kbd]:me-[-0.15rem]",
+          "order-last has-[>kbd]:me-[-0.15rem]",
         "block-start":
           "order-first w-full justify-start px-2.5 pt-2 group-has-[>input]/input-group:pt-2 [.border-b]:pb-2",
         "block-end":

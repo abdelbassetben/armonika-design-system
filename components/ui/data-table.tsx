@@ -12,13 +12,13 @@ import {
   type PaginationOptions,
   type ResolvedColumn,
   type Row,
+  type RowSize,
   type SelectionOptions,
   type ToolbarOptions,
   type UseDataTableReturn,
 } from "@/hooks/use-data-table";
 import { Checkbox } from "@/components/ui/checkbox";
 import { radioVariants } from "@/components/ui/radio-group";
-import { Input } from "@/components/ui/input";
 import {
   Pagination,
   PaginationContent,
@@ -47,6 +47,23 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import {
+  Combobox,
+  ComboboxClear,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxItem,
+  ComboboxList,
+  ComboboxTrigger,
+  ComboboxValue,
+} from "@/components/ui/combobox";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+  InputGroupText,
+} from "@/components/ui/input-group";
+import { Icon } from "./icon";
 
 export type {
   ColumnDef,
@@ -82,6 +99,7 @@ type DataTableProps<TData> = {
   toolbar?: ToolbarOptions<TData>;
   selection?: SelectionOptions;
   pagination?: boolean | PaginationOptions;
+  size?: RowSize;
   className?: string;
   /** Override the entire row wrapper while reusing default cells via `children` */
   renderRow?: (ctx: DataTableRowContext<TData>) => React.ReactNode;
@@ -181,11 +199,13 @@ function DataTableToolbar<TData>({
               setSorting({ id: value, desc: sorting?.desc ?? false });
             }}
             disabled={disabled}
+
           >
-            <SelectTrigger size="sm" className="min-w-32">
-              <SelectValue placeholder="Sort by" />
+            <SelectTrigger size="sm" className="min-w-20" variant={"ghost"} showChevron={false}>
+              <Icon name="sortArrowDown" className="size-4" />
+              <SelectValue placeholder="Sort" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent align="end">
               {sortableColumns.map((column) => (
                 <SelectItem key={column.id} value={column.id}>
                   {renderHeader(column)}
@@ -193,21 +213,28 @@ function DataTableToolbar<TData>({
               ))}
             </SelectContent>
           </Select>
-
           <Select
-            value={sorting ? (sorting.desc ? "desc" : "asc") : ""}
+            value={sorting?.id ?? ""}
             onValueChange={(value) => {
-              if (!sorting || !value) return;
-              setSorting({ ...sorting, desc: value === "desc" });
+              if (!value) {
+                setSorting(null);
+                return;
+              }
+              setSorting({ id: value, desc: sorting?.desc ?? false });
             }}
-            disabled={disabled || !sorting}
+            disabled={disabled}
+
           >
-            <SelectTrigger size="sm" className="min-w-32">
-              <SelectValue placeholder="Direction" />
+            <SelectTrigger size="sm" className="min-w-20" variant={"ghost"} showChevron={false}>
+              <Icon name="settingsFlatLinear" className="size-4" />
+              <SelectValue placeholder="View" />
             </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="asc">Ascending</SelectItem>
-              <SelectItem value="desc">Descending</SelectItem>
+            <SelectContent align="end">
+              {sortableColumns.map((column) => (
+                <SelectItem key={column.id} value={column.id}>
+                  {renderHeader(column)}
+                </SelectItem>
+              ))}
             </SelectContent>
           </Select>
         </div>
@@ -216,20 +243,36 @@ function DataTableToolbar<TData>({
   );
 }
 
+type SelectFilterOption = {
+  label: string;
+  value: string;
+  icon?: any;
+  code?: string;
+  id?: string;
+};
+
+function selectOptionFromValue(
+  stored: unknown,
+  options: SelectFilterOption[],
+): SelectFilterOption | null {
+  if (stored == null || stored === "") return null;
+  return options.find((option) => option.value === String(stored)) ?? null;
+}
+
 function DataTableFilter<TData>({
   filter,
   value,
   onChange,
   disabled,
 }: {
-  filter: FilterDef<TData>;
+  filter: FilterDef<TData> & { className?: string };
   value: unknown;
   onChange: (value: unknown) => void;
   disabled?: boolean;
 }) {
   if (filter.type === "custom") {
     return (
-      <div className="flex items-center gap-1.5">
+      <div className={cn("flex items-center gap-1.5", filter.className)}>
         {filter.label ? (
           <span className="text-xs font-semibold text-muted whitespace-nowrap">
             {filter.label}
@@ -244,6 +287,23 @@ function DataTableFilter<TData>({
   }
 
   if (filter.type === "select") {
+    const isMultiple = filter.multiple;
+
+    const selectedOption = isMultiple
+      ? (Array.isArray(value) ? value : value ? [value] : [])
+        .map((v) => selectOptionFromValue(v, filter.options))
+        .filter(Boolean)
+      : selectOptionFromValue(value, filter.options);
+
+    const filteredOptions = filter.options.filter((option) => {
+      return option.value !== "" || option.value === null;
+    });
+    const filterTitle = filter.options[0]?.label ?? "Select filter";
+
+    const hasSelection = isMultiple
+      ? (selectedOption as SelectFilterOption[]).length > 0
+      : Boolean((selectedOption as SelectFilterOption)?.value);
+
     return (
       <div className="flex items-center gap-1.5">
         {filter.label ? (
@@ -251,22 +311,107 @@ function DataTableFilter<TData>({
             {filter.label}
           </span>
         ) : null}
-        <Select
-          value={String(value ?? filter.defaultValue ?? "")}
-          onValueChange={onChange}
+        <Combobox
+          items={filteredOptions}
+          value={selectedOption}
+          multiple={isMultiple}
+          onValueChange={(newValue) => {
+            if (isMultiple) {
+              const items = newValue as SelectFilterOption[];
+              onChange(items.map((item) => item.value));
+            } else {
+              const item = newValue as SelectFilterOption | null;
+              onChange(item?.value ?? "");
+            }
+          }}
           disabled={disabled}
         >
-          <SelectTrigger size="sm" className="min-w-28">
-            <SelectValue placeholder={filter.label ?? "Filter"} />
-          </SelectTrigger>
-          <SelectContent>
-            {filter.options.map((option) => (
-              <SelectItem key={option.value || "all"} value={option.value}>
-                {option.label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+          <ComboboxTrigger
+            className={cn(
+              "gap-1",
+              hasSelection ? "w-full" : "w-33",
+            )}
+            showChevron={!hasSelection}
+          >
+            {hasSelection ? (
+              <ComboboxClear
+                data-slot="combobox-clear"
+                aria-label={`Clear ${filter.label ?? filter.id} filter`}
+                skiped
+                className="size-4 shrink-0"
+              />
+            ) : <Icon name="statusLinear" className="size-4 shrink-0" />}
+            <ComboboxValue placeholder={filter.options[0]?.label}>
+              {(item: SelectFilterOption | SelectFilterOption[]) => {
+                if (isMultiple) {
+                  const items = item as SelectFilterOption[];
+                  if (items && items.length > 0) {
+                    if (items.length === 1) {
+                      const first = items[0]!;
+                      return (
+                        <span className="flex min-w-0 items-center truncate text-sm">
+                          {filterTitle}: {first.label}
+                        </span>
+                      );
+                    }
+                    return (
+                      <span className="min-w-0 truncate text-xs">
+                        {items.length} selected
+                      </span>
+                    );
+                  }
+                  return (
+                    <span className="text-muted-foreground">
+                      {filter.label ?? filter.options[0]?.label}
+                    </span>
+                  );
+                }
+
+                const singleItem = item as SelectFilterOption | null;
+                return singleItem ? (
+                  <span className="flex min-w-0 items-center gap-1.5 truncate">
+                    {singleItem.icon ? (
+                      <Icon name={singleItem.icon} className="size-4 shrink-0" />
+                    ) : null}
+                    {singleItem.label}
+                  </span>
+                ) : (
+                  <span className="text-muted-foreground">
+                    {filter.label ?? filter.options[0]?.label}
+                  </span>
+                );
+              }}
+            </ComboboxValue>
+          </ComboboxTrigger>
+          <ComboboxContent className={filter.className}>
+            <ComboboxEmpty>No items found.</ComboboxEmpty>
+            <ComboboxList>
+              {(item) => {
+                const isSelected = isMultiple
+                  ? (selectedOption as SelectFilterOption[]).some(
+                    (opt) => opt?.value === item.value
+                  )
+                  : (selectedOption as SelectFilterOption | null)?.value === item.value;
+
+                return (
+                  <ComboboxItem
+                    key={item.value || "all"}
+                    value={item}
+                    className={cn(isMultiple && " [&>span.absolute.right-2]:hidden")}
+                  >
+                    {isMultiple ? (
+                      <Checkbox size={"lg"} checked={isSelected} className="pointer-events-none" />
+                    ) : null}
+                    {item.icon ? (
+                      <Icon name={item.icon} className="size-4" />
+                    ) : null}
+                    {item.label}
+                  </ComboboxItem>
+                );
+              }}
+            </ComboboxList>
+          </ComboboxContent>
+        </Combobox>
       </div>
     );
   }
@@ -278,12 +423,14 @@ function DataTableFilter<TData>({
           {filter.label}
         </span>
       ) : null}
-      <Input
-        value={String(value ?? "")}
-        onChange={(event) => onChange(event.target.value)}
-        placeholder={filter.placeholder ?? "Search…"}
-        disabled={disabled}
-      />
+      <InputGroup size="md">
+        <InputGroupAddon align="inline-start">
+          <InputGroupText>
+            <Icon name="search" className="size-4 text-muted" />
+          </InputGroupText>
+        </InputGroupAddon>
+        <InputGroupInput placeholder="Search..." />
+      </InputGroup>
     </div>
   );
 }
@@ -481,7 +628,7 @@ function DataTableHeader<TData>({
                       }
                       icon={
                         table.isSomePageRowsSelected() &&
-                        !table.isAllPageRowsSelected()
+                          !table.isAllPageRowsSelected()
                           ? "minus"
                           : "check"
                       }
@@ -517,17 +664,19 @@ function DataTableSkeleton({
   columnCount,
   rowCount,
   selection,
+  size,
 }: {
   columnCount: number;
   rowCount: number;
   selection?: SelectionOptions;
+  size?: "sm" | "md" | "lg";
 }) {
   const widths = ["w-full", "w-3/4", "w-5/6", "w-2/3"];
 
   return (
     <>
       {Array.from({ length: rowCount }).map((_, rowIndex) => (
-        <TableRow key={`skeleton-row-${rowIndex}`}>
+        <TableRow key={`skeleton-row-${rowIndex}`} size={size}>
           {Array.from({ length: columnCount }).map((__, columnIndex) => (
             <TableCell key={`skeleton-cell-${rowIndex}-${columnIndex}`}>
               <div className="flex items-center gap-3">
@@ -578,7 +727,8 @@ type DataTableRowProps<TData> = {
   selection?: SelectionOptions;
   className?: string;
   onClick?: React.MouseEventHandler<HTMLTableRowElement>;
-} & Omit<React.ComponentProps<typeof TableRow>, "onClick">;
+  size?: "sm" | "md" | "lg";
+} & Omit<React.ComponentProps<typeof TableRow>, "onClick" | "size">;
 
 function DataTableRow<TData>({
   row,
@@ -587,6 +737,7 @@ function DataTableRow<TData>({
   selection,
   className,
   onClick,
+  size,
   ...props
 }: DataTableRowProps<TData>) {
   const isSelected = table.getSelectedRowIds().includes(row.id);
@@ -603,6 +754,7 @@ function DataTableRow<TData>({
       data-state={isSelected ? "selected" : undefined}
       className={cn(selection && "cursor-pointer", className)}
       onClick={handleClick}
+      size={size}
       {...props}
     >
       <DataTableRowCells
@@ -628,6 +780,8 @@ function DataTableBody<TData>({
   onRowClick,
   inset = true,
   className,
+  size = "md",
+  showPagination = false,
 }: {
   table: UseDataTableReturn<TData>;
   columns: ResolvedColumn<TData>[];
@@ -641,17 +795,27 @@ function DataTableBody<TData>({
   onRowClick?: DataTableProps<TData>["onRowClick"];
   inset?: boolean;
   className?: string;
+  size?: "sm" | "md" | "lg";
+  showPagination?: boolean;
 }) {
   const rows = table.getRowModel();
   const skeletonRowCount = skeletonRows ?? table.pageSize ?? 5;
 
   return (
-    <TableBody inset={inset} className={className}>
+    <TableBody
+      inset={inset}
+      className={cn(
+        className,
+        !showPagination &&
+          "[&>tr:last-child>td:first-child]:rounded-bl-[14px] [&>tr:last-child>td:last-child]:rounded-br-[14px]",
+      )}
+    >
       {loading ? (
         <DataTableSkeleton
           columnCount={columnCount}
           rowCount={skeletonRowCount}
           selection={selection}
+          size={size}
         />
       ) : rows.length ? (
         rows.map((row) => {
@@ -693,6 +857,7 @@ function DataTableBody<TData>({
               columns={columns}
               selection={selection}
               className={rowClassName}
+              size={size}
               onClick={
                 onRowClick
                   ? (event) => onRowClick(row.original, event)
@@ -740,6 +905,7 @@ function DataTable<TData>({
   toolbar,
   selection,
   pagination,
+  size,
   className,
   renderRow,
   getRowClassName,
@@ -754,6 +920,7 @@ function DataTable<TData>({
     toolbar,
     pagination,
     selection,
+    size,
   });
 
   const hasSelection = Boolean(selection);
@@ -761,7 +928,9 @@ function DataTable<TData>({
   const paginationEnabled = pagination != null && pagination !== false;
   const showPaginationFooter =
     paginationEnabled &&
-    (table.manualPagination || table.getFilteredRowCount() > table.pageSize);
+    (table.manualPagination
+      ? table.getPageCount() > 1
+      : table.getFilteredRowCount() > table.pageSize);
   const fixedLayout = useFixedTableLayout(columns);
 
   return (
@@ -795,6 +964,8 @@ function DataTable<TData>({
           onRowClick={onRowClick}
           inset={bodyInset}
           className={bodyClassName}
+          size={table.size}
+          showPagination={showPaginationFooter}
         />
 
         <DataTableFooter
@@ -807,12 +978,22 @@ function DataTable<TData>({
   );
 }
 
+type DataTableLoadingProps<TData> = Omit<
+  DataTableProps<TData>,
+  "data" | "loading" | "emptyMessage"
+>;
+
+function DataTableLoading<TData>(props: DataTableLoadingProps<TData>) {
+  return <DataTable {...props} data={[]} loading emptyMessage="" />;
+}
+
 export {
   DataTable,
   DataTableBody,
   DataTableEmpty,
   DataTableFooter,
   DataTableHeader,
+  DataTableLoading,
   DataTablePagination,
   DataTableRow,
   DataTableRowCells,
